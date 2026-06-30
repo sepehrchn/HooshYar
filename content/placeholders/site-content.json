@@ -1,0 +1,128 @@
+{
+  "meta": {
+    "status": "placeholder",
+    "note": "Central placeholder content for Hoosh Yar. Replace values here with approved EN/FA copy and real project data as it becomes available."
+  },
+  "locales": ["en", "fa"],
+  "defaultLocale": "fa",
+  "directions": {
+    "en": "ltr",
+    "fa": "rtl"
+  },
+  "brand": {
+    "en": {
+      "name": "Hoosh Yar",
+      "tagline": "Aware intelligence for ambitious digital products."
+    },
+    "fa": {
+      "name": "هوش‌یار",
+      "tagline": "هوش آگاه برای محصولات دیجیتال آینده‌نگر."
+    }
+  },
+  "navigation": [
+    { "href": "/", "en": "Home", "fa": "خانه" },
+    { "href": "/about", "en": "About", "fa": "درباره ما" },
+    { "href": "/services", "en": "Services", "fa": "خدمات" },
+    { "href": "/work", "en": "Work", "fa": "نمونه‌کارها" },
+    { "href": "/process", "en": "Process", "fa": "فرآیند" },
+    { "href": "/pricing", "en": "Pricing", "fa": "قیمت‌گذاری" },
+    { "href": "/contact", "en": "Contact", "fa": "تماس" }
+  ],
+  "hero": {
+    "status": "ready",
+    "assetExpected": "public/media/hero-video.mp4",
+    "en": {
+      "eyebrow": "AI Services · Automation · Web Development",
+      "headline": "Build intelligent systems that move your business forward.",
+      "subhead": "Hoosh Yar designs premium AI, automation, and web experiences with a cinematic, future-ready edge.",
+      "primaryCta": "Get a Quote",
+      "secondaryCta": "Explore Services"
+    },
+    "fa": {
+      "eyebrow": "خدمات هوش مصنوعی · اتوماسیون · توسعه وب",
+      "headline": "سیستم‌های هوشمندی بسازید که کسب‌وکار شما را جلو می‌برند.",
+      "subhead": "هوش‌یار تجربه‌های ممتاز هوش مصنوعی، اتوماسیون و وب را با هویتی آینده‌نگر طراحی و اجرا می‌کند.",
+      "primaryCta": "درخواست مشاوره",
+      "secondaryCta": "مشاهده خدمات"
+    }
+  },
+  "valueCards": [
+    {
+      "icon": "ai-chip",
+      "en": "Where the art of design meets artificial intelligence",
+      "fa": "آنجا كه هنر طراحى به هوش مصنوعى ميرسد"
+    },
+    {
+      "icon": "workflow",
+      "en": "Hoosh Yar, the new frontier of progressive business",
+      "fa": "هوش يار، مرز نوين كسب و كار هاى پيشرو"
+    },
+    {
+      "icon": "code",
+      "en": "Reduce costs, increase speed, automation transformation with Hoosh Yar",
+      "fa": "كاهش هزينه ها، افزايش سرعت، تحول اتوماسيون با هوش يار"
+    },
+    {
+  "icon": "cloud",
+  "en": "Breaking ready-made website templates with fully custom Hoosh Yar design",
+  "fa": "شكستن مرز قالب هاى آماده سايت، با طراحى كاملا اختصاصى|BR|هوش یار"
+}
+  ],
+  "services": [
+    {
+      "slug": "ai-services",
+      "en": { "title": "AI Services", "description": "Custom agents, integrations, and intelligent product features." },
+      "fa": { "title": "خدمات هوش مصنوعی", "description": "ایجنت‌های اختصاصی، یکپارچه‌سازی‌ها و قابلیت‌های هوشمند محصول." }
+    },
+    {
+      "slug": "automation",
+      "en": { "title": "Automation", "description": "Workflow and business-process automation that removes repetitive work." },
+      "fa": { "title": "اتوماسیون", "description": "خودکارسازی فرآیندها برای حذف کارهای تکراری و افزایش سرعت اجرا." }
+    },
+    {
+      "slug": "web-development",
+      "en": { "title": "Web Development", "description": "Fast, elegant, scalable websites and web applications." },
+      "fa": { "title": "توسعه وب", "description": "وب‌سایت‌ها و اپلیکیشن‌های سریع، زیبا و مقیاس‌پذیر." }
+    }
+  ],
+  "caseStudies": [
+    {
+      "slug": "placeholder-ai-operations",
+      "status": "placeholder",
+      "cover": "gradient-block-cyan-violet",
+      "en": { "title": "AI Operations Console", "summary": "Case study coming soon — placeholder for an AI workflow product." },
+      "fa": { "title": "کنسول عملیات هوشمند", "summary": "مطالعه موردی به‌زودی — جایگزین برای یک محصول جریان کاری هوشمند." }
+    },
+    {
+      "slug": "placeholder-automation-hub",
+      "status": "placeholder",
+      "cover": "gradient-block-blue-magenta",
+      "en": { "title": "Automation Hub", "summary": "Case study coming soon — placeholder for a business automation build." },
+      "fa": { "title": "هاب اتوماسیون", "summary": "مطالعه موردی به‌زودی — جایگزین برای پروژه اتوماسیون کسب‌وکار." }
+    },
+    {
+      "slug": "placeholder-web-platform",
+      "status": "placeholder",
+      "cover": "gradient-block-violet-cyan",
+      "en": { "title": "Premium Web Platform", "summary": "Case study coming soon — placeholder for a custom web platform." },
+      "fa": { "title": "پلتفرم وب ممتاز", "summary": "مطالعه موردی به‌زودی — جایگزین برای یک پلتفرم وب اختصاصی." }
+    },
+    {
+      "slug": "placeholder-cloud-integration",
+      "status": "placeholder",
+      "cover": "gradient-block-magenta-cyan",
+      "en": { "title": "Cloud Integration Layer", "summary": "Case study coming soon — placeholder for integrations and cloud workflows." },
+      "fa": { "title": "لایه یکپارچه‌سازی ابری", "summary": "مطالعه موردی به‌زودی — جایگزین برای یکپارچه‌سازی‌ها و جریان‌های ابری." }
+    }
+  ],
+  "about": {
+    "status": "placeholder",
+    "en": "Hoosh Yar is a future-focused digital studio helping teams turn intelligent ideas into reliable systems, automated workflows, and premium web experiences.",
+    "fa": "هوش‌یار یک استودیوی دیجیتال آینده‌نگر است که به تیم‌ها کمک می‌کند ایده‌های هوشمند را به سیستم‌های قابل اعتماد، فرآیندهای خودکار و تجربه‌های وب ممتاز تبدیل کنند."
+  },
+  "pricing": {
+    "status": "placeholder-custom-quote",
+    "en": "Every engagement starts with a focused discovery call, then we shape a custom quote around scope, timeline, and business impact.",
+    "fa": "هر همکاری با یک جلسه شناخت دقیق شروع می‌شود؛ سپس براساس دامنه کار، زمان‌بندی و اثر تجاری، پیشنهاد اختصاصی آماده می‌کنیم."
+  }
+}

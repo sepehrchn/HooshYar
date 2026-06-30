@@ -1,0 +1,70 @@
+{
+  "home": {
+    "trust": [
+      { "value": 10, "suffix": "x", "en": "Automation potential", "fa": "ظرفیت اتوماسیون" },
+      { "value": 3, "suffix": "+", "en": "Service tracks", "fa": "مسیر خدماتی" },
+      { "value": 2, "suffix": "", "en": "Launch languages", "fa": "زبان راه‌اندازی" }
+    ],
+    "featuredWorkTitle": { "en": "Featured work in progress", "fa": "نمونه‌کارهای در حال آماده‌سازی" },
+    "featuredWorkIntro": { "en": "Real case studies will replace these branded placeholders once project content, images, and results are approved.", "fa": "پس از آماده شدن محتوای پروژه‌ها، تصاویر و نتایج واقعی جایگزین این کارت‌های برندمحور می‌شوند." },
+    "testimonialsTitle": { "en": "Signals of trust", "fa": "نشانه‌های اعتماد" },
+    "testimonials": [
+      { "en": "Placeholder client quote for an AI workflow engagement.", "fa": "نقل‌قول جایگزین برای یک پروژه جریان کاری هوشمند." },
+      { "en": "Placeholder partner note for automation impact.", "fa": "یادداشت جایگزین برای اثرگذاری اتوماسیون." }
+    ],
+    "finalCta": {
+      "en": { "title": "Ready to turn intelligence into momentum?", "body": "Start with a focused discovery call and we’ll map the fastest path from idea to deployable system.", "cta": "Get a Quote" },
+      "fa": { "title": "آماده‌اید هوشمندی را به حرکت تبدیل کنید؟", "body": "با یک جلسه شناخت شروع می‌کنیم و سریع‌ترین مسیر از ایده تا سیستم قابل اجرا را طراحی می‌کنیم.", "cta": "درخواست مشاوره" }
+    }
+  },
+  "about": {
+    "hero": {
+      "en": { "eyebrow": "About Hoosh Yar", "title": "Aware intelligence, built with precision.", "body": "Hoosh Yar exists to help ambitious teams turn AI potential into practical systems, automated operations, and polished web experiences." },
+      "fa": { "eyebrow": "درباره هوش‌یار", "title": "هوش آگاه، ساخته‌شده با دقت.", "body": "هوش‌یار برای کمک به تیم‌های آینده‌نگر شکل گرفته است؛ تا ظرفیت هوش مصنوعی را به سیستم‌های کاربردی، عملیات خودکار و تجربه‌های وب ممتاز تبدیل کند." }
+    },
+    "mission": {
+      "en": "We combine product thinking, automation architecture, and premium interface craft to build systems that feel intelligent, reliable, and human-centered.",
+      "fa": "ما تفکر محصول، معماری اتوماسیون و طراحی رابط ممتاز را ترکیب می‌کنیم تا سیستم‌هایی بسازیم که هوشمند، قابل اعتماد و انسان‌محور باشند."
+    },
+    "principles": [
+      { "en": "Practical intelligence before hype", "fa": "هوشمندی کاربردی پیش از هیاهو" },
+      { "en": "Automation that respects real workflows", "fa": "اتوماسیونی هماهنگ با جریان واقعی کار" },
+      { "en": "Interfaces that make complexity feel calm", "fa": "رابط‌هایی که پیچیدگی را آرام و قابل فهم می‌کنند" }
+    ]
+  },
+  "process": {
+    "hero": {
+      "en": { "eyebrow": "Process", "title": "From discovery to launch, every step stays clear.", "body": "A structured build path keeps AI, automation, and web projects focused, measurable, and launch-ready." },
+      "fa": { "eyebrow": "فرآیند", "title": "از شناخت تا لانچ، هر قدم شفاف می‌ماند.", "body": "مسیر ساختارمند باعث می‌شود پروژه‌های هوش مصنوعی، اتوماسیون و وب متمرکز، قابل اندازه‌گیری و آماده اجرا باشند." }
+    },
+    "steps": [
+      { "en": { "title": "Discovery", "body": "Clarify goals, users, workflows, constraints, and success metrics." }, "fa": { "title": "شناخت", "body": "اهداف، کاربران، جریان‌های کاری، محدودیت‌ها و معیارهای موفقیت را روشن می‌کنیم." } },
+      { "en": { "title": "Architecture", "body": "Map systems, integrations, data flows, and the right implementation path." }, "fa": { "title": "معماری", "body": "سیستم‌ها، یکپارچه‌سازی‌ها، جریان داده و مسیر اجرای مناسب را طراحی می‌کنیم." } },
+      { "en": { "title": "Build", "body": "Design and develop in focused iterations with visible progress." }, "fa": { "title": "ساخت", "body": "طراحی و توسعه را در چرخه‌های متمرکز و قابل مشاهده پیش می‌بریم." } },
+      { "en": { "title": "Launch", "body": "Ship, test, measure, and prepare the system for real usage." }, "fa": { "title": "راه‌اندازی", "body": "منتشر می‌کنیم، تست می‌گیریم، اندازه‌گیری می‌کنیم و سیستم را برای استفاده واقعی آماده می‌سازیم." } }
+    ]
+  },
+  "pricing": {
+    "hero": {
+      "en": { "eyebrow": "Pricing", "title": "Custom scope, clear investment.", "body": "Until fixed packages are finalized, Hoosh Yar uses a custom quote model based on complexity, integrations, timeline, and measurable impact." },
+      "fa": { "eyebrow": "قیمت‌گذاری", "title": "دامنه اختصاصی، سرمایه‌گذاری شفاف.", "body": "تا زمان نهایی شدن پکیج‌ها، هوش‌یار براساس پیچیدگی، یکپارچه‌سازی‌ها، زمان‌بندی و اثر قابل اندازه‌گیری، پیشنهاد اختصاصی ارائه می‌کند." }
+    },
+    "tracks": [
+      { "en": { "title": "AI Sprint", "body": "Prototype or integrate a focused AI capability." }, "fa": { "title": "اسپرینت هوش مصنوعی", "body": "نمونه‌سازی یا یکپارچه‌سازی یک قابلیت هوشمند متمرکز." } },
+      { "en": { "title": "Automation System", "body": "Automate repeatable workflows across tools and teams." }, "fa": { "title": "سیستم اتوماسیون", "body": "خودکارسازی جریان‌های تکراری بین ابزارها و تیم‌ها." } },
+      { "en": { "title": "Premium Web Build", "body": "Design and build a polished, scalable digital presence." }, "fa": { "title": "ساخت وب ممتاز", "body": "طراحی و ساخت یک حضور دیجیتال صیقلی و مقیاس‌پذیر." } }
+    ]
+  },
+  "blog": {
+    "hero": {
+      "en": { "eyebrow": "Blog", "title": "Insights coming soon.", "body": "The blog can launch empty while the content cadence is prepared. Future posts will cover AI workflows, automation strategy, and modern web development." },
+      "fa": { "eyebrow": "بلاگ", "title": "مقالات به‌زودی منتشر می‌شوند.", "body": "بلاگ می‌تواند فعلاً خالی منتشر شود تا برنامه محتوایی آماده شود. نوشته‌های آینده درباره جریان‌های هوش مصنوعی، استراتژی اتوماسیون و توسعه وب مدرن خواهند بود." }
+    }
+  },
+  "contact": {
+    "hero": {
+      "en": { "eyebrow": "Contact", "title": "Tell us what you want to build.", "body": "Share the goal, timeline, and the kind of intelligent system or web experience you need. We’ll respond with next steps." },
+      "fa": { "eyebrow": "تماس", "title": "بگویید چه چیزی می‌خواهید بسازید.", "body": "هدف، زمان‌بندی و نوع سیستم هوشمند یا تجربه وب مورد نیازتان را بنویسید. با مراحل بعدی پاسخ می‌دهیم." }
+    }
+  }
+}
