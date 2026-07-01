@@ -2,6 +2,8 @@ import { ContactForm } from "@/components/forms";
 import { Footer } from "@/components/layout/footer";
 import { SectionReveal } from "@/components/motion";
 import {
+  ContactChannels,
+  ContactFAQ,
   DifferentiatorCard,
   LandingSection,
   PageHero,
@@ -20,7 +22,6 @@ import { cn } from "@/lib/utils";
 export async function HomeScrollSections({ locale }: { locale: Locale }) {
   const studies = getCaseStudies(locale);
   const aboutHero = pageContent.about.hero[locale];
-  const pricingHero = pageContent.pricing.hero[locale];
   const contactHero = pageContent.contact.hero[locale];
 
   return (
@@ -168,68 +169,92 @@ export async function HomeScrollSections({ locale }: { locale: Locale }) {
         </div>
       </SnapPanel>
 
-      <SnapPanel id="pricing">
-        <div className="px-5 sm:px-8 lg:px-12">
-          <PageHero
-            compact
-            eyebrow={pricingHero.eyebrow}
-            title={pricingHero.title}
-            body={pricingHero.body}
-          />
-          <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
-            {pageContent.pricing.tracks.map((track, index) => (
-              <GlassCard key={track.en.title} glow={index === 1 ? "violet" : "cyan"}>
-                <p className="font-mono text-xs uppercase tracking-[0.28em] text-cyan-primary">
-                  Custom Quote
-                </p>
-                <SectionHeading className="mt-4 text-2xl md:text-3xl">
-                  {track[locale].title}
-                </SectionHeading>
-                <p className="mt-3 leading-7 text-text-muted">{track[locale].body}</p>
-              </GlassCard>
-            ))}
-          </div>
-        </div>
-      </SnapPanel>
-
       <SnapPanel id="contact">
-        <div className="px-5 sm:px-8 lg:px-12">
-          <PageHero
-            compact
-            eyebrow={contactHero.eyebrow}
-            title={contactHero.title}
-            body={contactHero.body}
+        <div>
+          {/* Section Header - matching Services/Process pattern */}
+          <section className="relative px-5 pb-12 pt-36 sm:px-8 sm:pb-16 sm:pt-40 lg:px-12 lg:pb-20 lg:pt-44">
+            <div
+              aria-hidden="true"
+              className="absolute left-1/2 top-20 -z-10 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-primary/10 blur-3xl"
+            />
+            <SectionReveal className="mx-auto max-w-5xl text-center">
+              {/* Gradient label */}
+              <Heading className="text-5xl sm:text-6xl lg:text-7xl">
+                <GradientText
+                  style={{
+                    fontWeight: 800,
+                    letterSpacing: locale === 'fa' ? 'normal' : '-0.065em',
+                  }}
+                >
+                  {contactHero.eyebrow}
+                </GradientText>
+              </Heading>
+              {/* Title */}
+              <h2
+                className={cn(
+                  'mx-auto mt-6 max-w-3xl font-heading text-2xl font-bold leading-tight text-text-primary sm:text-3xl',
+                  locale === 'fa' && 'text-center'
+                )}
+                dir={locale === 'fa' ? 'rtl' : 'ltr'}
+              >
+                {contactHero.title}
+              </h2>
+              {/* Subhead */}
+              <p
+                className={cn(
+                  'mx-auto mt-4 max-w-3xl text-sm leading-7 text-text-muted sm:text-base sm:leading-8',
+                  locale === 'fa' && 'text-center'
+                )}
+                dir={locale === 'fa' ? 'rtl' : 'ltr'}
+              >
+                {contactHero.body}
+              </p>
+            </SectionReveal>
+          </section>
+
+          {/* Direct Contact Channels */}
+          <ContactChannels
+            intro={pageContent.contact.directContact.intro}
+            channels={pageContent.contact.directContact.channels}
+            locale={locale}
           />
-          <div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-[0.85fr_1.15fr]">
-            <GlassCard glow="cyan">
-              <SectionHeading className="text-2xl md:text-3xl">
-                {locale === "fa" ? "قبل از ارسال" : "Before you send"}
-              </SectionHeading>
-              <ul className="mt-4 grid gap-3 text-sm leading-7 text-text-muted">
-                <li>
-                  •{" "}
-                  {locale === "fa"
-                    ? "هدف پروژه و مسئله اصلی را توضیح دهید."
-                    : "Describe the project goal and main problem."}
-                </li>
-                <li>
-                  •{" "}
-                  {locale === "fa"
-                    ? "زمان‌بندی تقریبی را اضافه کنید."
-                    : "Add your approximate timeline."}
-                </li>
-                <li>
-                  •{" "}
-                  {locale === "fa"
-                    ? "اگر ابزار یا سیستم فعلی دارید، نام ببرید."
-                    : "Mention any existing tools or systems."}
-                </li>
-              </ul>
-            </GlassCard>
-            <GlassCard glow="magenta">
-              <ContactForm locale={locale} />
-            </GlassCard>
-          </div>
+
+          {/* FAQ */}
+          <ContactFAQ items={pageContent.contact.faq} locale={locale} />
+
+          {/* Form Section */}
+          <section className="px-5 pb-20 sm:px-8 sm:pb-24 lg:px-12 lg:pb-28">
+            <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+              <GlassCard glow="cyan">
+                <SectionHeading className="text-2xl md:text-3xl">
+                  {locale === "fa" ? "قبل از ارسال" : "Before you send"}
+                </SectionHeading>
+                <ul className="mt-6 grid gap-4 leading-7 text-text-muted">
+                  <li>
+                    •{" "}
+                    {locale === "fa"
+                      ? "هدف پروژه و مسئله اصلی را توضیح دهید."
+                      : "Describe the project goal and main problem."}
+                  </li>
+                  <li>
+                    •{" "}
+                    {locale === "fa"
+                      ? "زمان‌بندی تقریبی را اضافه کنید."
+                      : "Add your approximate timeline."}
+                  </li>
+                  <li>
+                    •{" "}
+                    {locale === "fa"
+                      ? "اگر ابزار یا سیستم فعلی دارید، نام ببرید."
+                      : "Mention any existing tools or systems."}
+                  </li>
+                </ul>
+              </GlassCard>
+              <GlassCard glow="magenta">
+                <ContactForm locale={locale} />
+              </GlassCard>
+            </div>
+          </section>
         </div>
       </SnapPanel>
 

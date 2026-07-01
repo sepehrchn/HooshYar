@@ -1,20 +1,58 @@
 {
   "home": {
     "trust": [
-      { "value": 10, "suffix": "x", "en": "Automation potential", "fa": "ظرفیت اتوماسیون" },
-      { "value": 3, "suffix": "+", "en": "Service tracks", "fa": "مسیر خدماتی" },
-      { "value": 2, "suffix": "", "en": "Launch languages", "fa": "زبان راه‌اندازی" }
+      {
+        "value": 10,
+        "suffix": "x",
+        "en": "Automation potential",
+        "fa": "ظرفیت اتوماسیون"
+      },
+      {
+        "value": 3,
+        "suffix": "+",
+        "en": "Service tracks",
+        "fa": "مسیر خدماتی"
+      },
+      {
+        "value": 2,
+        "suffix": "",
+        "en": "Launch languages",
+        "fa": "زبان راه‌اندازی"
+      }
     ],
-    "featuredWorkTitle": { "en": "Featured work in progress", "fa": "نمونه‌کارهای در حال آماده‌سازی" },
-    "featuredWorkIntro": { "en": "Real case studies will replace these branded placeholders once project content, images, and results are approved.", "fa": "پس از آماده شدن محتوای پروژه‌ها، تصاویر و نتایج واقعی جایگزین این کارت‌های برندمحور می‌شوند." },
-    "testimonialsTitle": { "en": "Signals of trust", "fa": "نشانه‌های اعتماد" },
+    "featuredWorkTitle": {
+      "en": "Featured work in progress",
+      "fa": "نمونه‌کارهای در حال آماده‌سازی"
+    },
+    "featuredWorkIntro": {
+      "en": "Real case studies will replace these branded placeholders once project content, images, and results are approved.",
+      "fa": "پس از آماده شدن محتوای پروژه‌ها، تصاویر و نتایج واقعی جایگزین این کارت‌های برندمحور می‌شوند."
+    },
+    "testimonialsTitle": {
+      "en": "Signals of trust",
+      "fa": "نشانه‌های اعتماد"
+    },
     "testimonials": [
-      { "en": "Placeholder client quote for an AI workflow engagement.", "fa": "نقل‌قول جایگزین برای یک پروژه جریان کاری هوشمند." },
-      { "en": "Placeholder partner note for automation impact.", "fa": "یادداشت جایگزین برای اثرگذاری اتوماسیون." }
+      {
+        "en": "Placeholder client quote for an AI workflow engagement.",
+        "fa": "نقل‌قول جایگزین برای یک پروژه جریان کاری هوشمند."
+      },
+      {
+        "en": "Placeholder partner note for automation impact.",
+        "fa": "یادداشت جایگزین برای اثرگذاری اتوماسیون."
+      }
     ],
     "finalCta": {
-      "en": { "title": "Ready to turn intelligence into momentum?", "body": "Start with a focused discovery call and we’ll map the fastest path from idea to deployable system.", "cta": "Get a Quote" },
-      "fa": { "title": "آماده‌اید هوشمندی را به حرکت تبدیل کنید؟", "body": "با یک جلسه شناخت شروع می‌کنیم و سریع‌ترین مسیر از ایده تا سیستم قابل اجرا را طراحی می‌کنیم.", "cta": "درخواست مشاوره" }
+      "en": {
+        "title": "Ready to turn intelligence into momentum?",
+        "body": "Start with a focused discovery call and we’ll map the fastest path from idea to deployable system.",
+        "cta": "Get a Quote"
+      },
+      "fa": {
+        "title": "آماده‌اید هوشمندی را به حرکت تبدیل کنید؟",
+        "body": "با یک جلسه شناخت شروع می‌کنیم و سریع‌ترین مسیر از ایده تا سیستم قابل اجرا را طراحی می‌کنیم.",
+        "cta": "درخواست مشاوره"
+      }
     }
   },
   "about": {
@@ -127,10 +165,30 @@
       }
     ],
     "stats": [
-      { "value": 9, "suffix": "", "en": "specialist services", "fa": "خدمات تخصصی" },
-      { "value": 3, "suffix": "", "en": "core expertise areas", "fa": "حوزه تخصصی" },
-      { "value": 2, "suffix": "", "en": "supported languages", "fa": "زبان پشتیبانی" },
-      { "value": 8, "suffix": "", "en": "build phases", "fa": "مرحله ساخت" }
+      {
+        "value": 9,
+        "suffix": "",
+        "en": "specialist services",
+        "fa": "خدمات تخصصی"
+      },
+      {
+        "value": 3,
+        "suffix": "",
+        "en": "core expertise areas",
+        "fa": "حوزه تخصصی"
+      },
+      {
+        "value": 2,
+        "suffix": "",
+        "en": "supported languages",
+        "fa": "زبان پشتیبانی"
+      },
+      {
+        "value": 8,
+        "suffix": "",
+        "en": "build phases",
+        "fa": "مرحله ساخت"
+      }
     ],
     "cta": {
       "en": {
@@ -149,36 +207,148 @@
   },
   "process": {
     "hero": {
-      "en": { "eyebrow": "Process", "title": "From discovery to launch, every step stays clear.", "body": "A structured build path keeps AI, automation, and web projects focused, measurable, and launch-ready." },
-      "fa": { "eyebrow": "فرآیند", "title": "از شناخت تا لانچ، هر قدم شفاف می‌ماند.", "body": "مسیر ساختارمند باعث می‌شود پروژه‌های هوش مصنوعی، اتوماسیون و وب متمرکز، قابل اندازه‌گیری و آماده اجرا باشند." }
+      "en": {
+        "eyebrow": "Process",
+        "title": "From discovery to launch, every step stays clear.",
+        "body": "A structured build path keeps AI, automation, and web projects focused, measurable, and launch-ready."
+      },
+      "fa": {
+        "eyebrow": "فرآیند",
+        "title": "از شناخت تا لانچ، هر قدم شفاف می‌ماند.",
+        "body": "مسیر ساختارمند باعث می‌شود پروژه‌های هوش مصنوعی، اتوماسیون و وب متمرکز، قابل اندازه‌گیری و آماده اجرا باشند."
+      }
     },
     "steps": [
-      { "en": { "title": "Understand", "body": "We map your goals, real users, current workflows, and success metrics — before a single line of code is written." }, "fa": { "title": "شناخت", "body": "اهداف کسب‌وکار، کاربران واقعی، جریان‌های کاری فعلی و معیارهای موفقیت را دقیق شناسایی می‌کنیم — قبل از نوشتن حتی یک خط کد." } },
-      { "en": { "title": "Solution", "body": "We design the right mix of AI, automation, and web — system architecture, integrations, and execution path, all clearly defined and justified." }, "fa": { "title": "راه‌حل", "body": "بهترین ترکیب از هوش مصنوعی، اتوماسیون و وب را طراحی می‌کنیم؛ معماری سیستم، یکپارچه‌سازی‌ها و مسیر اجرا مشخص و قابل دفاع می‌شود." } },
-      { "en": { "title": "Build", "body": "We build in short, visible cycles — every stage testable, reviewable, and launch-ready." }, "fa": { "title": "ساخت", "body": "طراحی و توسعه را در چرخه‌های کوتاه و قابل مشاهده پیش می‌بریم — هر مرحله قابل تست، قابل بازبینی و آماده لانچ است." } }
-    ]
-  },
-  "pricing": {
-    "hero": {
-      "en": { "eyebrow": "Pricing", "title": "Custom scope, clear investment.", "body": "Until fixed packages are finalized, Hoosh Yar uses a custom quote model based on complexity, integrations, timeline, and measurable impact." },
-      "fa": { "eyebrow": "قیمت‌گذاری", "title": "دامنه اختصاصی، سرمایه‌گذاری شفاف.", "body": "تا زمان نهایی شدن پکیج‌ها، هوش‌یار براساس پیچیدگی، یکپارچه‌سازی‌ها، زمان‌بندی و اثر قابل اندازه‌گیری، پیشنهاد اختصاصی ارائه می‌کند." }
-    },
-    "tracks": [
-      { "en": { "title": "AI Sprint", "body": "Prototype or integrate a focused AI capability." }, "fa": { "title": "اسپرینت هوش مصنوعی", "body": "نمونه‌سازی یا یکپارچه‌سازی یک قابلیت هوشمند متمرکز." } },
-      { "en": { "title": "Automation System", "body": "Automate repeatable workflows across tools and teams." }, "fa": { "title": "سیستم اتوماسیون", "body": "خودکارسازی جریان‌های تکراری بین ابزارها و تیم‌ها." } },
-      { "en": { "title": "Premium Web Build", "body": "Design and build a polished, scalable digital presence." }, "fa": { "title": "ساخت وب ممتاز", "body": "طراحی و ساخت یک حضور دیجیتال صیقلی و مقیاس‌پذیر." } }
+      {
+        "en": {
+          "title": "Understand",
+          "body": "We map your goals, real users, current workflows, and success metrics — before a single line of code is written."
+        },
+        "fa": {
+          "title": "شناخت",
+          "body": "اهداف کسب‌وکار، کاربران واقعی، جریان‌های کاری فعلی و معیارهای موفقیت را دقیق شناسایی می‌کنیم — قبل از نوشتن حتی یک خط کد."
+        }
+      },
+      {
+        "en": {
+          "title": "Solution",
+          "body": "We design the right mix of AI, automation, and web — system architecture, integrations, and execution path, all clearly defined and justified."
+        },
+        "fa": {
+          "title": "راه‌حل",
+          "body": "بهترین ترکیب از هوش مصنوعی، اتوماسیون و وب را طراحی می‌کنیم؛ معماری سیستم، یکپارچه‌سازی‌ها و مسیر اجرا مشخص و قابل دفاع می‌شود."
+        }
+      },
+      {
+        "en": {
+          "title": "Build",
+          "body": "We build in short, visible cycles — every stage testable, reviewable, and launch-ready."
+        },
+        "fa": {
+          "title": "ساخت",
+          "body": "طراحی و توسعه را در چرخه‌های کوتاه و قابل مشاهده پیش می‌بریم — هر مرحله قابل تست، قابل بازبینی و آماده لانچ است."
+        }
+      }
     ]
   },
   "blog": {
     "hero": {
-      "en": { "eyebrow": "Blog", "title": "Insights coming soon.", "body": "The blog can launch empty while the content cadence is prepared. Future posts will cover AI workflows, automation strategy, and modern web development." },
-      "fa": { "eyebrow": "بلاگ", "title": "مقالات به‌زودی منتشر می‌شوند.", "body": "بلاگ می‌تواند فعلاً خالی منتشر شود تا برنامه محتوایی آماده شود. نوشته‌های آینده درباره جریان‌های هوش مصنوعی، استراتژی اتوماسیون و توسعه وب مدرن خواهند بود." }
+      "en": {
+        "eyebrow": "Blog",
+        "title": "Insights coming soon.",
+        "body": "The blog can launch empty while the content cadence is prepared. Future posts will cover AI workflows, automation strategy, and modern web development."
+      },
+      "fa": {
+        "eyebrow": "بلاگ",
+        "title": "مقالات به‌زودی منتشر می‌شوند.",
+        "body": "بلاگ می‌تواند فعلاً خالی منتشر شود تا برنامه محتوایی آماده شود. نوشته‌های آینده درباره جریان‌های هوش مصنوعی، استراتژی اتوماسیون و توسعه وب مدرن خواهند بود."
+      }
     }
   },
   "contact": {
     "hero": {
-      "en": { "eyebrow": "Contact", "title": "Tell us what you want to build.", "body": "Share the goal, timeline, and the kind of intelligent system or web experience you need. We’ll respond with next steps." },
-      "fa": { "eyebrow": "تماس", "title": "بگویید چه چیزی می‌خواهید بسازید.", "body": "هدف، زمان‌بندی و نوع سیستم هوشمند یا تجربه وب مورد نیازتان را بنویسید. با مراحل بعدی پاسخ می‌دهیم." }
-    }
+      "en": {
+        "eyebrow": "Contact",
+        "title": "Tell us what you want to build.",
+        "body": "Share the goal, timeline, and the kind of intelligent system or web experience you need. We’ll respond with next steps."
+      },
+      "fa": {
+        "eyebrow": "تماس",
+        "title": "بگویید چه چیزی می‌خواهید بسازید.",
+        "body": "هدف، زمان‌بندی و نوع سیستم هوشمند یا تجربه وب مورد نیازتان را بنویسید. با مراحل بعدی پاسخ می‌دهیم."
+      }
+    },
+    "directContact": {
+      "intro": {
+        "en": "Prefer to reach out directly?",
+        "fa": "ترجیح می‌دهید مستقیم صحبت کنید؟"
+      },
+      "channels": [
+        {
+          "type": "email",
+          "label": {
+            "en": "Email",
+            "fa": "ایمیل"
+          },
+          "value": "sepehrjokanian99@gmail.com",
+          "link": "mailto:sepehrjokanian99@gmail.com",
+          "accent": "cyan"
+        },
+        {
+          "type": "telegram",
+          "label": {
+            "en": "Telegram",
+            "fa": "تلگرام"
+          },
+          "value": "@PLACEHOLDER",
+          "link": "https://t.me/PLACEHOLDER",
+          "accent": "violet",
+          "todo": "TODO: replace with real Telegram handle"
+        },
+        {
+          "type": "whatsapp",
+          "label": {
+            "en": "WhatsApp",
+            "fa": "واتساپ"
+          },
+          "value": "+PLACEHOLDER",
+          "link": "https://wa.me/PLACEHOLDER",
+          "accent": "magenta",
+          "todo": "TODO: replace with real WhatsApp number"
+        }
+      ]
+    },
+    "faq": [
+      {
+        "question": {
+          "en": "How much does a project cost?",
+          "fa": "هزینه پروژه چقدر است؟"
+        },
+        "answer": {
+          "en": "Since every project is custom-built, there's no fixed price — after understanding your needs, we send a clear, specific proposal.",
+          "fa": "چون هر پروژه اختصاصی طراحی می‌شود، قیمت ثابت نداریم — بعد از شنیدن نیاز شما، پیشنهاد شفاف و مشخص ارسال می‌کنیم."
+        }
+      },
+      {
+        "question": {
+          "en": "How long does a project take?",
+          "fa": "پروژه چقدر طول می‌کشد؟"
+        },
+        "answer": {
+          "en": "Depending on complexity, it ranges from a few days to a few weeks. The exact timeline is set in the initial proposal.",
+          "fa": "بسته به پیچیدگی، از چند روز تا چند هفته متغیر است. زمان‌بندی دقیق در پیشنهاد اولیه مشخص می‌شود."
+        }
+      },
+      {
+        "question": {
+          "en": "What if I'm not sure exactly what I need?",
+          "fa": "اگر مطمئن نیستم دقیقاً چه نیاز دارم چه کنم؟"
+        },
+        "answer": {
+          "en": "That's fine — just describe the challenge you're facing, and we'll help define the right solution together.",
+          "fa": "مشکلی نیست — همین الان بنویسید چه چالشی دارید، ما راه‌حل مناسب را با شما مشخص می‌کنیم."
+        }
+      }
+    ]
   }
 }

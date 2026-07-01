@@ -4,7 +4,6 @@ export const sectionIds = {
   "/services": "services",
   "/work": "portfolio",
   "/process": "process",
-  "/pricing": "pricing",
   "/contact": "contact",
 } as const;
 

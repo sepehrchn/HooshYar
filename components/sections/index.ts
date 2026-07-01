@@ -3,6 +3,8 @@ export * from "./final-cta";
 export * from "./hero-section";
 export * from "./home-scroll-sections";
 export * from "./how-it-works";
+export * from "./contact-channels";
+export * from "./contact-faq";
 export * from "./page-hero";
 export * from "./principle-card";
 export * from "./process-card";
