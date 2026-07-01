@@ -2,7 +2,7 @@ export const sectionIds = {
   "/": "home",
   "/about": "about",
   "/services": "services",
-  "/work": "work",
+  "/work": "portfolio",
   "/process": "process",
   "/pricing": "pricing",
   "/contact": "contact",

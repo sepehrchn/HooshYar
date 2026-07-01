@@ -15,3 +15,5 @@ export * from "./snap-panel";
 export * from "./stats-bar";
 export * from "./trust-bar";
 export * from "./work-grid";
+export * from "./portfolio-card";
+export * from "./portfolio-section";

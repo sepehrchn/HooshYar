@@ -5,6 +5,7 @@ import {
   DifferentiatorCard,
   LandingSection,
   PageHero,
+  PortfolioSection,
   PrincipleCard,
   ProcessTimeline,
   ServiceCards,
@@ -158,23 +159,9 @@ export async function HomeScrollSections({ locale }: { locale: Locale }) {
         </div>
       </SnapPanel>
 
-      <SnapPanel id="work">
+      <SnapPanel id="portfolio">
         <div>
-          <PageHero
-            compact
-            eyebrow={locale === "fa" ? "نمونه‌کارها" : "Work"}
-            title={
-              locale === "fa"
-                ? "مطالعات موردی از MDX تغذیه می‌شوند."
-                : "Case studies now run on MDX."
-            }
-            body={
-              locale === "fa"
-                ? "تا زمان دریافت پروژه‌های واقعی، فایل‌های MDX جایگزین با کاورهای گرادیانی و متن قابل ویرایش فعال هستند."
-                : "Until real projects arrive, editable MDX placeholders power the portfolio grid and detail pages."
-            }
-          />
-          <WorkGrid locale={locale} studies={studies} limit={4} embedded />
+          <PortfolioSection locale={locale} />
         </div>
       </SnapPanel>
 
