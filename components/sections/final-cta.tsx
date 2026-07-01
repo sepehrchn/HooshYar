@@ -9,12 +9,12 @@ export function FinalCta({locale}: {locale: Locale}) {
   return (
     <section className="px-5 py-16 sm:px-8 lg:px-12">
       <SectionReveal className="mx-auto max-w-7xl">
-        <GlassCard glow="magenta" className="overflow-hidden p-8 text-center md:p-12">
+        <GlassCard glow="magenta" className="flex flex-col items-center justify-center overflow-hidden p-8 text-center md:p-12">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-cyan-primary">HOOSH YAR</p>
-          <SectionHeading className="mx-auto mt-5 max-w-3xl">
+          <SectionHeading className="mx-auto mt-5 max-w-3xl text-center">
             <GradientText>{copy.title}</GradientText>
           </SectionHeading>
-          <p className="mx-auto mt-5 max-w-2xl leading-8 text-text-muted">{copy.body}</p>
+          <p className="mx-auto mt-5 max-w-2xl text-center leading-8 text-text-muted">{copy.body}</p>
           <ButtonLink href={`/${locale}/contact`} size="lg" className="mt-8">
             {copy.cta}
           </ButtonLink>

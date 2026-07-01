@@ -257,6 +257,96 @@ main {
     }
 }
 
+/* Service card single-color animated borders */
+@keyframes service-border-rotate {
+    to {
+        --border-angle: 360deg;
+    }
+}
+
+.service-card-animated-border-cyan {
+    z-index: 1;
+    padding: 2px;
+    background: conic-gradient(
+        from var(--border-angle),
+        transparent 0deg,
+        #3FE8F4 90deg,
+        transparent 180deg,
+        #3FE8F4 270deg,
+        transparent 360deg
+    );
+    animation: service-border-rotate 4s linear infinite;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.service-card-animated-border-violet {
+    z-index: 1;
+    padding: 2px;
+    background: conic-gradient(
+        from var(--border-angle),
+        transparent 0deg,
+        #9D5CFF 90deg,
+        transparent 180deg,
+        #9D5CFF 270deg,
+        transparent 360deg
+    );
+    animation: service-border-rotate 4s linear infinite;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.service-card-animated-border-magenta {
+    z-index: 1;
+    padding: 2px;
+    background: conic-gradient(
+        from var(--border-angle),
+        transparent 0deg,
+        #E63CD8 90deg,
+        transparent 180deg,
+        #E63CD8 270deg,
+        transparent 360deg
+    );
+    animation: service-border-rotate 4s linear infinite;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.service-card-shell {
+    transition:
+        transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 320ms cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group\/service-card:hover .service-card-shell {
+    transform: translate3d(0, -4px, 0);
+}
+
+.service-card-enter {
+    opacity: 0;
+    animation: moto-fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .moto-card-enter {
         animation: none;
@@ -275,5 +365,25 @@ main {
     .moto-card-animated-border {
         animation: none;
         background: var(--glass-border);
+    }
+
+    .service-card-animated-border-cyan,
+    .service-card-animated-border-violet,
+    .service-card-animated-border-magenta {
+        animation: none;
+        background: var(--glass-border);
+    }
+
+    .service-card-shell {
+        animation: none;
+    }
+
+    .group\/service-card:hover .service-card-shell {
+        transform: none;
+    }
+
+    .service-card-enter {
+        animation: none;
+        opacity: 1;
     }
 }

@@ -1,33 +1,73 @@
-import {FinalCta, PageHero, ServiceCards} from '@/components/sections';
-import {GlassCard, SectionHeading} from '@/components/ui';
-import {siteContent} from '@/lib/pages';
-import type {Locale} from '@/types/locale';
+import { HowItWorks, PageHero, ServicesCta } from '@/components/sections';
+import { ServiceCategory } from '@/components/sections/service-category';
+import { Eyebrow, Heading, Lead } from '@/components/ui';
+import { SectionReveal } from '@/components/motion';
+import { siteContent } from '@/lib/pages';
+import type { Locale } from '@/types/locale';
 
-export default async function ServicesPage({params}: {params: Promise<{locale: Locale}>}) {
-  const {locale} = await params;
+export default async function ServicesPage({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
+  const isFa = locale === 'fa';
+
+  const servicesPage = siteContent.servicesPage;
+  const header = servicesPage.header[locale];
+  const categories = servicesPage.categories;
+  const howItWorks = servicesPage.howItWorks;
+  const cta = servicesPage.cta[locale];
 
   return (
     <main>
-      <PageHero
-        eyebrow={locale === 'fa' ? 'خدمات' : 'Services'}
-        title={locale === 'fa' ? 'هوش مصنوعی، اتوماسیون و وب در یک سیستم.' : 'AI, automation, and web in one system.'}
-        body={locale === 'fa' ? 'هر مسیر می‌تواند مستقل شروع شود یا در قالب یک سیستم یکپارچه برای رشد محصول و عملیات ترکیب شود.' : 'Each track can start independently or combine into one integrated system for product and operations growth.'}
-      />
-      <ServiceCards locale={locale} detailed />
-      <section className="px-5 py-12 sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-7xl rounded-panel border border-glass-border bg-glass-bg p-6 shadow-glass-lift backdrop-blur-2xl md:p-8">
-          <SectionHeading>{locale === 'fa' ? 'خروجی‌های معمول' : 'Typical deliverables'}</SectionHeading>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {siteContent.services.map((service, index) => (
-              <GlassCard key={service.slug} glow={index === 2 ? 'magenta' : 'cyan'}>
-                <h2 className="font-heading text-2xl font-bold text-text-primary">{service[locale].title}</h2>
-                <p className="mt-3 leading-7 text-text-muted">{locale === 'fa' ? 'استراتژی، طراحی، پیاده‌سازی، تست و تحویل قابل توسعه.' : 'Strategy, design, implementation, testing, and maintainable handoff.'}</p>
-              </GlassCard>
-            ))}
-          </div>
-        </div>
+      {/* Section Header */}
+      <section className="relative px-5 pb-8 pt-36 sm:px-8 lg:px-12">
+        <div
+          aria-hidden="true"
+          className="absolute left-1/2 top-20 -z-10 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-primary/10 blur-3xl"
+        />
+        <SectionReveal className="mx-auto max-w-5xl text-center">
+          <Eyebrow>{header.label}</Eyebrow>
+          <Heading className="mt-6">
+            {isFa ? (
+              header.headline
+            ) : (
+              <>
+                {header.headline.split(' ').slice(0, -2).join(' ')}{' '}
+                <span className="bg-brand-beam bg-clip-text text-transparent">
+                  {header.headline.split(' ').slice(-2).join(' ')}
+                </span>
+              </>
+            )}
+          </Heading>
+          <Lead className="mx-auto mt-6">{header.subhead}</Lead>
+        </SectionReveal>
       </section>
-      <FinalCta locale={locale} />
+
+      {/* Three Service Categories */}
+      {categories.map((category) => {
+        const categoryCopy = category[locale];
+        return (
+          <ServiceCategory
+            key={category.slug}
+            slug={category.slug}
+            accent={category.accent as 'cyan' | 'violet' | 'magenta'}
+            title={categoryCopy.title}
+            oneLiner={categoryCopy.oneLiner}
+            services={category.services}
+            locale={locale}
+          />
+        );
+      })}
+
+      {/* How It Works */}
+      <HowItWorks steps={howItWorks} locale={locale} />
+
+      {/* Final CTA */}
+      <ServicesCta
+        headline={cta.headline}
+        subhead={cta.subhead}
+        primaryCta={cta.primaryCta}
+        secondaryCta={cta.secondaryCta}
+        locale={locale}
+      />
     </main>
   );
 }

@@ -1,16 +1,18 @@
 import { ContactForm } from "@/components/forms";
 import { Footer } from "@/components/layout/footer";
+import { SectionReveal } from "@/components/motion";
 import {
   LandingSection,
   PageHero,
   ProcessTimeline,
   ServiceCards,
+  ServiceCategory,
   SnapPanel,
   WorkGrid,
 } from "@/components/sections";
 import { GlassCard, SectionHeading } from "@/components/ui";
 import { getCaseStudies } from "@/lib/content";
-import { pageContent } from "@/lib/pages";
+import { pageContent, siteContent } from "@/lib/pages";
 import type { Locale } from "@/types/locale";
 
 export async function HomeScrollSections({ locale }: { locale: Locale }) {
@@ -49,21 +51,42 @@ export async function HomeScrollSections({ locale }: { locale: Locale }) {
 
       <SnapPanel id="services">
         <div>
-          <PageHero
-            compact
-            eyebrow={locale === "fa" ? "خدمات" : "Services"}
-            title={
-              locale === "fa"
-                ? "هوش مصنوعی، اتوماسیون و وب در یک سیستم."
-                : "AI, automation, and web in one system."
-            }
-            body={
-              locale === "fa"
-                ? "هر مسیر می‌تواند مستقل شروع شود یا در قالب یک سیستم یکپارچه برای رشد محصول و عملیات ترکیب شود."
-                : "Each track can start independently or combine into one integrated system for product and operations growth."
-            }
-          />
-          <ServiceCards locale={locale} embedded />
+          {/* Services section header - single gradient word */}
+          <section className="relative px-5 pb-8 pt-36 sm:px-8 lg:px-12">
+            <div
+              aria-hidden="true"
+              className="absolute left-1/2 top-20 -z-10 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-primary/10 blur-3xl"
+            />
+            <SectionReveal className="mx-auto max-w-5xl text-center">
+              <h2
+                className="font-heading text-5xl font-extrabold md:text-6xl lg:text-7xl"
+                style={{
+                  background: 'linear-gradient(to left, #3FE8F4, #9D5CFF, #E63CD8)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                {locale === "fa" ? "خدمات" : "Services"}
+              </h2>
+            </SectionReveal>
+          </section>
+          {/* Embed all service categories inline */}
+          {siteContent.servicesPage.categories.map((category) => {
+            const categoryCopy = category[locale];
+            return (
+              <ServiceCategory
+                key={category.slug}
+                slug={category.slug}
+                accent={category.accent as 'cyan' | 'violet' | 'magenta'}
+                title={categoryCopy.title}
+                oneLiner={categoryCopy.oneLiner}
+                services={category.services}
+                locale={locale}
+                embedded
+              />
+            );
+          })}
         </div>
       </SnapPanel>
 
