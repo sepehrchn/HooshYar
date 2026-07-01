@@ -29,17 +29,25 @@
 
 ---
 
-### 2. About
+### 2. About ✅ COMPLETE
 
-- [ ] Page hero section
-- [ ] Story/mission content
-- [ ] Principles cards
-- [ ] Team/founder section (placeholder)
-- [ ] Responsive layout
-- [ ] RTL support
-- [ ] Reduced motion support
+- [x] Hero statement with gradient text
+- [x] Origin story section (two-column layout)
+- [x] Three differentiator cards with animated gradient borders
+- [x] Four principle cards (flat glass tiles)
+- [x] Stats bar with animated counters
+- [x] Final CTA section
+- [x] Responsive layout (mobile/tablet/desktop)
+- [x] RTL support for Farsi
+- [x] Reduced motion support
+- [x] Scroll reveal animations
 
-**Status:** Pending review
+**Status:** Complete
+
+**Notes:**
+- Reused moto-card-animated-border animation for differentiator cards
+- All sections use existing design tokens and glass-morphism style
+- Secondary CTA links to /services as specified
 
 ---
 
@@ -161,6 +169,7 @@
 
 | Date | Page | Changes |
 |------|------|---------|
+| 2026-07-01 | About | Complete rebuild: hero statement, origin story, differentiators, principles, stats, CTA |
 | 2026-07-01 | Services | Fixed خدمات gradient (RTL direction), centered final CTA text |
 | 2026-07-01 | Services | Marked complete after review |
 | 2026-06-30 | Home | Added animated gradient border to moto cards |

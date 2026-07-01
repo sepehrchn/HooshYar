@@ -75,7 +75,7 @@ export function ServicesCta({
               </a>
 
               <a
-                href={`/${locale}/work`}
+                href={`/${locale}/services`}
                 className={cn(
                   'inline-flex items-center justify-center rounded-full border border-glass-border bg-transparent px-8 py-3 text-base font-medium text-text-primary transition-all duration-300 hover:bg-white/[0.055] hover:border-white/20',
                   isFa && 'w-full sm:w-auto'

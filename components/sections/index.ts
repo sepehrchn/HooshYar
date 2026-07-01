@@ -1,8 +1,10 @@
+export * from "./differentiator-card";
 export * from "./final-cta";
 export * from "./hero-section";
 export * from "./home-scroll-sections";
 export * from "./how-it-works";
 export * from "./page-hero";
+export * from "./principle-card";
 export * from "./process-timeline";
 export * from "./section-header";
 export * from "./service-card";
@@ -10,5 +12,6 @@ export * from "./service-cards";
 export * from "./service-category";
 export * from "./services-cta";
 export * from "./snap-panel";
+export * from "./stats-bar";
 export * from "./trust-bar";
 export * from "./work-grid";

@@ -2,18 +2,21 @@ import { ContactForm } from "@/components/forms";
 import { Footer } from "@/components/layout/footer";
 import { SectionReveal } from "@/components/motion";
 import {
+  DifferentiatorCard,
   LandingSection,
   PageHero,
+  PrincipleCard,
   ProcessTimeline,
   ServiceCards,
   ServiceCategory,
   SnapPanel,
   WorkGrid,
 } from "@/components/sections";
-import { GlassCard, SectionHeading } from "@/components/ui";
+import { GlassCard, GradientText, Heading, SectionHeading } from "@/components/ui";
 import { getCaseStudies } from "@/lib/content";
 import { pageContent, siteContent } from "@/lib/pages";
 import type { Locale } from "@/types/locale";
+import { cn } from "@/lib/utils";
 
 export async function HomeScrollSections({ locale }: { locale: Locale }) {
   const studies = getCaseStudies(locale);
@@ -30,22 +33,87 @@ export async function HomeScrollSections({ locale }: { locale: Locale }) {
 
       <SnapPanel id="about">
         <div className="px-5 sm:px-8 lg:px-12">
-          <PageHero
-            compact
-            eyebrow={aboutHero.eyebrow}
-            title={aboutHero.title}
-            body={aboutHero.body}
-          />
-          <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
-            {pageContent.about.principles.map((principle, index) => (
-              <GlassCard key={principle.en} glow={index === 1 ? "violet" : "cyan"}>
-                <p className="font-mono text-xs text-text-muted">0{index + 1}</p>
-                <SectionHeading className="mt-3 text-2xl md:text-3xl">
-                  {principle[locale]}
-                </SectionHeading>
+          {/* Hero Statement */}
+          <section className="relative pb-12 pt-36 sm:pb-16 sm:pt-40 lg:pb-20 lg:pt-44">
+            <div
+              aria-hidden="true"
+              className="absolute left-1/2 top-20 -z-10 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-primary/10 blur-3xl"
+            />
+            <SectionReveal className="mx-auto max-w-5xl text-center">
+              <Heading className="text-4xl sm:text-5xl lg:text-6xl">
+                <GradientText>{aboutHero.title}</GradientText>
+              </Heading>
+              <p
+                className="mx-auto mt-6 max-w-3xl text-base leading-8 text-text-muted sm:text-lg text-center"
+                dir={locale === 'fa' ? 'rtl' : 'ltr'}
+              >
+                {aboutHero.subtitle}
+              </p>
+            </SectionReveal>
+          </section>
+
+          {/* Origin Story */}
+          <section className="py-12 sm:py-16 lg:py-20">
+            <SectionReveal className="mx-auto max-w-7xl">
+              <GlassCard glow="cyan">
+                <div className="flex flex-col items-center justify-center text-center">
+                  <h2
+                    className={cn(
+                      'font-heading text-3xl font-bold tracking-wide uppercase text-cyan-primary md:text-4xl',
+                      locale === 'fa' ? 'font-extrabold' : 'font-bold'
+                    )}
+                    style={{ letterSpacing: locale === 'fa' ? 'normal' : '0.1em', fontWeight: 800 }}
+                    dir={locale === 'fa' ? 'rtl' : 'ltr'}
+                  >
+                    {pageContent.about.origin.label[locale]}
+                  </h2>
+                  <div
+                    className="mt-6 space-y-4 text-[0.9375rem] leading-relaxed text-text-muted sm:text-base sm:leading-8"
+                    dir={locale === 'fa' ? 'rtl' : 'ltr'}
+                  >
+                    {pageContent.about.origin.body[locale].split('\n').map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
+                  </div>
+                </div>
               </GlassCard>
-            ))}
-          </div>
+            </SectionReveal>
+          </section>
+
+          {/* Differentiator Cards */}
+          <section className="py-12 sm:py-16 lg:py-20">
+            <SectionReveal className="mx-auto grid max-w-7xl gap-6 md:grid-cols-3">
+              {pageContent.about.differentiators.map((diff, index) => (
+                <DifferentiatorCard
+                  key={index}
+                  title={diff.title[locale]}
+                  body={diff.body[locale]}
+                  accent={diff.accent as 'cyan' | 'violet' | 'magenta'}
+                  icon={diff.icon}
+                  locale={locale}
+                  index={index}
+                />
+              ))}
+            </SectionReveal>
+          </section>
+
+          {/* Principles */}
+          <section className="py-12 sm:py-16 lg:py-20">
+            <SectionReveal className="mx-auto max-w-7xl">
+              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                {pageContent.about.principles.map((principle, index) => (
+                  <PrincipleCard
+                    key={index}
+                    title={principle.title[locale]}
+                    body={principle.body[locale]}
+                    accent={principle.accent as 'cyan' | 'violet' | 'magenta'}
+                    icon={principle.icon}
+                    locale={locale}
+                  />
+                ))}
+              </div>
+            </SectionReveal>
+          </section>
         </div>
       </SnapPanel>
 

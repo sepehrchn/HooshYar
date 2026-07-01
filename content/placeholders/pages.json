@@ -19,18 +19,133 @@
   },
   "about": {
     "hero": {
-      "en": { "eyebrow": "About Hoosh Yar", "title": "Aware intelligence, built with precision.", "body": "Hoosh Yar exists to help ambitious teams turn AI potential into practical systems, automated operations, and polished web experiences." },
-      "fa": { "eyebrow": "درباره هوش‌یار", "title": "هوش آگاه، ساخته‌شده با دقت.", "body": "هوش‌یار برای کمک به تیم‌های آینده‌نگر شکل گرفته است؛ تا ظرفیت هوش مصنوعی را به سیستم‌های کاربردی، عملیات خودکار و تجربه‌های وب ممتاز تبدیل کند." }
+      "en": {
+        "title": "World-class technology, built for Persian-speaking businesses",
+        "subtitle": "Hoosh Yar bridges the gap between global tech standards and the Iranian market"
+      },
+      "fa": {
+        "title": "تکنولوژی جهانی، برای کسب‌وکار ایرانی",
+        "subtitle": "هوش‌یار شکاف بین استانداردهای جهانی فناوری و بازار ایران را پر می‌کند"
+      }
     },
-    "mission": {
-      "en": "We combine product thinking, automation architecture, and premium interface craft to build systems that feel intelligent, reliable, and human-centered.",
-      "fa": "ما تفکر محصول، معماری اتوماسیون و طراحی رابط ممتاز را ترکیب می‌کنیم تا سیستم‌هایی بسازیم که هوشمند، قابل اعتماد و انسان‌محور باشند."
+    "origin": {
+      "label": {
+        "en": "Why Hoosh Yar?",
+        "fa": "چرا هوش‌یار؟"
+      },
+      "body": {
+        "en": "Iranian businesses deserve the same quality that the world's leading companies have.\nBut too often they face ready-made templates, second-rate tools, and teams that confuse them with technical jargon — not real results.\nHoosh Yar was built to break that pattern. A unified system of AI, automation and web development — fully custom, fast, and built to last.",
+        "fa": "کسب‌وکارهای ایرانی لایق همان کیفیتی هستند که شرکت‌های بزرگ دنیا دارند.\nاما اغلب با قالب‌های آماده، ابزارهای دست‌دوم و تیم‌هایی روبرو می‌شوند که با اصطلاحات فنی گیج‌شان می‌کنند — نه با نتایج واقعی.\nهوش‌یار برای شکستن این الگو شکل گرفت. یک سیستم یکپارچه از هوش مصنوعی، اتوماسیون و توسعه وب — اختصاصی، سریع و ساخته‌شده برای ماندگاری."
+      }
     },
+    "differentiators": [
+      {
+        "accent": "cyan",
+        "icon": "code",
+        "title": {
+          "en": "Fully Custom",
+          "fa": "کاملاً اختصاصی"
+        },
+        "body": {
+          "en": "No templates. Everything we build is designed from scratch for your business — precisely fitted to your needs, brand and goals",
+          "fa": "هیچ قالب آماده‌ای وجود ندارد. هر چیزی که می‌سازیم از صفر برای کسب‌وکار شما طراحی می‌شود — دقیقاً متناسب با نیاز، برند و هدف شما"
+        }
+      },
+      {
+        "accent": "violet",
+        "icon": "link",
+        "title": {
+          "en": "Everything in One Place",
+          "fa": "همه‌چیز در یک جا"
+        },
+        "body": {
+          "en": "AI, automation and web — one team, one system. No more coordinating between multiple vendors",
+          "fa": "هوش مصنوعی، اتوماسیون و وب — یک تیم، یک سیستم. دیگر نیازی به هماهنگی بین چند آژانس مختلف نیست"
+        }
+      },
+      {
+        "accent": "magenta",
+        "icon": "shield",
+        "title": {
+          "en": "Speed, Power, Security",
+          "fa": "سرعت، قدرت، امنیت"
+        },
+        "body": {
+          "en": "Systems that run fast, hold up under pressure and protect your data — all three together, not one at the expense of another",
+          "fa": "سیستم‌هایی که سریع اجرا می‌شوند، زیر فشار دوام می‌آورند و داده‌های شما را محافظت می‌کنند — هر سه با هم، نه یکی به قیمت دیگری"
+        }
+      }
+    ],
     "principles": [
-      { "en": "Practical intelligence before hype", "fa": "هوشمندی کاربردی پیش از هیاهو" },
-      { "en": "Automation that respects real workflows", "fa": "اتوماسیونی هماهنگ با جریان واقعی کار" },
-      { "en": "Interfaces that make complexity feel calm", "fa": "رابط‌هایی که پیچیدگی را آرام و قابل فهم می‌کنند" }
-    ]
+      {
+        "accent": "cyan",
+        "icon": "message",
+        "title": {
+          "en": "Outcomes, not jargon",
+          "fa": "نتیجه، نه اصطلاحات فنی"
+        },
+        "body": {
+          "en": "We explain what we build and why in plain terms — you stay in control",
+          "fa": "با زبان ساده توضیح می‌دهیم چه می‌سازیم و چرا — شما تصمیم می‌گیرید"
+        }
+      },
+      {
+        "accent": "violet",
+        "icon": "tag",
+        "title": {
+          "en": "Transparent pricing from day one",
+          "fa": "قیمت شفاف از ابتدا"
+        },
+        "body": {
+          "en": "No hidden costs. Full proposal with fixed price before any work begins",
+          "fa": "هیچ هزینه پنهانی وجود ندارد. پروپوزال کامل با قیمت مشخص قبل از شروع هر کار"
+        }
+      },
+      {
+        "accent": "magenta",
+        "icon": "clock",
+        "title": {
+          "en": "On-time delivery",
+          "fa": "تحویل به موقع"
+        },
+        "body": {
+          "en": "We honour the timelines we set — because your time has value",
+          "fa": "به زمان‌بندی‌هایی که می‌دهیم پایبند هستیم — چون وقت شما ارزش دارد"
+        }
+      },
+      {
+        "accent": "cyan",
+        "icon": "support",
+        "title": {
+          "en": "Support after delivery",
+          "fa": "پشتیبانی پس از تحویل"
+        },
+        "body": {
+          "en": "The project doesn't end at delivery. We stay with you until everything works perfectly",
+          "fa": "پروژه با تحویل تمام نمی‌شود. همراه شما می‌مانیم تا مطمئن شویم همه‌چیز کار می‌کند"
+        }
+      }
+    ],
+    "stats": [
+      { "value": 9, "suffix": "", "en": "specialist services", "fa": "خدمات تخصصی" },
+      { "value": 3, "suffix": "", "en": "core expertise areas", "fa": "حوزه تخصصی" },
+      { "value": 2, "suffix": "", "en": "supported languages", "fa": "زبان پشتیبانی" },
+      { "value": 8, "suffix": "", "en": "build phases", "fa": "مرحله ساخت" }
+    ],
+    "cta": {
+      "en": {
+        "headline": "Let's build something that lasts",
+        "subhead": "First consultation is free — no commitment, just a conversation",
+        "primaryCta": "Get Started",
+        "secondaryCta": "View Services"
+      },
+      "fa": {
+        "headline": "بیایید با هم چیزی بسازیم که ماندگار باشد",
+        "subhead": "مشاوره اول رایگان است — بدون تعهد، فقط یک گفتگو",
+        "primaryCta": "شروع همکاری",
+        "secondaryCta": "مشاهده خدمات"
+      }
+    }
   },
   "process": {
     "hero": {
