@@ -153,10 +153,9 @@
       "fa": { "eyebrow": "فرآیند", "title": "از شناخت تا لانچ، هر قدم شفاف می‌ماند.", "body": "مسیر ساختارمند باعث می‌شود پروژه‌های هوش مصنوعی، اتوماسیون و وب متمرکز، قابل اندازه‌گیری و آماده اجرا باشند." }
     },
     "steps": [
-      { "en": { "title": "Discovery", "body": "Clarify goals, users, workflows, constraints, and success metrics." }, "fa": { "title": "شناخت", "body": "اهداف، کاربران، جریان‌های کاری، محدودیت‌ها و معیارهای موفقیت را روشن می‌کنیم." } },
-      { "en": { "title": "Architecture", "body": "Map systems, integrations, data flows, and the right implementation path." }, "fa": { "title": "معماری", "body": "سیستم‌ها، یکپارچه‌سازی‌ها، جریان داده و مسیر اجرای مناسب را طراحی می‌کنیم." } },
-      { "en": { "title": "Build", "body": "Design and develop in focused iterations with visible progress." }, "fa": { "title": "ساخت", "body": "طراحی و توسعه را در چرخه‌های متمرکز و قابل مشاهده پیش می‌بریم." } },
-      { "en": { "title": "Launch", "body": "Ship, test, measure, and prepare the system for real usage." }, "fa": { "title": "راه‌اندازی", "body": "منتشر می‌کنیم، تست می‌گیریم، اندازه‌گیری می‌کنیم و سیستم را برای استفاده واقعی آماده می‌سازیم." } }
+      { "en": { "title": "Understand", "body": "We map your goals, real users, current workflows, and success metrics — before a single line of code is written." }, "fa": { "title": "شناخت", "body": "اهداف کسب‌وکار، کاربران واقعی، جریان‌های کاری فعلی و معیارهای موفقیت را دقیق شناسایی می‌کنیم — قبل از نوشتن حتی یک خط کد." } },
+      { "en": { "title": "Solution", "body": "We design the right mix of AI, automation, and web — system architecture, integrations, and execution path, all clearly defined and justified." }, "fa": { "title": "راه‌حل", "body": "بهترین ترکیب از هوش مصنوعی، اتوماسیون و وب را طراحی می‌کنیم؛ معماری سیستم، یکپارچه‌سازی‌ها و مسیر اجرا مشخص و قابل دفاع می‌شود." } },
+      { "en": { "title": "Build", "body": "We build in short, visible cycles — every stage testable, reviewable, and launch-ready." }, "fa": { "title": "ساخت", "body": "طراحی و توسعه را در چرخه‌های کوتاه و قابل مشاهده پیش می‌بریم — هر مرحله قابل تست، قابل بازبینی و آماده لانچ است." } }
     ]
   },
   "pricing": {

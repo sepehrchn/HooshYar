@@ -87,16 +87,30 @@
 
 ---
 
-### 5. Process
+### 5. Process ✅ COMPLETE (Embedded)
 
-- [ ] Page hero section
-- [ ] Timeline/reveal animation
-- [ ] Step-by-step process cards
-- [ ] Responsive layout
-- [ ] RTL support
-- [ ] Reduced motion support
+- [x] Embedded as scroll section with id="process"
+- [x] Gradient header matching Services/Portfolio pattern
+- [x] Horizontal connecting timeline (gradient line)
+- [x] 3 step cards with animated borders and centered text
+- [x] Step 02 title updated: راه‌حل (Solution)
+- [x] All step body copy rewritten for credibility
+- [x] Responsive layout (3-col desktop → 1-col mobile)
+- [x] RTL support with timeline direction reversal
+- [x] Reduced motion support
+- [x] Navigation smooth-scrolls to #process
+- [x] Standalone /process redirects to /#process
 
-**Status:** Pending review
+**Status:** Complete and embedded
+
+**Notes:**
+- Embedded in main scroll page after Portfolio, before Contact
+- Gradient header (فرآیند/Process) with 800 weight matching خدمات
+- Horizontal timeline with cyan→violet→magenta gradient (RTL aware)
+- 3 cards: شناخت (cyan), راه‌حل (violet), ساخت (magenta)
+- Step 02 changed from معماری to راه‌حل with new body copy
+- All cards use centered glass card pattern with animated single-color borders
+- Navigation already configured via SectionNavLink
 
 ---
 
@@ -178,6 +192,8 @@
 
 | Date | Page | Changes |
 |------|------|---------|
+| 2026-07-01 | Process | Embedded in main scroll page: gradient header, horizontal timeline, 3 centered cards, راه‌حل title, new body copy |
+| 2026-07-01 | Process | Complete rebuild: gradient header, 3 process cards with animated borders, RTL support |
 | 2026-07-01 | Portfolio | Complete: 6 projects, optimized images, interactive slideshow, gradient header |
 | 2026-07-01 | About | Complete rebuild: hero statement, origin story, differentiators, principles, stats, CTA |
 | 2026-07-01 | Services | Fixed خدمات gradient (RTL direction), centered final CTA text |

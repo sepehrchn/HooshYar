@@ -5,6 +5,8 @@ export * from "./home-scroll-sections";
 export * from "./how-it-works";
 export * from "./page-hero";
 export * from "./principle-card";
+export * from "./process-card";
+export * from "./process-section";
 export * from "./process-timeline";
 export * from "./section-header";
 export * from "./service-card";

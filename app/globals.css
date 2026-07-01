@@ -347,6 +347,24 @@ main {
     animation: moto-fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
+/* Process card styles - matching service card pattern */
+.process-card-shell {
+    transition:
+        transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 320ms cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group\/process-card:hover .process-card-shell {
+    transform: translate3d(0, -4px, 0);
+}
+
+.process-card-enter {
+    opacity: 0;
+    animation: moto-fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .moto-card-enter {
         animation: none;

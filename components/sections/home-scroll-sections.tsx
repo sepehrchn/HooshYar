@@ -7,11 +7,9 @@ import {
   PageHero,
   PortfolioSection,
   PrincipleCard,
-  ProcessTimeline,
-  ServiceCards,
+  ProcessSection,
   ServiceCategory,
   SnapPanel,
-  WorkGrid,
 } from "@/components/sections";
 import { GlassCard, GradientText, Heading, SectionHeading } from "@/components/ui";
 import { getCaseStudies } from "@/lib/content";
@@ -22,7 +20,6 @@ import { cn } from "@/lib/utils";
 export async function HomeScrollSections({ locale }: { locale: Locale }) {
   const studies = getCaseStudies(locale);
   const aboutHero = pageContent.about.hero[locale];
-  const processHero = pageContent.process.hero[locale];
   const pricingHero = pageContent.pricing.hero[locale];
   const contactHero = pageContent.contact.hero[locale];
 
@@ -167,13 +164,7 @@ export async function HomeScrollSections({ locale }: { locale: Locale }) {
 
       <SnapPanel id="process">
         <div>
-          <PageHero
-            compact
-            eyebrow={processHero.eyebrow}
-            title={processHero.title}
-            body={processHero.body}
-          />
-          <ProcessTimeline locale={locale} compact embedded />
+          <ProcessSection locale={locale} />
         </div>
       </SnapPanel>
 
