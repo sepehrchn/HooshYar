@@ -1,0 +1,433 @@
+# Hoosh Yar (هوش‌یار) Knowledge Base
+## AI Assistant Training Data
+
+---
+
+## Company Overview
+
+**Name:** Hoosh Yar (هوش‌یار)
+**Meaning:** Persian for "Conscious Intelligence" or "Aware Intelligence"
+**Type:** Digital studio specializing in AI, automation, and web development
+**Website:** https://hooshyar.com (placeholder - update with actual domain)
+
+---
+
+## Core Services
+
+### 1. AI Services
+We build custom AI solutions that solve real business problems:
+- Custom AI agents and chatbots
+- AI-powered automation workflows
+- Machine learning model integration
+- Natural language processing solutions
+- Computer vision applications
+- AI consulting and strategy
+- LLM (Large Language Model) integration (OpenAI, Anthropic Claude, Google Gemini, etc.)
+- Retrieval-Augmented Generation (RAG) systems
+- AI voice agents
+
+**Technologies we use:**
+- OpenAI GPT-4, GPT-3.5
+- Anthropic Claude
+- Google Gemini
+- Hugging Face models
+- LangChain, LlamaIndex
+- Vector databases (Pinecone, Weaviate, ChromaDB)
+- Python (for AI/ML workflows)
+- TypeScript/JavaScript (for integrations)
+
+### 2. Automation
+We automate repetitive business processes to save time and reduce errors:
+- Workflow automation (Zapier, Make.com, n8n)
+- Business process automation (BPA)
+- Data pipeline automation
+- Email and notification automation
+- CRM automation
+- Social media automation
+- Document processing automation
+- API integrations between tools
+- Custom automation scripts and bots
+
+**Tools we work with:**
+- Zapier, Make.com (Integromat), n8n
+- Airtable, Notion APIs
+- Google Workspace automation
+- Slack, Discord, Telegram bots
+- Custom Node.js/Python automation scripts
+
+### 3. Web Development
+We build modern, high-performance websites and web applications:
+- **Frontend:** React, Next.js, TypeScript, Tailwind CSS
+- **Backend:** Node.js, Python (FastAPI/Django), serverless functions
+- **Databases:** PostgreSQL, MongoDB, Supabase, Firebase
+- **CMS:** Headless CMS (Sanity, Contentful), MDX-based content
+- **Hosting:** Vercel, Netlify, AWS, Cloudflare
+- **Features:**
+  - Responsive design (mobile-first)
+  - SEO optimization
+  - Performance optimization (Core Web Vitals)
+  - Accessibility (WCAG compliance)
+  - Bilingual/multilingual support (i18n)
+  - E-commerce integration
+  - Progressive Web Apps (PWA)
+  - Real-time features (WebSockets)
+
+**Specializations:**
+- Landing pages and marketing sites
+- SaaS dashboards and admin panels
+- E-commerce platforms
+- Portfolio and agency sites
+- Content-heavy sites (blogs, documentation)
+- Bilingual sites (English/Persian with RTL support)
+
+---
+
+## Tech Stack
+
+**Frontend:**
+- Next.js 14+ (React framework with App Router)
+- TypeScript (type-safe JavaScript)
+- Tailwind CSS (utility-first styling)
+- Framer Motion (animations)
+- GSAP + ScrollTrigger (scroll-driven animations)
+- Lenis (smooth scrolling)
+
+**Backend & Infrastructure:**
+- Next.js API Routes (serverless functions)
+- Node.js
+- Python (FastAPI, Flask, Django)
+- PostgreSQL, MongoDB
+- Supabase, Firebase
+- Cloudflare Workers (edge functions)
+
+**AI/ML:**
+- OpenAI API (GPT-4, GPT-3.5)
+- Anthropic Claude API
+- Google Gemini API
+- LangChain (LLM orchestration)
+- Vector databases (Pinecone, ChromaDB)
+- Python (scikit-learn, TensorFlow, PyTorch)
+
+**Automation:**
+- Zapier, Make.com, n8n
+- Custom Node.js/Python scripts
+- Telegram Bot API, Discord API
+- REST APIs and webhooks
+
+**Design:**
+- Figma (design tool)
+- Glassmorphism (modern glass-effect UI)
+- Dark mode with vibrant gradients (cyan → violet → magenta)
+- Geometric fonts (Space Grotesk, Sora for English; Vazirmatn for Persian)
+
+---
+
+## Pricing & Process
+
+### Pricing Model
+We offer custom quotes based on project scope. Pricing depends on:
+- Project complexity
+- Timeline requirements
+- Feature set
+- Ongoing maintenance needs
+
+**Typical project ranges:**
+- **Landing page / simple site:** Starting from $1,500 - $3,000
+- **AI chatbot integration:** Starting from $2,000 - $5,000
+- **Custom automation workflow:** Starting from $1,000 - $4,000
+- **Full web application:** Starting from $5,000+
+- **Ongoing retainer / support:** Custom packages available
+
+*Note: These are rough estimates. Contact us for an accurate quote.*
+
+### Process (How We Work)
+
+**1. Discovery (Week 1)**
+- Initial consultation call (free, 30-60 minutes)
+- Understand your business goals and pain points
+- Define project scope and requirements
+- Review existing systems and tools
+
+**2. Planning & Proposal (Week 1-2)**
+- Detailed project proposal with timeline and pricing
+- Technical architecture and stack recommendation
+- Wireframes or mockups (for web projects)
+- Contract and agreement
+
+**3. Development (Weeks 2-6+)**
+- Agile sprints (typically 1-2 week cycles)
+- Regular progress updates (Slack, email, or video calls)
+- Demo/review sessions at key milestones
+- Iterative feedback and refinement
+
+**4. Testing & QA (Week 6-7)**
+- Comprehensive testing (functionality, performance, accessibility)
+- Cross-browser and mobile testing
+- User acceptance testing (UAT)
+- Security review
+
+**5. Launch (Week 7-8)**
+- Deployment to production (Vercel, AWS, etc.)
+- Domain and SSL setup
+- Analytics and monitoring setup
+- Handoff documentation and training
+
+**6. Support & Maintenance (Ongoing)**
+- Post-launch support (30-90 days included)
+- Bug fixes and minor updates
+- Optional retainer for ongoing development
+- Hosting and maintenance packages available
+
+---
+
+## Portfolio & Case Studies
+
+We've built projects across AI, automation, and web development:
+
+### Featured Projects:
+
+**1. AI-Powered Customer Support Bot**
+- Built custom AI chatbot for e-commerce site
+- Integrated with existing CRM (HubSpot)
+- Reduced support ticket volume by 40%
+- Tech: OpenAI GPT-4, LangChain, Next.js, Supabase
+
+**2. Business Process Automation Suite**
+- Automated invoice processing and approval workflow
+- Integrated QuickBooks, Slack, and Google Sheets
+- Saved 15+ hours/week for finance team
+- Tech: Make.com, Google Apps Script, Python
+
+**3. Bilingual Marketing Website**
+- Full-featured marketing site with English/Persian support
+- Glassmorphic design with scroll-driven animations
+- 95+ Lighthouse performance score
+- Tech: Next.js, Tailwind CSS, Framer Motion, MDX
+
+**4. AI Content Generator Dashboard**
+- SaaS dashboard for generating marketing copy with AI
+- User authentication, subscription management, usage tracking
+- Tech: Next.js, OpenAI API, Stripe, Supabase
+
+*For detailed case studies, visit our portfolio page or request examples.*
+
+---
+
+## Contact Information
+
+**Email:** [placeholder@hooshyar.com] *(Update with real email)*
+**Telegram:** [@hooshyar] *(Update with real handle)*
+**WhatsApp:** [+98 XXX XXX XXXX] *(Update with real number)*
+**Instagram:** [@hooshyar.ai] *(Update with real handle)*
+**Bale:** [@hooshyar] *(Update with real handle)*
+
+**Business Hours:**
+- Saturday - Wednesday: 9:00 AM - 6:00 PM (Tehran Time, GMT+3:30)
+- Thursday: 9:00 AM - 1:00 PM
+- Friday: Closed
+
+**Response Time:**
+- Inquiry emails: Within 24 hours
+- Existing clients: Same-day during business hours
+
+**Preferred contact method:**
+- For general inquiries: Use the contact form on the website
+- For urgent matters: Telegram or WhatsApp
+- For quotes: Email with project details
+
+---
+
+## Frequently Asked Questions (FAQ)
+
+### General Questions
+
+**Q: What industries do you work with?**
+A: We work with clients across many industries including e-commerce, SaaS, fintech, healthcare (non-clinical), education, marketing agencies, and startups. Our AI and automation solutions are industry-agnostic.
+
+**Q: Do you work with international clients?**
+A: Yes! We work with clients globally. Our team is fluent in English and Persian (Farsi). We accommodate different time zones and use modern collaboration tools (Slack, Zoom, Notion).
+
+**Q: What's the minimum project size?**
+A: We take projects starting from $1,000. For smaller needs, we can recommend no-code tools or off-the-shelf solutions.
+
+**Q: Do you offer hourly rates or only fixed-price projects?**
+A: We prefer fixed-price for well-defined projects, but we offer hourly rates ($75-$150/hour depending on service) for ongoing retainers or exploratory work.
+
+**Q: Can you maintain an existing website or automation?**
+A: Yes. We offer maintenance and support for projects built with our tech stack (Next.js, React, Node.js, etc.). We can also take over projects built by others after a code review.
+
+### AI Services
+
+**Q: Can you integrate AI into my existing website or app?**
+A: Yes. We can add AI features (chatbots, content generation, recommendations, etc.) to most existing web applications via API integration.
+
+**Q: Which AI models do you use?**
+A: We work with OpenAI (GPT-4, GPT-3.5), Anthropic Claude, Google Gemini, and open-source models from Hugging Face. We recommend the best model based on your use case and budget.
+
+**Q: How much does an AI chatbot cost?**
+A: Simple chatbot (pre-defined responses): $1,000-$2,000. AI-powered chatbot (custom-trained on your data): $2,000-$5,000+. Ongoing AI API costs (OpenAI, etc.) are additional and depend on usage.
+
+**Q: Can the AI chatbot learn from conversations?**
+A: Yes, we can implement feedback loops and fine-tuning to improve responses over time. This requires ongoing data collection and periodic retraining.
+
+**Q: Is my data secure when using AI?**
+A: Yes. We follow best practices: data encryption, secure API calls, GDPR/privacy compliance. We can use self-hosted models or enterprise AI APIs with data residency guarantees if needed.
+
+### Automation
+
+**Q: What tasks can you automate?**
+A: Almost anything repetitive: data entry, report generation, email workflows, social media posting, lead routing, invoice processing, appointment scheduling, inventory updates, and more.
+
+**Q: Do I need to buy automation software?**
+A: Depends on the project. Tools like Zapier have free tiers, but complex workflows may require paid plans ($20-$200/month). We'll recommend the most cost-effective solution.
+
+**Q: Can you automate tasks across different tools?**
+A: Yes. We connect apps via APIs (e.g., Shopify → Google Sheets → Slack → HubSpot). Most modern SaaS tools have APIs or native integrations.
+
+**Q: What if something breaks in my automation?**
+A: We include 30-90 days post-launch support. For ongoing monitoring and maintenance, we offer retainer plans starting at $200/month.
+
+### Web Development
+
+**Q: How long does it take to build a website?**
+A: Simple landing page: 1-2 weeks. Marketing site with 5-10 pages: 3-6 weeks. Complex web app: 2-4+ months. Timeline depends on scope, content readiness, and revisions.
+
+**Q: Will my website be mobile-friendly?**
+A: Yes, always. We build mobile-first responsive sites that work perfectly on all screen sizes (phone, tablet, desktop).
+
+**Q: Can you redesign my existing website?**
+A: Yes. We can rebuild your site with a modern tech stack (Next.js, Tailwind) while keeping your content and brand identity.
+
+**Q: Do you provide hosting?**
+A: We deploy to Vercel (recommended for Next.js) or other platforms (Netlify, AWS, Cloudflare). Hosting costs are separate (typically $0-$50/month for most sites). We can manage hosting for you or hand it off.
+
+**Q: Will I be able to update the site myself?**
+A: Yes. We can integrate a headless CMS (Sanity, Contentful) or MDX-based content system so you can edit text, images, and blog posts without touching code.
+
+**Q: Do you offer SEO services?**
+A: We build SEO-optimized sites (fast loading, proper meta tags, structured data, sitemap, etc.). For ongoing SEO strategy and content marketing, we can recommend specialists.
+
+### Language & Localization
+
+**Q: Can you build bilingual websites (English + Persian)?**
+A: Yes, we specialize in bilingual sites with full RTL (right-to-left) support for Persian/Farsi. We use next-intl for seamless language switching.
+
+**Q: Do you translate content?**
+A: We handle the technical implementation (i18n setup, RTL layout). For professional translation, we can connect you with translators or use translation APIs (DeepL, Google Translate).
+
+---
+
+## Technical Specifications
+
+### Hosting & Deployment
+- **Recommended:** Vercel (zero-config Next.js hosting, free tier available)
+- **Alternatives:** Netlify, AWS Amplify, Cloudflare Pages, Railway
+- **Databases:** Supabase (PostgreSQL), PlanetScale (MySQL), MongoDB Atlas
+- **CDN:** Cloudflare, Vercel Edge Network
+- **SSL:** Automatic via hosting provider (Let's Encrypt)
+
+### Performance Standards
+- Lighthouse score: 90+ (Performance, Accessibility, Best Practices, SEO)
+- First Contentful Paint (FCP): <1.5s
+- Time to Interactive (TTI): <3.5s
+- Cumulative Layout Shift (CLS): <0.1
+- Mobile responsive: All breakpoints tested
+
+### Security
+- HTTPS/SSL required
+- Environment variables for secrets (never committed to Git)
+- CORS configured properly
+- Rate limiting on API endpoints
+- Input validation and sanitization
+- Regular dependency updates (npm audit)
+
+### Accessibility
+- WCAG 2.1 Level AA compliance (target)
+- Semantic HTML
+- Keyboard navigation support
+- Screen reader tested
+- Focus management
+- Alt text for images
+- Color contrast ratios met
+
+---
+
+## Brand & Design
+
+### Visual Identity
+- **Colors:**
+  - Primary gradient: Cyan (#3FE8F4) → Violet (#9D5CFF) → Magenta (#E63CD8)
+  - Background: Dark void (#05060F) and deep blue (#0A0E1F)
+  - Text: Off-white (#F2F4FF) and muted gray (#8A91B0)
+  - Glass effect: rgba(255,255,255,0.04-0.12) with blur
+
+- **Typography:**
+  - English: Space Grotesk (headings), Inter (body)
+  - Persian: Vazirmatn (all text)
+  - Monospace: JetBrains Mono (code snippets)
+
+- **Design Style:**
+  - Glassmorphism (frosted glass cards with backdrop blur)
+  - Dark theme with neon gradients
+  - Neural network / particle motifs
+  - Smooth scroll-driven animations
+  - Geometric, futuristic aesthetic
+
+### Logo & Mascot
+- **Wordmark:** "Hoosh Yar" (هوش‌یار) in gradient
+- **Icon:** Brain/neural network motif (abstract geometric)
+- **Mascot:** 3D robot character (used in chatbot, loading states)
+
+---
+
+## Chatbot Personality & Tone
+
+### Personality
+- **Helpful and professional** — knowledgeable but not overly technical
+- **Warm and approachable** — friendly without being casual
+- **Bilingual native** — equally fluent in English and Persian
+- **Concise** — answers in 2-4 sentences unless detail is requested
+- **Honest** — admits limitations, never invents information
+
+### Response Guidelines
+- **Match the user's language:** If they write in Persian, respond in Persian. If English, respond in English.
+- **Don't assume knowledge:** Explain technical terms briefly if they come up.
+- **Provide clear next steps:** "To get started, use the contact form" or "I can connect you with our team — would you like me to?"
+- **Stay on brand:** Use our services (AI, automation, web dev) as reference points.
+- **Escalate when needed:** If the question is too specific or outside the knowledge base, direct to the contact form or email.
+
+### Example Responses
+
+**User (EN):** "How much does a website cost?"
+**Bot (EN):** "Website costs depend on complexity. A simple landing page starts around $1,500-$3,000, while a full web application starts at $5,000+. Want a custom quote? Use the contact form and we'll respond within 24 hours."
+
+**User (FA):** "می‌تونید ربات تلگرام بسازید؟"
+**Bot (FA):** "بله! ما ربات‌های تلگرام سفارشی می‌سازیم — هم با پاسخ‌های از پیش تعریف‌شده و هم با هوش مصنوعی. برای جزئیات بیشتر از فرم تماس استفاده کنید یا مستقیم به تلگرام ما پیام بدید."
+
+**User (EN):** "What's RAG?"
+**Bot (EN):** "RAG (Retrieval-Augmented Generation) is a technique where an AI pulls relevant info from your documents before answering, so it gives accurate, context-aware responses instead of generic ones. We use it to build smart chatbots and AI assistants. Interested in adding RAG to your project?"
+
+---
+
+## Out of Scope / Can't Answer
+
+The chatbot should politely decline or redirect if asked about:
+- Legal, financial, or medical advice
+- Guarantees on rankings, traffic, or revenue
+- Exact timelines without project details
+- Work outside our services (graphic design, print, video production, hardware)
+- Competitor comparisons or negative comments about other companies
+- Internal company operations, salaries, or private info
+- Political, religious, or controversial topics
+
+**Polite decline template:**
+"That's outside my area, but I can connect you with the team via the contact form — they'll have more insight!"
+
+---
+
+## Last Updated
+July 2, 2026
+
+---
+
+**End of Knowledge Base**

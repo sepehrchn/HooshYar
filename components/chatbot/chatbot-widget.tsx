@@ -189,10 +189,11 @@ export function ChatbotWidget({ locale }: ChatbotWidgetProps) {
                   <stop offset="100%" style={{ stopColor: "#E63CD8", stopOpacity: 1 }} />
                 </linearGradient>
 
-                {/* Circular arc path centered at (60, 60) with radius 48px */}
+                {/* Circular arc path - button is at bottom, so arc center is at (60, 92) */}
+                {/* Button center: x=60 (middle), y=92 (120-28, where 28 is half of 56px button) */}
                 <path
                   id="textArc"
-                  d="M 12,60 A 48,48 0 0,1 108,60"
+                  d="M 20,92 A 40,40 0 0,1 100,92"
                   fill="none"
                 />
               </defs>
