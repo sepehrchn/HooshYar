@@ -255,55 +255,53 @@ export function PortfolioCard({
 
           {/* Image Slideshow */}
           <div className="relative h-[220px] overflow-hidden bg-bg-deep">
-            <div
-              className="flex h-full transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-            >
-              {slideImages.map((img, idx) => (
-                <div key={idx} className="h-full w-full flex-shrink-0">
-                  {isPlaceholder ? (
-                    // Placeholder slides
-                    <div className="flex h-full w-full items-center justify-center">
-                      {idx === 0 ? (
-                        // Slide 1: Gradient with icon
-                        <div className={cn('flex h-full w-full items-center justify-center', colors.placeholderBg)}>
-                          <div className={colors.placeholderIcon}>{projectIcon}</div>
-                        </div>
-                      ) : idx === 1 ? (
-                        // Slide 2: Neural pattern
-                        <div className="flex h-full w-full items-center justify-center bg-bg-deep text-text-muted">
-                          <NeuralPattern />
-                        </div>
-                      ) : (
-                        // Slide 3: Tech tags display
-                        <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-bg-deep px-8">
-                          {tags.slice(0, 4).map((tag, tagIdx) => (
-                            <div
-                              key={tagIdx}
-                              className={cn(
-                                'rounded-full px-4 py-2 text-center text-sm font-medium',
-                                colors.tag
-                              )}
-                            >
-                              {tag}
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ) : (
-                    // Real image with object-fit cover, top positioning
-                    <img
-                      src={img}
-                      alt={`${title[locale]} - slide ${idx + 1}`}
-                      className="h-full w-full object-cover object-top"
-                      loading={idx === 0 ? "eager" : "lazy"}
-                      decoding="async"
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
+            {slideImages.map((img, idx) => (
+              <div
+                key={idx}
+                className="absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out"
+                style={{ opacity: currentSlide === idx ? 1 : 0 }}
+              >
+                {isPlaceholder ? (
+                  // Placeholder slides
+                  <div className="flex h-full w-full items-center justify-center">
+                    {idx === 0 ? (
+                      // Slide 1: Gradient with icon
+                      <div className={cn('flex h-full w-full items-center justify-center', colors.placeholderBg)}>
+                        <div className={colors.placeholderIcon}>{projectIcon}</div>
+                      </div>
+                    ) : idx === 1 ? (
+                      // Slide 2: Neural pattern
+                      <div className="flex h-full w-full items-center justify-center bg-bg-deep text-text-muted">
+                        <NeuralPattern />
+                      </div>
+                    ) : (
+                      // Slide 3: Tech tags display
+                      <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-bg-deep px-8">
+                        {tags.slice(0, 4).map((tag, tagIdx) => (
+                          <div
+                            key={tagIdx}
+                            className={cn(
+                              'rounded-full px-4 py-2 text-center text-sm font-medium',
+                              colors.tag
+                            )}
+                          >
+                            {tag}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  // Simple image with object-fit cover - eager loading for slideshow
+                  <img
+                    src={img}
+                    alt={`${title[locale]} - slide ${idx + 1}`}
+                    className="absolute inset-0 w-full h-full object-cover object-top"
+                    loading="eager"
+                  />
+                )}
+              </div>
+            ))}
 
             {/* Navigation Arrows - only show if multiple images */}
             {!isSingleImage && (

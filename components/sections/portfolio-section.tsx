@@ -83,7 +83,7 @@ const projects = [
       fa: 'سیستم اتوماسیون که لیدها را تحقیق می‌کند، ایمیل اختصاصی می‌نویسد و خودکار ارسال می‌کند',
     },
     tags: ['n8n', 'Gemini AI', 'Gmail API', 'Google Sheets'],
-    images: ['/works/ai-outreach/1.jpg', '/works/ai-outreach/2.jpg', '/works/ai-outreach/3.jpg'],
+    images: ['/works/ai-outreach/1.webp', '/works/ai-outreach/2.webp', '/works/ai-outreach/3.webp'],
   },
   {
     slug: 'portfolio-os',
