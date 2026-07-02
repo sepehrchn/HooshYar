@@ -325,7 +325,7 @@
               "explanation": "AI tools that write product descriptions, captions and marketing copy in your exact brand voice",
               "deliverables": [
                 "AI trained on your brand tone and style",
-                "Content for Instagram, website and email",
+                "Content creation for social media",
                 "Simple tool your team can use independently"
               ],
               "price": "From $220 USD"
@@ -337,7 +337,7 @@
               "explanation": "ابزار هوش مصنوعی که متن، توضیحات محصول و پست‌های بازاریابی را به سبک برند شما می‌نویسد",
               "deliverables": [
                 "آموزش هوش مصنوعی بر اساس لحن و سبک برند شما",
-                "تولید محتوا برای اینستاگرام، سایت و ایمیل",
+                "تولید محتوا برای شبکه‌های اجتماعی",
                 "ابزار ساده برای استفاده توسط تیم شما"
               ],
               "price": "از ۸ میلیون تومان"
@@ -416,7 +416,7 @@
               "title": "System Integration",
               "explanation": "We connect your CRM, shop, accounting and messaging tools — no more copy-pasting between systems",
               "deliverables": [
-                "Integration of up to 5 different systems",
+                "Connecting different systems together",
                 "Automatic data flow with no human intervention",
                 "Monitoring and error alerts"
               ],
@@ -428,7 +428,7 @@
               "title": "اتصال سیستم‌ها",
               "explanation": "CRM، فروشگاه، حسابداری و پیام‌رسان‌های شما را به هم وصل می‌کنیم — کپی‌پیست تمام می‌شود",
               "deliverables": [
-                "اتصال تا ۵ سیستم مختلف به هم",
+                "اتصال سیستم‌های مختلف به هم",
                 "جریان داده خودکار بدون دخالت انسانی",
                 "مانیتورینگ و هشدار در صورت خطا"
               ],
@@ -443,8 +443,8 @@
               "explanation": "We identify your daily manual tasks and automate them completely",
               "deliverables": [
                 "Audit and mapping of your current processes",
-                "Automation built for 3–5 key workflows",
-                "Team training and one month of support"
+                "Building automation for key processes",
+                "Training and support"
               ],
               "price": "From $270 USD"
             },
@@ -454,8 +454,8 @@
               "explanation": "کارهای دستی روزانه‌تان را شناسایی و به‌صورت خودکار انجام می‌دهیم",
               "deliverables": [
                 "بررسی و نقشه‌برداری فرآیندهای فعلی شما",
-                "ساخت اتوماسیون برای ۳ تا ۵ فرآیند کلیدی",
-                "آموزش تیم و پشتیبانی یک ماهه"
+                "ساخت اتوماسیون برای فرآیندهای کلیدی",
+                "آموزش و پشتیبانی"
               ],
               "price": "از ۱۰ میلیون تومان"
             }
@@ -468,8 +468,8 @@
               "explanation": "A system that follows up with leads, sends order confirmations and payment reminders — on autopilot",
               "deliverables": [
                 "Follow-up scenarios tailored to your business",
-                "Automatic messages via WhatsApp, email or SMS",
-                "Conversion and response rate reporting"
+                "Automated messaging on social media",
+                "Reporting and response tracking"
               ],
               "price": "From $240 USD"
             },
@@ -479,8 +479,8 @@
               "explanation": "سیستمی که خودش مشتریان را پیگیری می‌کند، تأیید سفارش می‌فرستد و یادآوری پرداخت می‌دهد",
               "deliverables": [
                 "طراحی سناریوهای پیگیری مناسب کسب‌وکار شما",
-                "ارسال خودکار پیام در واتساپ، ایمیل یا SMS",
-                "گزارش نرخ تبدیل و پاسخ‌دهی"
+                "ارسال خودکار پیام در شبکه‌های اجتماعی",
+                "گزارش و پاسخ‌دهی"
               ],
               "price": "از ۹ میلیون تومان"
             }
@@ -559,7 +559,7 @@
               "title": "Online Store",
               "explanation": "A complete online store with payment, inventory and order management — ready to sell from day one",
               "deliverables": [
-                "Iranian and international payment gateway",
+                "Payment gateway",
                 "Product, inventory and order management",
                 "Sales reporting and management dashboard"
               ],
@@ -570,7 +570,7 @@
               "title": "فروشگاه آنلاین",
               "explanation": "فروشگاه کامل با پرداخت آنلاین، مدیریت موجودی و ثبت سفارش — آماده فروش از روز اول",
               "deliverables": [
-                "درگاه پرداخت ایرانی و بین‌المللی",
+                "درگاه پرداخت",
                 "مدیریت محصولات، موجودی و سفارشات",
                 "گزارش فروش و داشبورد مدیریت"
               ],
