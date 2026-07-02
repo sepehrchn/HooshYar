@@ -1,7 +1,6 @@
 'use client';
 
 import { SectionReveal } from '@/components/motion';
-import { Eyebrow } from '@/components/ui';
 import { cn } from '@/lib/utils';
 import type { Locale } from '@/types/locale';
 import { ServiceCard } from './service-card';

@@ -69,6 +69,8 @@ export function ChatbotWidget({ locale }: ChatbotWidgetProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const idCounterRef = useRef(0);
+  const getNextId = () => `msg-${++idCounterRef.current}`;
 
   // Entrance animation delay
   useEffect(() => {
@@ -107,7 +109,7 @@ export function ChatbotWidget({ locale }: ChatbotWidgetProps) {
 
     // Add user message
     const userMessage: Message = {
-      id: Date.now().toString(),
+      id: getNextId(),
       text: text.trim(),
       sender: "user",
       timestamp: new Date(),
@@ -134,7 +136,7 @@ export function ChatbotWidget({ locale }: ChatbotWidgetProps) {
 
       // Add bot response
       const botMessage: Message = {
-        id: (Date.now() + 1).toString(),
+        id: getNextId(),
         text: data.reply || data.error || PLACEHOLDER_RESPONSES[locale],
         sender: "bot",
         timestamp: new Date(),
@@ -146,7 +148,7 @@ export function ChatbotWidget({ locale }: ChatbotWidgetProps) {
 
       // Fallback error message
       const errorMessage: Message = {
-        id: (Date.now() + 1).toString(),
+        id: getNextId(),
         text:
           locale === "fa"
             ? "مشکلی پیش اومد. لطفاً از فرم تماس استفاده کنید."

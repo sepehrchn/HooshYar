@@ -12,13 +12,11 @@ import {
   SnapPanel,
 } from "@/components/sections";
 import { GlassCard, GradientText, Heading } from "@/components/ui";
-import { getCaseStudies } from "@/lib/content";
 import { pageContent, siteContent } from "@/lib/pages";
 import type { Locale } from "@/types/locale";
 import { cn } from "@/lib/utils";
 
 export async function HomeScrollSections({ locale }: { locale: Locale }) {
-  const studies = getCaseStudies(locale);
   const aboutHero = pageContent.about.hero[locale];
   const contactHero = pageContent.contact.hero[locale];
 

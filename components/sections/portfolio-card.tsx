@@ -3,7 +3,8 @@
 import { SectionReveal } from '@/components/motion';
 import { cn } from '@/lib/utils';
 import type { Locale } from '@/types/locale';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import Image from 'next/image';
 
 type AccentColor = 'cyan' | 'violet' | 'magenta';
 
@@ -194,7 +195,10 @@ export function PortfolioCard({
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // Use provided images or default to placeholders
-  const slideImages = images && images.length > 0 ? images : ['placeholder-1', 'placeholder-2', 'placeholder-3'];
+  const slideImages = useMemo(
+    () => images && images.length > 0 ? images : ['placeholder-1', 'placeholder-2', 'placeholder-3'],
+    [images]
+  );
   const totalSlides = slideImages.length;
   const isSingleImage = totalSlides === 1;
   const isPlaceholder = slideImages[0]?.startsWith('placeholder');
@@ -215,7 +219,7 @@ export function PortfolioCard({
   // Preload first image for faster display
   useEffect(() => {
     if (!isPlaceholder && slideImages[0]) {
-      const img = new Image();
+      const img = new window.Image();
       img.src = slideImages[0];
     }
   }, [isPlaceholder, slideImages]);
@@ -293,11 +297,12 @@ export function PortfolioCard({
                   </div>
                 ) : (
                   // Simple image with object-fit cover - eager loading for slideshow
-                  <img
+                  <Image
                     src={img}
                     alt={`${title[locale]} - slide ${idx + 1}`}
-                    className="absolute inset-0 w-full h-full object-cover object-top"
-                    loading="eager"
+                    fill
+                    className="object-cover object-top"
+                    priority={idx === 0}
                   />
                 )}
               </div>

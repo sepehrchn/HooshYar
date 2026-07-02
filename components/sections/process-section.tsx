@@ -12,43 +12,13 @@ interface ProcessSectionProps {
 
 type AccentColor = 'cyan' | 'violet' | 'magenta';
 
-const accentColors = {
-  cyan: {
-    text: 'text-cyan-primary',
-    bg: 'bg-cyan-primary/[0.08]',
-    glow: 'before:bg-cyan-primary/30',
-  },
-  violet: {
-    text: 'text-violet-core',
-    bg: 'bg-violet-core/[0.08]',
-    glow: 'before:bg-violet-core/30',
-  },
-  magenta: {
-    text: 'text-magenta-glow',
-    bg: 'bg-magenta-glow/[0.08]',
-    glow: 'before:bg-magenta-glow/30',
-  },
-} as const;
-
-const borderClasses = {
-  cyan: 'service-card-animated-border-cyan',
-  violet: 'service-card-animated-border-violet',
-  magenta: 'service-card-animated-border-magenta',
-} as const;
-
-const shadowClasses = {
-  cyan: 'shadow-cyan-glow',
-  violet: 'shadow-violet-glow',
-  magenta: 'shadow-magenta-glow',
-} as const;
-
 export function ProcessSection({ locale }: ProcessSectionProps) {
   const isFa = locale === 'fa';
   const hero = pageContent.process.hero[locale];
   const steps = pageContent.process.steps;
 
   // Assign accent colors: شناخت=cyan, راه‌حل=violet, ساخت=magenta
-  const accentColors: Array<AccentColor> = ['cyan', 'violet', 'magenta'];
+  const stepAccents: Array<AccentColor> = ['cyan', 'violet', 'magenta'];
 
   return (
     <div>
@@ -119,7 +89,7 @@ export function ProcessSection({ locale }: ProcessSectionProps) {
             <div className="grid gap-12 md:grid-cols-3 md:gap-6">
               {steps.map((step, index) => {
                 const stepCopy = step[locale];
-                const accent = accentColors[index];
+                const accent = stepAccents[index];
                 const colors = {
                   cyan: {
                     text: 'text-cyan-primary',
