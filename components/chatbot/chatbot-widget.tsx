@@ -55,6 +55,11 @@ const BRAND_TEXT = {
   en: "Hoosh Yar",
 };
 
+const CURVED_TEXT = {
+  fa: "گفتگو با هوش‌یار",
+  en: "Talk to Hoosh Yar",
+};
+
 export function ChatbotWidget({ locale }: ChatbotWidgetProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -148,202 +153,270 @@ export function ChatbotWidget({ locale }: ChatbotWidgetProps) {
       {/* Trigger Button */}
       <AnimatePresence>
         {isVisible && (
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.3 }}
+            className="chatbot-trigger-container"
             style={{
               position: "fixed",
               bottom: "32px",
               right: "32px",
+              width: "120px",
+              height: "120px",
               zIndex: 9999,
             }}
           >
-            {/* Radar Ping Effect */}
-            <div
-              className="radar-ping"
+            {/* Curved Text SVG - Full Wrapper */}
+            <svg
+              width="120"
+              height="120"
+              viewBox="0 0 120 120"
+              xmlns="http://www.w3.org/2000/svg"
               style={{
                 position: "absolute",
-                top: "50%",
-                left: "50%",
-                width: "56px",
-                height: "56px",
-                transform: "translate(-50%, -50%)",
+                top: 0,
+                left: 0,
                 pointerEvents: "none",
               }}
             >
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  borderRadius: "50%",
-                  border: "2px solid rgba(63,232,244,0.3)",
-                  animation: "radar-ping 4s ease-out infinite",
-                }}
-              />
-            </div>
+              <defs>
+                {/* Brand gradient for text */}
+                <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style={{ stopColor: "#3FE8F4", stopOpacity: 1 }} />
+                  <stop offset="50%" style={{ stopColor: "#9D5CFF", stopOpacity: 1 }} />
+                  <stop offset="100%" style={{ stopColor: "#E63CD8", stopOpacity: 1 }} />
+                </linearGradient>
 
-            {/* Orbiting Particles */}
-            <div
-              className="orbit-container"
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                width: "80px",
-                height: "80px",
-                transform: "translate(-50%, -50%)",
-                pointerEvents: "none",
-              }}
-            >
-              {/* Cyan particle - 8s orbit */}
-              <div
+                {/* Circular arc path centered at (60, 60) with radius 48px */}
+                <path
+                  id="textArc"
+                  d="M 12,60 A 48,48 0 0,1 108,60"
+                  fill="none"
+                />
+              </defs>
+
+              {/* Locale-aware curved text */}
+              <text
+                fill="url(#textGradient)"
+                fontSize="10"
+                fontWeight="600"
+                fontFamily={locale === "fa" ? "var(--font-persian), Vazirmatn, sans-serif" : "var(--font-heading), sans-serif"}
+                textAnchor="middle"
+                className="curved-text"
                 style={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  width: "80px",
-                  height: "80px",
-                  animation: "orbit-clockwise 8s linear infinite",
+                  opacity: 0.85,
+                  transition: "opacity 0.2s ease",
                 }}
               >
-                <div
+                <textPath
+                  href="#textArc"
+                  startOffset="50%"
                   style={{
-                    position: "absolute",
-                    top: 0,
-                    left: "50%",
-                    width: "4px",
-                    height: "4px",
-                    marginLeft: "-2px",
-                    marginTop: "-2px",
-                    borderRadius: "50%",
-                    backgroundColor: "#3FE8F4",
-                    opacity: 0.7,
-                    boxShadow: "0 0 4px rgba(63,232,244,0.6)",
+                    direction: isRTL ? "rtl" : "ltr",
+                    unicodeBidi: isRTL ? "bidi-override" : "normal",
                   }}
-                />
-              </div>
-
-              {/* Magenta particle - 11s orbit (opposite direction) */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  width: "80px",
-                  height: "80px",
-                  animation: "orbit-counterclockwise 11s linear infinite",
-                }}
-              >
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: "50%",
-                    width: "4px",
-                    height: "4px",
-                    marginLeft: "-2px",
-                    marginTop: "-2px",
-                    borderRadius: "50%",
-                    backgroundColor: "#E63CD8",
-                    opacity: 0.7,
-                    boxShadow: "0 0 4px rgba(230,60,216,0.6)",
-                  }}
-                />
-              </div>
-            </div>
-
-            {/* Main Trigger Button */}
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ 
-                opacity: 1, 
-                y: [0, 0, -6, 0],
-              }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ 
-                opacity: { duration: 0.3 },
-                y: { 
-                  duration: 3,
-                  ease: "easeInOut",
-                  repeat: Infinity,
-                  repeatDelay: 0,
-                  delay: 0.3,
-                }
-              }}
-              onClick={() => setIsOpen(!isOpen)}
-              className="chatbot-trigger"
-              aria-label={
-                isOpen
-                  ? locale === "fa"
-                    ? "بستن چت"
-                    : "Close chat"
-                  : locale === "fa"
-                    ? "باز کردن چت"
-                    : "Open chat"
-              }
-              style={{
-                position: "relative",
-                width: "56px",
-                height: "56px",
-                borderRadius: "50%",
-                background: "rgba(255,255,255,0.06)",
-                backdropFilter: "blur(12px)",
-                border: "1px solid rgba(255,255,255,0.15)",
-                cursor: "pointer",
-                padding: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                transition: "transform 0.2s ease",
-                overflow: "hidden",
-              }}
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {/* Animated gradient border */}
-              <div
-                className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-                style={{
-                  background:
-                    "conic-gradient(from 0deg, #3FE8F4, #9D5CFF, #E63CD8, #3FE8F4)",
-                  animation: "spin 4s linear infinite",
-                  zIndex: -1,
-                }}
-              />
-
-              {/* Robot Icon */}
-              <div className="relative w-10 h-10 rounded-full overflow-hidden">
-                <Image
-                  src="/images/chatbot.png"
-                  alt="Chatbot"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              {/* Close indicator when open */}
-              {isOpen && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute inset-0 bg-black/40 backdrop-blur-sm rounded-full flex items-center justify-center"
                 >
-                  <svg
-                    className="w-5 h-5 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                  {CURVED_TEXT[locale]}
+                </textPath>
+              </text>
+            </svg>
+
+            {/* Button positioned at bottom-center of wrapper */}
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: "50%",
+                transform: "translateX(-50%)",
+              }}
+            >
+              {/* Radar Ping Effect */}
+              <div
+                className="radar-ping"
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  width: "56px",
+                  height: "56px",
+                  transform: "translate(-50%, -50%)",
+                  pointerEvents: "none",
+                }}
+              >
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    borderRadius: "50%",
+                    border: "2px solid rgba(63,232,244,0.3)",
+                    animation: "radar-ping 4s ease-out infinite",
+                  }}
+                />
+              </div>
+
+              {/* Orbiting Particles */}
+              <div
+                className="orbit-container"
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  width: "80px",
+                  height: "80px",
+                  transform: "translate(-50%, -50%)",
+                  pointerEvents: "none",
+                }}
+              >
+                {/* Cyan particle - 8s orbit */}
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    width: "80px",
+                    height: "80px",
+                    animation: "orbit-clockwise 8s linear infinite",
+                  }}
+                >
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: "50%",
+                      width: "4px",
+                      height: "4px",
+                      marginLeft: "-2px",
+                      marginTop: "-2px",
+                      borderRadius: "50%",
+                      backgroundColor: "#3FE8F4",
+                      opacity: 0.7,
+                      boxShadow: "0 0 4px rgba(63,232,244,0.6)",
+                    }}
+                  />
+                </div>
+
+                {/* Magenta particle - 11s orbit (opposite direction) */}
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    width: "80px",
+                    height: "80px",
+                    animation: "orbit-counterclockwise 11s linear infinite",
+                  }}
+                >
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: "50%",
+                      width: "4px",
+                      height: "4px",
+                      marginLeft: "-2px",
+                      marginTop: "-2px",
+                      borderRadius: "50%",
+                      backgroundColor: "#E63CD8",
+                      opacity: 0.7,
+                      boxShadow: "0 0 4px rgba(230,60,216,0.6)",
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Main Trigger Button */}
+              <motion.button
+                animate={{ 
+                  y: [0, 0, -6, 0],
+                }}
+                transition={{ 
+                  y: { 
+                    duration: 3,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatDelay: 0,
+                    delay: 0.3,
+                  }
+                }}
+                onClick={() => setIsOpen(!isOpen)}
+                className="chatbot-trigger"
+                aria-label={
+                  isOpen
+                    ? locale === "fa"
+                      ? "بستن چت"
+                      : "Close chat"
+                    : locale === "fa"
+                      ? "باز کردن چت"
+                      : "Open chat"
+                }
+                style={{
+                  position: "relative",
+                  width: "56px",
+                  height: "56px",
+                  borderRadius: "50%",
+                  background: "rgba(255,255,255,0.06)",
+                  backdropFilter: "blur(12px)",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  cursor: "pointer",
+                  padding: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  transition: "transform 0.2s ease",
+                  overflow: "hidden",
+                }}
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {/* Animated gradient border */}
+                <div
+                  className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                  style={{
+                    background:
+                      "conic-gradient(from 0deg, #3FE8F4, #9D5CFF, #E63CD8, #3FE8F4)",
+                    animation: "spin 4s linear infinite",
+                    zIndex: -1,
+                  }}
+                />
+
+                {/* Robot Icon */}
+                <div className="relative w-10 h-10 rounded-full overflow-hidden">
+                  <Image
+                    src="/images/chatbot.png"
+                    alt="Chatbot"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                {/* Close indicator when open */}
+                {isOpen && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="absolute inset-0 bg-black/40 backdrop-blur-sm rounded-full flex items-center justify-center"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </motion.div>
-              )}
-            </motion.button>
-          </div>
+                    <svg
+                      className="w-5 h-5 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </motion.div>
+                )}
+              </motion.button>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
 
@@ -561,6 +634,10 @@ export function ChatbotWidget({ locale }: ChatbotWidgetProps) {
 
       {/* Keyframes for animations */}
       <style jsx>{`
+        .chatbot-trigger-container:hover .curved-text {
+          opacity: 1 !important;
+        }
+
         @keyframes spin {
           from {
             transform: rotate(0deg);
@@ -603,9 +680,13 @@ export function ChatbotWidget({ locale }: ChatbotWidgetProps) {
           .chatbot-trigger,
           .chatbot-panel,
           .radar-ping,
-          .orbit-container {
+          .orbit-container,
+          .curved-text {
             transition: none !important;
             animation: none !important;
+          }
+          .curved-text {
+            opacity: 0.85 !important;
           }
           .radar-ping > div,
           .orbit-container > div {
