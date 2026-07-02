@@ -114,27 +114,17 @@
 
 ---
 
-### 7. Contact ✅ COMPLETE
+### 7. Contact
 
-- [x] Gradient header matching Services/Process pattern
-- [x] Direct contact channels (3 glass tiles: email, telegram, whatsapp)
-- [x] FAQ section (3 Q&A pairs)
-- [x] Contact form with validation
-- [x] API endpoint ready
-- [x] Before-you-send guidance card
-- [x] Responsive layout
-- [x] RTL support
-- [x] Reduced motion support
+- [ ] Page hero section
+- [ ] Contact form with validation
+- [ ] API endpoint ready
+- [ ] Before-you-send guidance card
+- [ ] Responsive layout
+- [ ] RTL support
+- [ ] Reduced motion support
 
-**Status:** Complete
-
-**Notes:**
-- Gradient header (تماس/Contact) with 800 weight matching other sections
-- Direct contact channels: email (working), telegram (TODO), whatsapp (TODO)
-- FAQ answers common questions: cost, timeline, uncertainty
-- Form and validation unchanged
-- Embedded in main scroll page and available as standalone /contact route
-- Full RTL support with staggered animations
+**Status:** Pending review
 
 ---
 
@@ -189,8 +179,6 @@
 
 | Date | Page | Changes |
 |------|------|---------|
-| 2026-07-01 | Contact | Refined with gradient header, direct contact channels (email/telegram/whatsapp), FAQ section, maintained form |
-| 2026-07-01 | Pricing | Removed entirely from site |
 | 2026-07-01 | Process | Embedded in main scroll page: gradient header, horizontal timeline, 3 centered cards, راه‌حل title, new body copy |
 | 2026-07-01 | Process | Complete rebuild: gradient header, 3 process cards with animated borders, RTL support |
 | 2026-07-01 | Portfolio | Complete: 6 projects, optimized images, interactive slideshow, gradient header |

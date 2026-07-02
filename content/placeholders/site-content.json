@@ -54,6 +54,58 @@
       "fa": "تماس"
     }
   ],
+  "footer": {
+    "tagline": {
+      "en": "AI services, automation and web development with a future-ready identity",
+      "fa": "خدمات هوش مصنوعی، اتوماسیون و توسعه وب با هویت آینده‌نگر"
+    },
+    "columnsLabel": {
+      "pages": {
+        "en": "Pages",
+        "fa": "صفحات"
+      },
+      "contact": {
+        "en": "Get in Touch",
+        "fa": "تماس با ما"
+      }
+    },
+    "cta": {
+      "en": "Get Started",
+      "fa": "شروع همکاری"
+    },
+    "copyright": {
+      "en": "© 2026 Hoosh Yar",
+      "fa": "© ۱۴۰۵ هوش‌یار"
+    },
+    "builtWith": {
+      "en": "Built with intelligence and precision",
+      "fa": "ساخته‌شده با هوش و دقت"
+    }
+  },
+  "contact": {
+    "email": "info@hooshyar.com",
+    "telegram": "@hooshyar",
+    "whatsapp": "+98 ...",
+    "emailLabel": {
+      "en": "Email",
+      "fa": "ایمیل"
+    },
+    "telegramLabel": {
+      "en": "Telegram",
+      "fa": "تلگرام"
+    },
+    "whatsappLabel": {
+      "en": "WhatsApp",
+      "fa": "واتساپ"
+    }
+  },
+  "social": {
+    "instagram": "#",
+    "telegram": "#",
+    "whatsapp": "#",
+    "bale": "#",
+    "email": "mailto:info@hooshyar.com"
+  },
   "hero": {
     "status": "ready",
     "assetExpected": "public/media/hero-video.mp4",

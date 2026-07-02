@@ -1,22 +1,19 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { forwardRef, type ReactNode } from "react";
 import { getSectionHref, getSectionId } from "@/lib/section-nav";
 import type { Locale } from "@/types/locale";
 
-export function SectionNavLink({
-  locale,
-  href,
-  className,
-  children,
-  onNavigate,
-}: {
-  locale: Locale;
-  href: string;
-  className?: string;
-  children: ReactNode;
-  onNavigate?: () => void;
-}) {
+export const SectionNavLink = forwardRef<
+  HTMLAnchorElement,
+  {
+    locale: Locale;
+    href: string;
+    className?: string;
+    children: ReactNode;
+    onNavigate?: () => void;
+  }
+>(function SectionNavLink({ locale, href, className, children, onNavigate }, ref) {
   const sectionId = getSectionId(href);
   const targetHref = getSectionHref(locale, href);
 
@@ -37,8 +34,8 @@ export function SectionNavLink({
   };
 
   return (
-    <a href={targetHref} className={className} onClick={handleClick}>
+    <a ref={ref} href={targetHref} className={className} onClick={handleClick}>
       {children}
     </a>
   );
-}
+});

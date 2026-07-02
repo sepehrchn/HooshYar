@@ -3,13 +3,14 @@
 import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import type { Locale } from "@/types/locale";
 
 const LOGO_SRC = "/images/Hoosh_Yar_Logo.jpeg";
 
 function LogoFallback() {
   return (
     <svg
-      className="relative h-7 w-7 text-cyan-primary"
+      className="relative h-12 w-12 text-cyan-primary"
       viewBox="0 0 48 48"
       fill="none"
       role="img"
@@ -53,29 +54,37 @@ function LogoFallback() {
 
 export function LogoMark({
   className,
-  label = "Hoosh Yar",
+  locale = "fa",
+  showText = true,
 }: {
   className?: string;
-  label?: string;
+  locale?: Locale;
+  showText?: boolean;
 }) {
   const [imageError, setImageError] = useState(false);
+  const label = locale === "fa" ? "هوش‌یار" : "Hoosh Yar";
 
   return (
     <div
       className={cn("flex items-center gap-3", className)}
       aria-label={label}
     >
-      <div className="relative grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-full border border-glass-border bg-glass-bg shadow-cyan-glow backdrop-blur-xl">
+      {/* Logo badge - 48px with violet glow */}
+      <div className="relative grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-full border border-glass-border bg-glass-bg backdrop-blur-xl">
+        {/* Violet glow ring */}
         <div
           aria-hidden="true"
-          className="absolute inset-1 rounded-full bg-brand-beam opacity-20 blur-sm"
+          className="absolute inset-0 rounded-full"
+          style={{
+            boxShadow: "0 0 20px rgba(157, 92, 255, 0.4)",
+          }}
         />
         {!imageError ? (
           <Image
             src={LOGO_SRC}
             alt=""
-            width={44}
-            height={44}
+            width={48}
+            height={48}
             className="relative h-full w-full rounded-full object-cover"
             onError={() => setImageError(true)}
             priority
@@ -84,12 +93,21 @@ export function LogoMark({
           <LogoFallback />
         )}
       </div>
-      <div className="leading-none">
-        <p className="font-heading text-base font-bold tracking-[-0.03em] text-text-primary">
-          Hoosh Yar
-        </p>
-        <p className="mt-1 font-persian text-xs text-text-muted">هوش‌یار</p>
-      </div>
+
+      {/* Brand text with gradient - RTL gradient for Farsi */}
+      {showText && (
+        <span
+          className={cn(
+            "bg-clip-text text-[22px] leading-none text-transparent",
+            locale === "fa" 
+              ? "font-persian bg-gradient-to-l from-cyan-primary via-violet-core to-magenta-glow" 
+              : "font-heading bg-gradient-to-r from-magenta-glow via-violet-core to-cyan-primary"
+          )}
+          style={{ fontWeight: 800 }}
+        >
+          {label}
+        </span>
+      )}
     </div>
   );
 }
