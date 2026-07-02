@@ -4,8 +4,8 @@
   "private": true,
   "description": "Hoosh Yar bilingual premium AI, automation, and web development website.",
   "scripts": {
-    "dev": "next dev --webpack",
-    "build": "next build --webpack",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
