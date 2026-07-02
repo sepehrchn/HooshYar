@@ -6,7 +6,7 @@ The chatbot now uses **Grok API** (by xAI) instead of Google Gemini.
 
 ### API Details
 - **Provider:** xAI (Elon Musk's AI company)
-- **Model:** grok-beta
+- **Model:** grok-2-latest
 - **API Key:** Starts with `gsk_`
 - **Base URL:** https://api.x.ai/v1
 - **SDK:** OpenAI-compatible (using `openai` npm package)
@@ -70,8 +70,8 @@ Try these to verify it's working:
 
 ## 📊 Grok API Features
 
-### Model: grok-beta
-- Latest Grok model
+### Model: grok-2-latest
+- Latest Grok 2 model
 - Strong reasoning capabilities
 - Good at following instructions
 - Supports multiple languages (including Persian)
@@ -92,7 +92,7 @@ Try these to verify it's working:
 ### Current Settings (in API route)
 
 ```typescript
-model: "grok-beta"
+model: "grok-2-latest"
 temperature: 0.7  // Balanced creativity
 max_tokens: 500   // Reasonable response length
 ```

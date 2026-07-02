@@ -27,8 +27,12 @@ async function getKnowledgeBase() {
 }
 
 export async function POST(request: NextRequest) {
+  let locale: "fa" | "en" = "en"; // Default locale
+  
   try {
-    const { message, locale } = await request.json();
+    const body = await request.json();
+    const message = body.message;
+    locale = body.locale || "en";
 
     // Validate input
     if (!message || typeof message !== "string") {
@@ -87,7 +91,7 @@ Now respond to the user's message.`;
 
     // Call Grok API
     const completion = await openai.chat.completions.create({
-      model: "grok-beta",
+      model: "grok-2-latest",
       messages: [
         {
           role: "system",

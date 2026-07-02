@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
     console.log("OpenAI client created, testing with simple message...");
 
     const completion = await openai.chat.completions.create({
-      model: "grok-beta",
+      model: "grok-2-latest",
       messages: [
         {
           role: "user",
