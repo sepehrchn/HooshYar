@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
     // Validate input
     if (!message || typeof message !== "string") {
       return NextResponse.json(
-        { error: "Message is required" },
+        { error: "Message is required", reply: "Message is required" },
         { status: 400 }
       );
     }
@@ -45,6 +45,21 @@ export async function POST(request: NextRequest) {
             locale === "fa"
               ? "مشکلی پیش اومد. لطفاً از فرم تماس استفاده کنید."
               : "Something went wrong. Please use the contact form.",
+        },
+        { status: 500 }
+      );
+    }
+
+    // Validate API key format
+    if (!process.env.GEMINI_API_KEY.startsWith("AIzaSy")) {
+      console.error("GEMINI_API_KEY appears to be invalid (should start with AIzaSy)");
+      return NextResponse.json(
+        {
+          error: "Invalid API key format",
+          reply:
+            locale === "fa"
+              ? "کلید API نامعتبر است. لطفاً با تیم تماس بگیرید."
+              : "Invalid API key. Please contact the team.",
         },
         { status: 500 }
       );
@@ -105,16 +120,19 @@ Now respond to the user's message.`;
     const response = result.response.text();
 
     return NextResponse.json({ reply: response });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Chat API error:", error);
+    console.error("Error details:", error?.message || "Unknown error");
+
+    const errorReply =
+      locale === "fa"
+        ? "مشکلی پیش اومد. لطفاً از فرم تماس استفاده کنید."
+        : "Something went wrong. Please use the contact form.";
 
     return NextResponse.json(
       {
-        error: "Failed to process message",
-        reply:
-          locale === "fa"
-            ? "مشکلی پیش اومد. لطفاً از فرم تماس استفاده کنید."
-            : "Something went wrong. Please use the contact form.",
+        error: error?.message || "Failed to process message",
+        reply: errorReply,
       },
       { status: 500 }
     );
