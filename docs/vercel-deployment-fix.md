@@ -8,7 +8,10 @@ All recent deployments to Vercel were failing with build errors. Multiple commit
 - Various chatbot improvements
 
 ## Root Cause
-TypeScript compilation error in `app/api/chat/route.ts`:
+There were TWO issues causing the deployment failures:
+
+### 1. TypeScript Compilation Error
+TypeScript error in `app/api/chat/route.ts`:
 
 ```typescript
 // ❌ BEFORE - locale was scoped only inside the try block
@@ -27,7 +30,20 @@ export async function POST(req: Request) {
 
 The `locale` variable was destructured inside the `try` block, making it unavailable in the `catch` block where it was referenced for error messages.
 
+### 2. Build Configuration Issue
+The build script in `package.json` was using the `--webpack` flag:
+
+```json
+"scripts": {
+  "build": "next build --webpack"
+}
+```
+
+This flag forces Next.js to use webpack instead of the default Turbopack bundler in Next.js 16.x. While this works locally, it causes compatibility issues in Vercel's optimized build environment, resulting in rapid build failures (19-38 seconds).
+
 ## Solution
+
+### Fix 1: TypeScript Scope Error
 Moved `locale` declaration to the function scope level:
 
 ```typescript
@@ -49,11 +65,26 @@ export async function POST(req: Request) {
 }
 ```
 
+### Fix 2: Build Configuration
+Removed the `--webpack` flag to use Next.js 16.x's default Turbopack bundler:
+
+```json
+// ✅ AFTER - Use default Turbopack
+"scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start"
+}
+```
+
+This allows Vercel to use its optimized build pipeline with Turbopack, which is faster and more reliable.
+
 ## Changes Made
-1. Fixed TypeScript scope error in chat API route
-2. Reinstalled dependencies to fix corrupted `@next/swc-darwin-arm64` binary
-3. Verified build passes locally with `npm run build`
-4. Committed and pushed fixes
+1. **Fixed TypeScript scope error** in chat API route (`app/api/chat/route.ts`)
+2. **Removed `--webpack` flags** from build scripts in `package.json` 
+3. **Reinstalled dependencies** to fix corrupted `@next/swc-darwin-arm64` binary
+4. **Verified the build passes locally** with Turbopack - all 31 pages generate successfully
+5. **Committed and pushed fixes** to trigger new Vercel deployments
 
 ## Verification
 - ✅ Local build passes without errors
