@@ -102,7 +102,7 @@ export function ChatbotWidget({ locale }: ChatbotWidgetProps) {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
 
-  const handleSendMessage = (text: string) => {
+  const handleSendMessage = async (text: string) => {
     if (!text.trim()) return;
 
     // Add user message
@@ -117,17 +117,48 @@ export function ChatbotWidget({ locale }: ChatbotWidgetProps) {
     setInputValue("");
     setIsTyping(true);
 
-    // Simulate bot response after 400ms
-    setTimeout(() => {
+    try {
+      // Call the API
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: text.trim(),
+          locale: locale,
+        }),
+      });
+
+      const data = await response.json();
+
+      // Add bot response
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: PLACEHOLDER_RESPONSES[locale],
+        text: data.reply || data.error || PLACEHOLDER_RESPONSES[locale],
         sender: "bot",
         timestamp: new Date(),
       };
+
       setMessages((prev) => [...prev, botMessage]);
+    } catch (error) {
+      console.error("Chat error:", error);
+
+      // Fallback error message
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        text:
+          locale === "fa"
+            ? "مشکلی پیش اومد. لطفاً از فرم تماس استفاده کنید."
+            : "Something went wrong. Please use the contact form.",
+        sender: "bot",
+        timestamp: new Date(),
+      };
+
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
       setIsTyping(false);
-    }, 400);
+    }
   };
 
   const handleQuickReply = (text: string) => {
