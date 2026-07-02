@@ -5,8 +5,12 @@ import path from "path";
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 export async function POST(req: Request) {
+  let locale = "en"; // default locale
+  
   try {
-    const { message, locale } = await req.json();
+    const body = await req.json();
+    const { message, locale: requestLocale } = body;
+    locale = requestLocale || "en";
 
     const knowledge = fs.readFileSync(
       path.join(process.cwd(), "content/knowledge/HOOSH-YAR-knowledge.txt"),
