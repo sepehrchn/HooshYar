@@ -10,10 +10,6 @@ export function Footer({ locale }: { locale: Locale }) {
   const isRTL = locale === "fa";
   const tagline = siteContent.footer.tagline[locale];
   const pagesLabel = siteContent.footer.columnsLabel.pages[locale];
-  const contactLabel = siteContent.footer.columnsLabel.contact[locale];
-  const ctaLabel = siteContent.footer.cta[locale];
-  const copyright = siteContent.footer.copyright[locale];
-  const builtWith = siteContent.footer.builtWith[locale];
 
   // Social icons with placeholder links
   const socialLinks = [
@@ -46,11 +42,13 @@ export function Footer({ locale }: { locale: Locale }) {
     },
     {
       name: "Bale",
-      href: siteContent.social.bale,
+      href: "https://bale.ai/",
       icon: (
-        <div className="grid h-6 w-6 place-items-center rounded bg-current text-bg-void" aria-hidden="true">
-          <span className="text-xs font-bold leading-none">B</span>
-        </div>
+        <svg className="h-5 w-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="1" y="1" width="18" height="18" rx="6" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+          <path d="M6 9 C6 7, 7 6, 9 6 L11 6 C13 6 14 7 14 9 L14 10 L12 12 L14 14 L12 14 L10 12 L9 12 C7 12 6 11 6 9 Z" fill="currentColor"/>
+          <path d="M11 10 L13 8" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+        </svg>
       ),
     },
     {
@@ -59,37 +57,6 @@ export function Footer({ locale }: { locale: Locale }) {
       icon: (
         <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      ),
-    },
-  ];
-
-  // Contact info items
-  const contactItems = [
-    {
-      label: siteContent.contact.emailLabel[locale],
-      value: siteContent.contact.email,
-      icon: (
-        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      ),
-    },
-    {
-      label: siteContent.contact.telegramLabel[locale],
-      value: siteContent.contact.telegram,
-      icon: (
-        <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-        </svg>
-      ),
-    },
-    {
-      label: siteContent.contact.whatsappLabel[locale],
-      value: siteContent.contact.whatsapp,
-      icon: (
-        <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
         </svg>
       ),
     },
@@ -108,59 +75,56 @@ export function Footer({ locale }: { locale: Locale }) {
       />
 
       <div
-        className="relative mx-auto max-w-7xl overflow-hidden border-t border-white/[0.08] px-8 pb-8 pt-16 md:px-12 md:pb-10 md:pt-20"
-        style={{ backgroundColor: "rgba(5, 6, 15, 0.95)" }}
+        className="relative mx-auto max-w-7xl overflow-hidden rounded-glass border-t px-8 pb-8 pt-15 md:px-12"
+        style={{ 
+          backgroundColor: "rgba(255, 255, 255, 0.04)",
+          borderTop: "1px solid rgba(255, 255, 255, 0.12)",
+          backdropFilter: "blur(10px)",
+          WebkitBackdropFilter: "blur(10px)"
+        }}
       >
-        {/* 3 Column Grid */}
+        {/* 3 Column Grid - Properly Aligned */}
         <div
           className={cn(
-            "grid gap-12 md:gap-8",
-            isRTL
-              ? "md:grid-cols-[1fr_0.8fr_1fr] md:text-right"
-              : "md:grid-cols-[1fr_0.8fr_1fr] md:text-left"
+            "grid gap-8 md:grid-cols-[1.2fr_0.9fr_1fr] md:gap-12",
+            isRTL ? "md:text-right" : "md:text-left"
           )}
         >
           {/* Column 1 - Brand */}
-          <div className={cn(isRTL ? "md:order-3" : "md:order-1")}>
+          <div className="flex flex-col">
             <LogoMark locale={locale} showText={true} />
             <p className="mt-4 text-[13px] leading-relaxed text-text-muted">
               {tagline}
             </p>
-
-            {/* Social icons with stagger animation */}
-            <div
-              className={cn(
-                "mt-6 flex items-center gap-3",
-                isRTL ? "flex-row-reverse" : "flex-row"
-              )}
-            >
-              {socialLinks.map((social, index) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-text-muted transition-all duration-300 hover:text-cyan-primary motion-reduce:transition-none"
-                  style={{
-                    animation: `fadeInUp 0.4s ease-out ${index * 50}ms backwards`,
-                  }}
-                  aria-label={social.name}
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
+            {/* Quick contact line */}
+            <p className="mt-4 text-[13px] text-text-muted">
+              {isRTL ? "ایمیل: " : "Email: "}
+              <a 
+                href="mailto:sepehrjokanian99@gmail.com"
+                className="transition-colors duration-300 hover:text-cyan-primary"
+              >
+                sepehrjokanian99@gmail.com
+              </a>
+            </p>
           </div>
 
           {/* Column 2 - Navigation Links */}
-          <div className={cn(isRTL ? "md:order-2" : "md:order-2")}>
+          <div className="flex flex-col items-center">
             <h3
-              className="mb-4 text-[11px] font-bold uppercase tracking-wider text-text-muted"
-              style={{ fontWeight: 700 }}
+              className="mb-4 text-[11px] font-bold uppercase tracking-wider text-center"
+              style={{ 
+                fontWeight: 700,
+                background: isRTL
+                  ? "linear-gradient(90deg, #E63CD8 0%, #9D5CFF 50%, #3FE8F4 100%)"
+                  : "linear-gradient(90deg, #3FE8F4 0%, #9D5CFF 50%, #E63CD8 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text"
+              }}
             >
               {pagesLabel}
             </h3>
-            <nav className="grid gap-2">
+            <nav className="grid gap-3 text-center">
               {siteContent.navigation.map((item) => (
                 <SectionNavLink
                   key={item.href}
@@ -174,51 +138,99 @@ export function Footer({ locale }: { locale: Locale }) {
             </nav>
           </div>
 
-          {/* Column 3 - Contact Info */}
-          <div className={cn(isRTL ? "md:order-1" : "md:order-3")}>
+          {/* Column 3 - Social Icons */}
+          <div className="flex flex-col items-center">
             <h3
-              className="mb-4 text-[11px] font-bold uppercase tracking-wider text-text-muted"
-              style={{ fontWeight: 700 }}
+              className="mb-4 text-[11px] font-bold uppercase tracking-wider text-center"
+              style={{ 
+                fontWeight: 700,
+                background: isRTL
+                  ? "linear-gradient(90deg, #E63CD8 0%, #9D5CFF 50%, #3FE8F4 100%)"
+                  : "linear-gradient(90deg, #3FE8F4 0%, #9D5CFF 50%, #E63CD8 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text"
+              }}
             >
-              {contactLabel}
+              {isRTL ? "شبکه‌های اجتماعی" : "Social Media"}
             </h3>
-            <div className="grid gap-3">
-              {contactItems.map((item) => (
-                <div
-                  key={item.label}
-                  className={cn(
-                    "flex items-center gap-2 text-[13px] text-text-muted",
-                    isRTL ? "flex-row-reverse" : "flex-row"
-                  )}
+            {/* Social icons with stagger animation */}
+            <div
+              className={cn(
+                "flex flex-wrap items-center gap-4",
+                isRTL ? "flex-row-reverse" : "flex-row"
+              )}
+            >
+              {socialLinks.map((social, index) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-text-muted transition-all duration-300 hover:text-cyan-primary hover:-translate-y-0.5 motion-reduce:transition-none"
+                  style={{
+                    animation: `fadeInUp 0.4s ease-out ${index * 50}ms backwards`,
+                    filter: "drop-shadow(0 0 0 transparent)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.filter = "drop-shadow(0 4px 8px rgba(63, 232, 244, 0.3))";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.filter = "drop-shadow(0 0 0 transparent)";
+                  }}
+                  aria-label={social.name}
                 >
-                  <span className="shrink-0">{item.icon}</span>
-                  <span>
-                    {item.label}: {item.value}
-                  </span>
-                </div>
+                  {social.icon}
+                </a>
               ))}
             </div>
-
-            {/* CTA Button */}
-            <SectionNavLink
-              href="/contact"
-              locale={locale}
-              className="mt-6 inline-block rounded-full border border-glass-border bg-glass-bg px-5 py-2.5 text-sm font-semibold text-text-primary transition hover:border-cyan-primary/50 hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-primary motion-reduce:transition-none"
-            >
-              {ctaLabel}
-            </SectionNavLink>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div
-          className={cn(
-            "mt-12 flex flex-col gap-3 border-t border-white/[0.08] pt-6 text-xs text-text-muted sm:flex-row sm:items-center sm:justify-between",
-            isRTL ? "sm:flex-row-reverse" : "sm:flex-row"
-          )}
-        >
-          <span>{copyright}</span>
-          <span className="italic">{builtWith}</span>
+        {/* Bottom Bar - Logo Badge + Gradient Text */}
+        <div className="mt-12 border-t pt-6" style={{
+          borderImage: "linear-gradient(90deg, rgba(63, 232, 244, 0.2) 0%, rgba(157, 92, 255, 0.2) 50%, rgba(230, 60, 216, 0.2) 100%) 1"
+        }}>
+          <div className="flex items-center justify-center gap-3">
+          {/* Circular Logo Badge with Animated Glow */}
+          <div className="relative h-7 w-7">
+            {/* Animated gradient ring */}
+            <div 
+              className="absolute inset-0 rounded-full animate-spin-slow"
+              style={{
+                background: "linear-gradient(90deg, rgba(63, 232, 244, 0.4) 0%, rgba(157, 92, 255, 0.4) 33%, rgba(230, 60, 216, 0.4) 66%, rgba(63, 232, 244, 0.4) 100%)",
+                padding: "2px",
+                WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                WebkitMaskComposite: "xor",
+                maskComposite: "exclude",
+                animationDuration: "8s"
+              }}
+            />
+            <div className="relative h-full w-full overflow-hidden rounded-full ring-2 ring-violet-core/20 ring-offset-2 ring-offset-bg-void">
+              <img
+                src="/images/Hoosh_Yar_Logo.jpeg"
+                alt="Hoosh Yar"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+          
+          {/* Gradient Text */}
+          <span
+            className="text-[13px] font-bold"
+            style={{
+              fontWeight: 700,
+              background: isRTL
+                ? "linear-gradient(90deg, #E63CD8 0%, #9D5CFF 50%, #3FE8F4 100%)"
+                : "linear-gradient(90deg, #3FE8F4 0%, #9D5CFF 50%, #E63CD8 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >
+            {isRTL ? "هوش‌یار ۱۴۰۵ ©" : "© 2026 Hoosh Yar"}
+          </span>
+          </div>
         </div>
       </div>
 
@@ -232,6 +244,19 @@ export function Footer({ locale }: { locale: Locale }) {
           to {
             opacity: 1;
             transform: translateY(0);
+          }
+        }
+        
+        .animate-spin-slow {
+          animation: spin 8s linear infinite;
+        }
+        
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
           }
         }
       `}</style>
