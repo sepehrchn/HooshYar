@@ -1,11 +1,13 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import OpenAI from "openai";
 import { NextRequest, NextResponse } from "next/server";
 import { readFile } from "fs/promises";
 import { join } from "path";
 
-// Initialize Gemini API
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+// Initialize Grok API (OpenAI-compatible)
+const openai = new OpenAI({
+  apiKey: process.env.GROK_API_KEY,
+  baseURL: "https://api.x.ai/v1",
+});
 
 // Read knowledge base file
 async function getKnowledgeBase() {
@@ -36,8 +38,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!process.env.GEMINI_API_KEY) {
-      console.error("GEMINI_API_KEY is not set");
+    if (!process.env.GROK_API_KEY) {
+      console.error("GROK_API_KEY is not set");
       return NextResponse.json(
         {
           error: "API key not configured",
@@ -45,21 +47,6 @@ export async function POST(request: NextRequest) {
             locale === "fa"
               ? "مشکلی پیش اومد. لطفاً از فرم تماس استفاده کنید."
               : "Something went wrong. Please use the contact form.",
-        },
-        { status: 500 }
-      );
-    }
-
-    // Validate API key format
-    if (!process.env.GEMINI_API_KEY.startsWith("AIzaSy")) {
-      console.error("GEMINI_API_KEY appears to be invalid (should start with AIzaSy)");
-      return NextResponse.json(
-        {
-          error: "Invalid API key format",
-          reply:
-            locale === "fa"
-              ? "کلید API نامعتبر است. لطفاً با تیم تماس بگیرید."
-              : "Invalid API key. Please contact the team.",
         },
         { status: 500 }
       );
@@ -98,26 +85,24 @@ ${knowledgeBase}
 
 Now respond to the user's message.`;
 
-    // Call Gemini API
-    const chat = model.startChat({
-      history: [
+    // Call Grok API
+    const completion = await openai.chat.completions.create({
+      model: "grok-beta",
+      messages: [
+        {
+          role: "system",
+          content: systemPrompt,
+        },
         {
           role: "user",
-          parts: [{ text: systemPrompt }],
-        },
-        {
-          role: "model",
-          parts: [
-            {
-              text: "I understand. I will answer questions about Hoosh Yar using only the knowledge base provided, responding in the user's language with a helpful and professional tone.",
-            },
-          ],
+          content: message,
         },
       ],
+      temperature: 0.7,
+      max_tokens: 500,
     });
 
-    const result = await chat.sendMessage(message);
-    const response = result.response.text();
+    const response = completion.choices[0]?.message?.content || "";
 
     return NextResponse.json({ reply: response });
   } catch (error: any) {
