@@ -106,8 +106,13 @@ Now respond to the user's message.`;
 
     return NextResponse.json({ reply: response });
   } catch (error: any) {
-    console.error("Chat API error:", error);
-    console.error("Error details:", error?.message || "Unknown error");
+    console.error("=== Chat API Error ===");
+    console.error("Error message:", error?.message);
+    console.error("Error name:", error?.name);
+    console.error("Error status:", error?.status);
+    console.error("Error response:", error?.response?.data);
+    console.error("Full error:", error);
+    console.error("======================");
 
     const errorReply =
       locale === "fa"
