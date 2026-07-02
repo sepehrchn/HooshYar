@@ -1,10 +1,10 @@
-// Test if your Grok API key is in the correct format
+// Test if your Groq API key is in the correct format
 // Run with: node test-api-key.js
 
 const fs = require('fs');
 const path = require('path');
 
-console.log('\n🔍 Checking your Grok API key...\n');
+console.log('\n🔍 Checking your Groq API key...\n');
 
 // Read .env.local file
 const envPath = path.join(__dirname, '.env.local');
@@ -20,12 +20,12 @@ console.log('✅ .env.local file found');
 
 // Parse the key
 const lines = envContent.split('\n').filter(line => line.trim());
-const keyLine = lines.find(line => line.startsWith('GROK_API_KEY='));
+const keyLine = lines.find(line => line.startsWith('GROQ_API_KEY='));
 
 if (!keyLine) {
-  console.log('❌ GROK_API_KEY not found in .env.local');
+  console.log('❌ GROQ_API_KEY not found in .env.local');
   console.log('   Add this line to .env.local:');
-  console.log('   GROK_API_KEY=gsk_your_key_here');
+  console.log('   GROQ_API_KEY=gsk_your_key_here');
   process.exit(1);
 }
 
@@ -42,9 +42,9 @@ console.log('\n🎯 Validation:');
 if (!key.startsWith('gsk_')) {
   console.log('❌ INVALID KEY FORMAT');
   console.log('   Your key starts with:', key.substring(0, 6));
-  console.log('   Grok API keys should start with: gsk_');
+  console.log('   Groq API keys should start with: gsk_');
   console.log('\n   Get your key from:');
-  console.log('   👉 https://console.x.ai/');
+  console.log('   👉 https://console.groq.com/');
   process.exit(1);
 }
 
@@ -60,11 +60,11 @@ console.log('   Key length is reasonable');
 
 console.log('\n🚀 Next Steps:');
 console.log('   1. Stop your dev server (Ctrl+C)');
-console.log('   2. Run: npm run dev');
+console.log('   2. Run: rm -rf .next && npm run dev');
 console.log('   3. Test the chatbot at http://localhost:3000');
 
 console.log('\n✨ If it still doesn\'t work, check:');
 console.log('   • Browser console (F12) for errors');
 console.log('   • Terminal logs for API errors');
-console.log('   • Verify key is active at: https://console.x.ai/');
+console.log('   • Verify key is active at: https://console.groq.com/');
 console.log('');
