@@ -60,6 +60,18 @@ const CURVED_TEXT = {
   en: "Talk to Hoosh Yar",
 };
 
+const CHAT_SESSION_KEY = "hoosh-yar-chat-session-id";
+
+function getOrCreateSessionId(): string {
+  if (typeof window === "undefined") return "";
+  let id = sessionStorage.getItem(CHAT_SESSION_KEY);
+  if (!id) {
+    id = crypto.randomUUID();
+    sessionStorage.setItem(CHAT_SESSION_KEY, id);
+  }
+  return id;
+}
+
 export function ChatbotWidget({ locale }: ChatbotWidgetProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -129,6 +141,7 @@ export function ChatbotWidget({ locale }: ChatbotWidgetProps) {
         body: JSON.stringify({
           message: text.trim(),
           locale: locale,
+          sessionId: getOrCreateSessionId(),
         }),
       });
 

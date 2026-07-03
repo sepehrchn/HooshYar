@@ -14,6 +14,7 @@ import { NeuralBackground } from "@/components/background";
 import { ChatbotWidget } from "@/components/chatbot";
 import { CustomCursor, SmoothScrollProvider } from "@/components/effects";
 import { ConditionalFooter, Navigation, SkipLink } from "@/components/layout";
+import { getContentBundle } from "@/lib/content/loader";
 import { absoluteUrl, siteUrl } from "@/lib/seo";
 import {
   isLocale,
@@ -118,6 +119,7 @@ export default async function LocaleLayout({
   const locale: Locale = localeParam;
   const messages = await getMessages();
   const direction = localeDirections[locale];
+  const { site } = await getContentBundle();
 
   return (
     <html
@@ -135,11 +137,11 @@ export default async function LocaleLayout({
             />
             <CustomCursor />
             <NeuralBackground />
-            <Navigation locale={locale} />
+            <Navigation locale={locale} site={site} />
             <div id="main-content" tabIndex={-1}>
               {children}
             </div>
-            <ConditionalFooter locale={locale} />
+            <ConditionalFooter locale={locale} site={site} />
             <ChatbotWidget locale={locale} />
           </SmoothScrollProvider>
         </NextIntlClientProvider>

@@ -1,6 +1,7 @@
 import Groq from "groq-sdk";
 import fs from "fs";
 import path from "path";
+import {saveChatSession} from "@/lib/kv";
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
@@ -9,7 +10,7 @@ export async function POST(req: Request) {
   
   try {
     const body = await req.json();
-    const { message, locale: requestLocale } = body;
+    const { message, locale: requestLocale, sessionId } = body;
     locale = requestLocale || "en";
 
     const knowledge = fs.readFileSync(
@@ -33,8 +34,16 @@ export async function POST(req: Request) {
       temperature: 0.7,
     });
 
+    const reply = completion.choices[0].message.content ?? "";
+
+    if (sessionId && typeof sessionId === "string" && message && reply) {
+      saveChatSession(sessionId, locale, message, reply).catch(error => {
+        console.error("Chat logging failed:", error);
+      });
+    }
+
     return Response.json({
-      reply: completion.choices[0].message.content,
+      reply,
     });
   } catch (error) {
     console.error("Chat API Error:", error);

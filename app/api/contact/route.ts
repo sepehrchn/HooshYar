@@ -3,6 +3,7 @@ import {
   validateContactSubmission,
   type ContactValidationInput,
 } from "@/lib/contact-validation";
+import { saveLead } from "@/lib/kv";
 
 export async function POST(request: NextRequest) {
   let payload: ContactValidationInput;
@@ -20,6 +21,13 @@ export async function POST(request: NextRequest) {
   }
 
   const { name, email, service, message, locale } = validation.data;
+
+  try {
+    await saveLead({ name, email, service, message, locale, status: "new" });
+  } catch (error) {
+    console.error("Failed to save lead to KV:", error);
+  }
+
   const resendKey = process.env.RESEND_API_KEY;
   const toEmail = process.env.CONTACT_TO_EMAIL;
   const fromEmail =

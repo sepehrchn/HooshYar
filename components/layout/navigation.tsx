@@ -4,11 +4,18 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { SectionNavLink } from "@/components/layout/section-nav-link";
 import { LogoMark } from "@/components/ui/logo-mark";
 import { getSectionHref } from "@/lib/section-nav";
-import { siteContent } from "@/lib/site";
+import { siteContent as defaultSiteContent } from "@/lib/site";
+import type { SiteContentData } from "@/lib/content/utils";
 import { cn } from "@/lib/utils";
 import type { Locale } from "@/types/locale";
 
-export function Navigation({ locale }: { locale: Locale }) {
+export function Navigation({
+  locale,
+  site = defaultSiteContent as SiteContentData,
+}: {
+  locale: Locale;
+  site?: SiteContentData;
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("/");
@@ -217,7 +224,7 @@ export function Navigation({ locale }: { locale: Locale }) {
 
           {/* Navigation Links - Center with smooth sliding underline */}
           <div className="relative hidden flex-1 items-center justify-center gap-1 lg:flex">
-            {siteContent.navigation.map((item) => {
+            {site.navigation.map((item) => {
               const isActive = activeSection === item.href;
               return (
                 <SectionNavLink
@@ -311,7 +318,7 @@ export function Navigation({ locale }: { locale: Locale }) {
         >
           <div className="overflow-hidden">
             <div className="mt-4 grid gap-2 border-t border-glass-border pt-4">
-              {siteContent.navigation.map((item) => (
+              {site.navigation.map((item) => (
                 <SectionNavLink
                   key={item.href}
                   locale={locale}

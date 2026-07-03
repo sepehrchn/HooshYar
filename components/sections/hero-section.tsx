@@ -12,7 +12,10 @@ import {
 } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { siteContent } from "@/lib/site";
+import { getContentBundle } from "@/lib/content/loader";
 import type { Locale } from "@/types/locale";
+import type { SiteContentData } from "@/lib/content/utils";
+import { siteContent as defaultSiteContent } from "@/lib/site";
 
 const HERO_VIDEO_MP4 = path.join(process.cwd(), "public/media/hero-video.mp4");
 const HERO_VIDEO_WEBM = path.join(process.cwd(), "public/media/hero-video.webm");
@@ -229,10 +232,16 @@ function MotoCard({
   );
 }
 
-export function LandingSection({ locale }: { locale: Locale }) {
+export function LandingSection({
+  locale,
+  site = defaultSiteContent as SiteContentData,
+}: {
+  locale: Locale;
+  site?: SiteContentData;
+}) {
   const videoStatus = !heroMediaReady();
-  const leftCards = [siteContent.valueCards[0], siteContent.valueCards[2]];
-  const rightCards = [siteContent.valueCards[1], siteContent.valueCards[3]];
+  const leftCards = [site.valueCards[0], site.valueCards[2]];
+  const rightCards = [site.valueCards[1], site.valueCards[3]];
 
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden px-5 pb-20 pt-32 sm:px-8 lg:px-12">
@@ -249,7 +258,7 @@ export function LandingSection({ locale }: { locale: Locale }) {
           <div className="grid items-center gap-5 lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)_minmax(0,15rem)] lg:gap-6 xl:grid-cols-[minmax(0,17rem)_minmax(0,1fr)_minmax(0,17rem)] xl:gap-8">
             <div className="hidden grid-rows-2 gap-4 lg:grid">
               {leftCards.map((card) => {
-                const index = siteContent.valueCards.indexOf(card);
+                const index = site.valueCards.indexOf(card);
                 return (
                   <MotoCard
                     key={card.icon}
@@ -268,7 +277,7 @@ export function LandingSection({ locale }: { locale: Locale }) {
 
             <div className="hidden grid-rows-2 gap-4 lg:grid">
               {rightCards.map((card) => {
-                const index = siteContent.valueCards.indexOf(card);
+                const index = site.valueCards.indexOf(card);
                 return (
                   <MotoCard
                     key={card.icon}
@@ -283,7 +292,7 @@ export function LandingSection({ locale }: { locale: Locale }) {
           </div>
 
           <div className="mt-5 grid grid-cols-2 gap-3 lg:hidden">
-            {siteContent.valueCards.map((card, index) => (
+            {site.valueCards.map((card, index) => (
               <MotoCard
                 key={card.icon}
                 icon={card.icon}

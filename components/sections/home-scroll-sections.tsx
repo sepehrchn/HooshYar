@@ -12,18 +12,19 @@ import {
   SnapPanel,
 } from "@/components/sections";
 import { GlassCard, GradientText, Heading } from "@/components/ui";
-import { pageContent, siteContent } from "@/lib/pages";
+import { getContentBundle } from "@/lib/content/loader";
 import type { Locale } from "@/types/locale";
 import { cn } from "@/lib/utils";
 
 export async function HomeScrollSections({ locale }: { locale: Locale }) {
-  const aboutHero = pageContent.about.hero[locale];
-  const contactHero = pageContent.contact.hero[locale];
+  const { site, pages } = await getContentBundle();
+  const aboutHero = pages.about.hero[locale];
+  const contactHero = pages.contact.hero[locale];
 
   return (
     <>
       <SnapPanel id="home" className="justify-stretch">
-        <LandingSection locale={locale} />
+        <LandingSection locale={locale} site={site} />
       </SnapPanel>
 
       <SnapPanel id="about">
@@ -60,13 +61,13 @@ export async function HomeScrollSections({ locale }: { locale: Locale }) {
                     style={{ letterSpacing: locale === 'fa' ? 'normal' : '0.1em', fontWeight: 800 }}
                     dir={locale === 'fa' ? 'rtl' : 'ltr'}
                   >
-                    {pageContent.about.origin.label[locale]}
+                    {pages.about.origin.label[locale]}
                   </h2>
                   <div
                     className="mt-6 space-y-4 text-[0.9375rem] leading-relaxed text-text-muted sm:text-base sm:leading-8"
                     dir={locale === 'fa' ? 'rtl' : 'ltr'}
                   >
-                    {pageContent.about.origin.body[locale].split('\n').map((paragraph, index) => (
+                    {pages.about.origin.body[locale].split('\n').map((paragraph, index) => (
                       <p key={index}>{paragraph}</p>
                     ))}
                   </div>
@@ -78,7 +79,7 @@ export async function HomeScrollSections({ locale }: { locale: Locale }) {
           {/* Differentiator Cards */}
           <section className="py-12 sm:py-16 lg:py-20">
             <SectionReveal className="mx-auto grid max-w-7xl gap-6 md:grid-cols-3">
-              {pageContent.about.differentiators.map((diff, index) => (
+              {pages.about.differentiators.map((diff, index) => (
                 <DifferentiatorCard
                   key={index}
                   title={diff.title[locale]}
@@ -96,7 +97,7 @@ export async function HomeScrollSections({ locale }: { locale: Locale }) {
           <section className="py-12 sm:py-16 lg:py-20">
             <SectionReveal className="mx-auto max-w-7xl">
               <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                {pageContent.about.principles.map((principle, index) => (
+                {pages.about.principles.map((principle, index) => (
                   <PrincipleCard
                     key={index}
                     title={principle.title[locale]}
@@ -135,7 +136,7 @@ export async function HomeScrollSections({ locale }: { locale: Locale }) {
             </SectionReveal>
           </section>
           {/* Embed all service categories inline */}
-          {siteContent.servicesPage.categories.map((category) => {
+          {site.servicesPage.categories.map((category) => {
             const categoryCopy = category[locale];
             return (
               <ServiceCategory
@@ -242,12 +243,12 @@ export async function HomeScrollSections({ locale }: { locale: Locale }) {
               }}
             />
           </div>
-          <ContactFAQ items={pageContent.contact.faq} locale={locale} />
+          <ContactFAQ items={pages.contact.faq} locale={locale} />
         </div>
       </SnapPanel>
 
       <SnapPanel id="footer" className="min-h-[70vh] justify-end pb-6">
-        <Footer locale={locale} />
+        <Footer locale={locale} site={site} />
       </SnapPanel>
     </>
   );
