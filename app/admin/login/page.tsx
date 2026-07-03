@@ -1,11 +1,11 @@
 'use client';
 
 import {signIn} from 'next-auth/react';
-import {useState, FormEvent} from 'react';
+import {useState, FormEvent, Suspense} from 'react';
 import {useSearchParams} from 'next/navigation';
 import Image from 'next/image';
 
-export default function AdminLoginPage() {
+function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -72,7 +72,7 @@ export default function AdminLoginPage() {
                 alt="Hoosh Yar Logo"
                 width={48}
                 height={48}
-                className="object-cover"
+                className="h-full w-full object-cover"
               />
             </div>
             <h1
@@ -174,5 +174,13 @@ export default function AdminLoginPage() {
         }
       `}</style>
     </div>
+  );
+}
+
+export default function AdminLoginPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <LoginForm />
+    </Suspense>
   );
 }

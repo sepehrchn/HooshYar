@@ -36,8 +36,8 @@ export default function LeadsPage() {
   }, [showToast, t]);
 
   useEffect(() => {
-    fetchLeads();
-  }, [fetchLeads]);
+    void fetchLeads();
+  }, []);
 
   const filteredLeads = useMemo(() => {
     return leads.filter(lead => {

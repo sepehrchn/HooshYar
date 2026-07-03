@@ -269,7 +269,7 @@ export async function getChatSessions(): Promise<ChatSession[]> {
 }
 
 // Content
-export async function getContent<T = any>(key: string, fallback: T): Promise<T> {
+export async function getContent<T = unknown>(key: string, fallback: T): Promise<T> {
   if (!isKvConfigured()) return fallback;
 
   try {
@@ -281,7 +281,7 @@ export async function getContent<T = any>(key: string, fallback: T): Promise<T> 
   }
 }
 
-export async function setContent<T = any>(key: string, value: T): Promise<void> {
+export async function setContent<T = unknown>(key: string, value: T): Promise<void> {
   if (!isKvConfigured()) return;
 
   try {

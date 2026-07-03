@@ -61,7 +61,7 @@ export function Sidebar() {
               alt="Logo"
               width={32}
               height={32}
-              className="object-cover"
+              className="h-full w-full object-cover"
             />
           </div>
           <span className="text-sm text-[#8A91B0] font-medium">{t('adminPanel')}</span>

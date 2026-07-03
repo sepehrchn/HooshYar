@@ -28,7 +28,11 @@ export function ContentEditor({
   const [en, setEn] = useState('');
 
   useEffect(() => {
-    if (!field) return;
+    if (!field) {
+      setFa('');
+      setEn('');
+      return;
+    }
     const root = field.root === 'site' ? site : pages;
     setFa(getPathValue(root, field.pathFa));
     setEn(getPathValue(root, field.pathEn));

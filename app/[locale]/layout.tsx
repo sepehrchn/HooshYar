@@ -11,7 +11,7 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import "@/app/globals.css";
 import { NeuralBackground } from "@/components/background";
-import { ChatbotWidget } from "@/components/chatbot";
+import { ChatbotWidgetLazy } from "@/components/chatbot/chatbot-widget-lazy";
 import { CustomCursor, SmoothScrollProvider } from "@/components/effects";
 import { ConditionalFooter, Navigation, SkipLink } from "@/components/layout";
 import { getContentBundle } from "@/lib/content/loader";
@@ -138,11 +138,11 @@ export default async function LocaleLayout({
             <CustomCursor />
             <NeuralBackground />
             <Navigation locale={locale} site={site} />
-            <div id="main-content" tabIndex={-1}>
-              {children}
-            </div>
-            <ConditionalFooter locale={locale} site={site} />
-            <ChatbotWidget locale={locale} />
+<div id="main-content" tabIndex={-1}>
+               {children}
+             </div>
+             <ConditionalFooter locale={locale} site={site} />
+             <ChatbotWidgetLazy locale={locale} />
           </SmoothScrollProvider>
         </NextIntlClientProvider>
       </body>

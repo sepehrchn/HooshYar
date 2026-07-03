@@ -12,7 +12,6 @@ import {
 } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { siteContent } from "@/lib/site";
-import { getContentBundle } from "@/lib/content/loader";
 import type { Locale } from "@/types/locale";
 import type { SiteContentData } from "@/lib/content/utils";
 import { siteContent as defaultSiteContent } from "@/lib/site";

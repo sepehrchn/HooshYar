@@ -152,8 +152,8 @@ export default function SettingsPage() {
   }, [showToast, t]);
 
   useEffect(() => {
-    fetchSettings();
-  }, [fetchSettings]);
+    void fetchSettings();
+  }, []);
 
   const handleDemoToggle = async (enabled: boolean) => {
     setIsTogglingDemo(true);

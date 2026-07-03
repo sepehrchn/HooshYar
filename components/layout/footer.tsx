@@ -6,6 +6,7 @@ import { siteContent as defaultSiteContent } from "@/lib/site";
 import type { SiteContentData } from "@/lib/content/utils";
 import { cn } from "@/lib/utils";
 import type { Locale } from "@/types/locale";
+import Image from "next/image";
 
 export function Footer({
   locale,
@@ -200,27 +201,29 @@ export function Footer({
         }}>
           <div className="flex items-center justify-center gap-3">
           {/* Circular Logo Badge with Animated Glow */}
-          <div className="relative h-7 w-7">
-            {/* Animated gradient ring */}
-            <div 
-              className="absolute inset-0 rounded-full animate-spin-slow"
-              style={{
-                background: "linear-gradient(90deg, rgba(63, 232, 244, 0.4) 0%, rgba(157, 92, 255, 0.4) 33%, rgba(230, 60, 216, 0.4) 66%, rgba(63, 232, 244, 0.4) 100%)",
-                padding: "2px",
-                WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                WebkitMaskComposite: "xor",
-                maskComposite: "exclude",
-                animationDuration: "8s"
-              }}
-            />
-            <div className="relative h-full w-full overflow-hidden rounded-full ring-2 ring-violet-core/20 ring-offset-2 ring-offset-bg-void">
-              <img
-                src="/images/Hoosh_Yar_Logo.jpeg"
-                alt="Hoosh Yar"
-                className="h-full w-full object-cover"
-              />
-            </div>
-          </div>
+<div className="relative h-7 w-7">
+               {/* Animated gradient ring */}
+               <div 
+                 className="absolute inset-0 rounded-full animate-spin-slow"
+                 style={{
+                   background: "linear-gradient(90deg, rgba(63, 232, 244, 0.4) 0%, rgba(157, 92, 255, 0.4) 33%, rgba(230, 60, 216, 0.4) 66%, rgba(63, 232, 244, 0.4) 100%)",
+                   padding: "2px",
+                   WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                   WebkitMaskComposite: "xor",
+                   maskComposite: "exclude",
+                   animationDuration: "8s"
+                 }}
+               />
+               <div className="relative h-full w-full overflow-hidden rounded-full ring-2 ring-violet-core/20 ring-offset-2 ring-offset-bg-void">
+                 <Image
+                   src="/images/Hoosh_Yar_Logo.jpeg"
+                   alt="Hoosh Yar"
+                   width={28}
+                   height={28}
+                   className="h-full w-full object-cover"
+                 />
+               </div>
+             </div>
           
           {/* Gradient Text */}
           <span

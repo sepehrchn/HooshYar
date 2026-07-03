@@ -4,7 +4,6 @@ import { SectionReveal } from '@/components/motion';
 import { cn } from '@/lib/utils';
 import type { Locale } from '@/types/locale';
 import { useState, useEffect, useMemo } from 'react';
-import Image from 'next/image';
 
 type AccentColor = 'cyan' | 'violet' | 'magenta';
 
@@ -206,9 +205,12 @@ export function PortfolioCard({
   const iconKey = slug as keyof typeof projectIcons;
   const projectIcon = projectIcons[iconKey];
 
-  // Auto-advance slideshow only if multiple images
-  useEffect(() => {
+// Auto-advance slideshow only if multiple images and not reduced motion
+   useEffect(() => {
     if (isSingleImage) return;
+    
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
     
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % totalSlides);
@@ -297,12 +299,12 @@ export function PortfolioCard({
                   </div>
                 ) : (
                   // Simple image with object-fit cover - eager loading for slideshow
-                  <Image
+                  <img
                     src={img}
                     alt={`${title[locale]} - slide ${idx + 1}`}
-                    fill
-                    className="object-cover object-top"
-                    priority={idx === 0}
+                    className="h-full w-full object-cover object-top"
+                    loading={idx === 0 ? 'eager' : 'lazy'}
+                    decoding="async"
                   />
                 )}
               </div>

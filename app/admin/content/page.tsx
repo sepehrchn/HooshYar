@@ -53,8 +53,8 @@ export default function ContentManagerPage() {
   }, [showToast, t]);
 
   useEffect(() => {
-    fetchContent();
-  }, [fetchContent]);
+    void fetchContent();
+  }, []);
 
   const handleSave = async (fa: string, en: string) => {
     if (!selectedField) return;

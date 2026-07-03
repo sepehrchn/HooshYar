@@ -44,8 +44,8 @@ export default function ChatbotLogsPage() {
   }, [showToast, t]);
 
   useEffect(() => {
-    fetchSessions();
-  }, [fetchSessions]);
+    void fetchSessions();
+  }, []);
 
   const markAsRead = async (sessionId: string) => {
     try {

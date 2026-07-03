@@ -41,7 +41,7 @@ export function AdminLocaleProvider({children}: {children: ReactNode}) {
     if (isHydrated) {
       localStorage.setItem(STORAGE_KEY, locale);
     }
-  }, [locale, isHydrated]);
+  }, [isHydrated, locale]);
 
   const setLocale = useCallback((next: AdminLocale) => {
     setLocaleState(next);
