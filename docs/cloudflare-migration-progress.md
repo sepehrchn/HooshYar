@@ -5,7 +5,7 @@
 **Deploy target:** Cloudflare **Workers** (via Wrangler / Workers Builds)  
 **Project start:** July 3, 2026  
 **Last updated:** July 3, 2026 at 6:19 PM (UTC+4)  
-**GitHub repo:** https://github.com/sepehrjo/HooshYar  
+**GitHub repo:** https://github.com/sepehrchn/HooshYar  
 **Deploy path:** Option A — Git-connected Workers (auto-deploy on push)
 
 ---
@@ -156,14 +156,14 @@ None (unless you want to revert to `proxy.ts` before OpenNext adds support — n
 - [x] No `.env.local` or `.dev.vars` tracked in git
 - [x] `.env.example` tracked — placeholders only, no real secrets
 - [x] Migration files committed as one commit
-- [x] Pushed to https://github.com/sepehrjo/HooshYar
+- [x] Pushed to https://github.com/sepehrchn/HooshYar
 - [x] Disk space healthy before push (~8.7 GB free)
 
 ### Commit
 `chore: migrate to Cloudflare Workers via OpenNext`
 
 ### User must (Step 4 — next)
-Connect Cloudflare Workers to **sepehrjo/HooshYar** (see Step 4 below). AI will not touch the dashboard until you confirm.
+Connect Cloudflare Workers to **sepehrchn/HooshYar** (see Step 4 below). AI will not touch the dashboard until you confirm.
 
 ---
 
@@ -180,7 +180,7 @@ Do **not** create a Pages project with:
 
 ### Correct dashboard flow (Option A — chosen)
 1. **Workers & Pages** → **Create** → **Worker** → **Connect to Git**
-2. Select repo: **sepehrjo/HooshYar** — https://github.com/sepehrjo/HooshYar
+2. Select repo: **sepehrchn/HooshYar** — https://github.com/sepehrchn/HooshYar
 3. **Build command:** `npx opennextjs-cloudflare build`
 4. **Deploy command:** `npx opennextjs-cloudflare deploy` (enables auto-deploy on every push to production branch)
 5. Do **not** click deploy / save until Step 5 env vars are ready (or expect auth/KV/chatbot to fail until vars are added)
@@ -358,10 +358,10 @@ Machine hit **100% disk** during first `npm install` (`ENOSPC`). Resolved by cle
 | 2026-07-03 | 1 | Installed OpenNext + Wrangler; ran `migrate`; scaffold complete |
 | 2026-07-03 | 2 | Build passes; `proxy.ts` → `middleware.ts`; local preview smoke test OK |
 | 2026-07-03 | — | Progress file created |
-| 2026-07-03 | 3 | Committed + pushed to sepehrjo/HooshYar; secrets excluded |
+| 2026-07-03 | 3 | Committed + pushed to sepehrchn/HooshYar; secrets excluded |
 
 ---
 
 ## Next action
 
-**Step 4 (user):** Connect Git-connected Worker in Cloudflare dashboard to **sepehrjo/HooshYar** — do not deploy yet. Confirm when done; then Step 5 env vars.
+**Step 4 (user):** Connect Git-connected Worker in Cloudflare dashboard to **sepehrchn/HooshYar** — do not deploy yet. Confirm when done; then Step 5 env vars.
