@@ -232,14 +232,17 @@ After Step 8, replace KV REST vars with a **KV namespace binding** (see Step 8).
 
 ## Step 6 — First deploy to preview URL
 
-**Status:** 🔴 User action required ← **you are here**
+**Status:** ⚠️ Mixed — build failed once; fix pushed; awaiting redeploy  
+**Build fix commit:** `aed1ec7`
 
-### Expected preview URL format
-`https://hoosh-yar-web.<account>.workers.dev` (exact subdomain depends on worker name / account)
+### First deploy failure (diagnosed)
+- **Error:** `GROQ_API_KEY environment variable is missing` during `Collecting page data for /api/chat`
+- **Cause:** Groq client was created at module load; Cloudflare Workers Builds do not inject runtime secrets at **build** time
+- **Fix:** Lazy-init Groq in `app/api/chat/route.ts` (pushed to `main` — auto-deploy should retrigger)
 
 ### User must
-- Trigger build/deploy from dashboard or run `npm run deploy`
-- If build fails, paste build log for diagnosis
+- [ ] Wait for new deployment from commit `aed1ec7` (or manually retry deploy)
+- [ ] Reply with **`.workers.dev` URL** when build succeeds, or paste log if it fails again
 
 ---
 
