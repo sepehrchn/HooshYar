@@ -4,21 +4,21 @@
 **Adapter:** `@opennextjs/cloudflare` (OpenNext) — **not** `@cloudflare/next-on-pages`  
 **Deploy target:** Cloudflare **Workers** (via Wrangler / Workers Builds)  
 **Project start:** July 3, 2026  
-**Last updated:** July 3, 2026 at 6:19 PM (UTC+4)  
+**Last updated:** July 3, 2026 at 6:45 PM (UTC+4)  
 **GitHub repo:** https://github.com/sepehrchn/HooshYar  
 **Deploy path:** Option A — Git-connected Workers (auto-deploy on push)
 
 ---
 
-## Overall progress: 3 / 13 steps complete (~23%)
+## Overall progress: 5 / 13 steps complete (~38%)
 
 ```
 Step  1  Install OpenNext + Wrangler          ████████████████████████████████ 100%  ✅ AI
 Step  2  Local build compatibility           ████████████████████████████████ 100%  ⚠️ Mixed
 Step  3  GitHub + secrets excluded           ████████████████████████████████ 100%  ✅ AI
-Step  4  Create Cloudflare Worker (Git)      ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0%  🔴 User
-Step  5  Environment variables               ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0%  🔴 User
-Step  6  First deploy (.workers.dev)         ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0%  🔴 User
+Step  4  Create Cloudflare Worker (Git)      ████████████████████████████████ 100%  🔴 User ✅
+Step  5  Environment variables               ████████████████████████████████ 100%  🔴 User ✅
+Step  6  First deploy (.workers.dev)         ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0%  🔴 User ← current
 Step  7  Smoke test on preview URL           ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0%  🔴 User
 Step  8  Migrate Vercel KV → Cloudflare KV   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0%  ⚠️ Mixed
 Step  9  Redeploy + verify KV                 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0%  🔴 User
@@ -169,8 +169,22 @@ Connect Cloudflare Workers to **sepehrchn/HooshYar** (see Step 4 below). AI will
 
 ## Step 4 — Create Cloudflare Worker project (Git)
 
-**Status:** 🔴 User action required  
-**Not started**
+**Status:** ✅ User confirmed connected  
+**Completed:** July 3, 2026
+
+### Configuration (Option A)
+- **Repo:** sepehrchn/HooshYar — https://github.com/sepehrchn/HooshYar
+- **Path:** Workers & Pages → Worker → Connect to Git
+- **Build command:** `npx opennextjs-cloudflare build`
+- **Deploy command:** `npx opennextjs-cloudflare deploy`
+- **Auto-deploy:** on push to `main`
+- **Deploy triggered:** No (waiting for Step 5 env vars)
+
+---
+
+## Step 5 — Environment variables
+
+**Status:** 🔴 User action required ← **you are here**
 
 ### Important: Workers, not classic Pages
 
@@ -195,10 +209,12 @@ npm run deploy
 
 ## Step 5 — Environment variables
 
-**Status:** 🔴 User action required  
-**Not started**
+**Status:** ✅ User confirmed complete  
+**Completed:** July 3, 2026
 
-Add in Cloudflare dashboard → Worker → **Settings** → **Variables and Secrets** (names only — never commit values):
+Variables added in Cloudflare dashboard (Production). Values not recorded here (secrets policy).
+
+Reference — variables configured:
 
 | Variable | Notes |
 |----------|-------|
@@ -216,8 +232,7 @@ After Step 8, replace KV REST vars with a **KV namespace binding** (see Step 8).
 
 ## Step 6 — First deploy to preview URL
 
-**Status:** 🔴 User action required  
-**Not started**
+**Status:** 🔴 User action required ← **you are here**
 
 ### Expected preview URL format
 `https://hoosh-yar-web.<account>.workers.dev` (exact subdomain depends on worker name / account)
@@ -358,10 +373,10 @@ Machine hit **100% disk** during first `npm install` (`ENOSPC`). Resolved by cle
 | 2026-07-03 | 1 | Installed OpenNext + Wrangler; ran `migrate`; scaffold complete |
 | 2026-07-03 | 2 | Build passes; `proxy.ts` → `middleware.ts`; local preview smoke test OK |
 | 2026-07-03 | — | Progress file created |
-| 2026-07-03 | 3 | Committed + pushed to sepehrchn/HooshYar; secrets excluded |
+| 2026-07-03 | 5 | User added Production env vars in Cloudflare |
 
 ---
 
 ## Next action
 
-**Step 4 (user):** Connect Git-connected Worker in Cloudflare dashboard to **sepehrchn/HooshYar** — do not deploy yet. Confirm when done; then Step 5 env vars.
+**Step 6 (user):** Trigger first deploy from Cloudflare dashboard. Reply with preview URL or paste build log if it fails.

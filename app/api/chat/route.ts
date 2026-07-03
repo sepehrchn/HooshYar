@@ -3,7 +3,11 @@ import fs from "fs";
 import path from "path";
 import {saveChatSession} from "@/lib/kv";
 
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+function getGroqClient(): Groq | null {
+  const apiKey = process.env.GROQ_API_KEY;
+  if (!apiKey) return null;
+  return new Groq({ apiKey });
+}
 
 interface RateLimitEntry {
   count: number;
@@ -55,7 +59,8 @@ export async function POST(req: Request) {
     return Response.json({ error: "too_many_requests" }, { status: 429 });
   }
 
-  if (!process.env.GROQ_API_KEY) {
+  const groq = getGroqClient();
+  if (!groq) {
     return Response.json(
       { reply: locale === "fa"
         ? "سرویس چت در حالت نگهداری است."
