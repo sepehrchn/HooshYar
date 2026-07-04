@@ -1,5 +1,5 @@
 import {NextRequest, NextResponse} from 'next/server';
-import {getToken} from 'next-auth/jwt';
+import {getAdminToken} from '@/lib/auth';
 import {
   getDemoMode,
   getLeads,
@@ -9,11 +9,7 @@ import {
 } from '@/lib/kv';
 
 async function requireAuth(request: NextRequest) {
-  const token = await getToken({
-    req: request,
-    secret: process.env.NEXTAUTH_SECRET,
-  });
-  return token;
+  return getAdminToken(request);
 }
 
 export async function GET(request: NextRequest) {

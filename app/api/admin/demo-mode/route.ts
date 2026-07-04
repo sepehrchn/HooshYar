@@ -1,14 +1,10 @@
 import {NextRequest, NextResponse} from 'next/server';
-import {getToken} from 'next-auth/jwt';
+import {getAdminToken} from '@/lib/auth';
 import {getDemoMode, setDemoMode} from '@/lib/kv';
 
 export async function GET(request: NextRequest) {
   try {
-    const token = await getToken({
-      req: request,
-      secret: process.env.NEXTAUTH_SECRET
-    });
-
+    const token = await getAdminToken(request);
     if (!token) {
       return NextResponse.json({error: 'Unauthorized'}, {status: 401});
     }
@@ -26,11 +22,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const token = await getToken({
-      req: request,
-      secret: process.env.NEXTAUTH_SECRET
-    });
-
+    const token = await getAdminToken(request);
     if (!token) {
       return NextResponse.json({error: 'Unauthorized'}, {status: 401});
     }

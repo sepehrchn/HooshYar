@@ -1,5 +1,5 @@
 import {NextRequest, NextResponse} from 'next/server';
-import {getToken} from 'next-auth/jwt';
+import {getAdminToken} from '@/lib/auth';
 import {
   getDemoMode,
   getChatSessions,
@@ -39,11 +39,7 @@ function computeAnalytics(sessions: ChatSession[]): ChatAnalytics {
 
 export async function GET(request: NextRequest) {
   try {
-    const token = await getToken({
-      req: request,
-      secret: process.env.NEXTAUTH_SECRET,
-    });
-
+    const token = await getAdminToken(request);
     if (!token) {
       return NextResponse.json({error: 'Unauthorized'}, {status: 401});
     }
@@ -64,11 +60,7 @@ export async function GET(request: NextRequest) {
 
 export async function PATCH(request: NextRequest) {
   try {
-    const token = await getToken({
-      req: request,
-      secret: process.env.NEXTAUTH_SECRET,
-    });
-
+    const token = await getAdminToken(request);
     if (!token) {
       return NextResponse.json({error: 'Unauthorized'}, {status: 401});
     }

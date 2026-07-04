@@ -1,5 +1,5 @@
 import {NextRequest, NextResponse} from 'next/server';
-import {getToken} from 'next-auth/jwt';
+import {getAdminToken} from '@/lib/auth';
 import {getDemoMode} from '@/lib/kv';
 import {getFieldById} from '@/lib/content/content-tree';
 import {
@@ -20,10 +20,7 @@ import {
 
 export async function GET(request: NextRequest) {
   try {
-    const token = await getToken({
-      req: request,
-      secret: process.env.NEXTAUTH_SECRET,
-    });
+    const token = await getAdminToken(request);
 
     if (!token) {
       return NextResponse.json({error: 'Unauthorized'}, {status: 401});
@@ -55,10 +52,7 @@ interface PutBody {
 
 export async function PUT(request: NextRequest) {
   try {
-    const token = await getToken({
-      req: request,
-      secret: process.env.NEXTAUTH_SECRET,
-    });
+    const token = await getAdminToken(request);
 
     if (!token) {
       return NextResponse.json({error: 'Unauthorized'}, {status: 401});
@@ -187,10 +181,7 @@ interface ResetBody {
 
 export async function PATCH(request: NextRequest) {
   try {
-    const token = await getToken({
-      req: request,
-      secret: process.env.NEXTAUTH_SECRET,
-    });
+    const token = await getAdminToken(request);
 
     if (!token) {
       return NextResponse.json({error: 'Unauthorized'}, {status: 401});

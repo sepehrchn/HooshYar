@@ -1,5 +1,5 @@
 import {NextRequest, NextResponse} from 'next/server';
-import {getToken} from 'next-auth/jwt';
+import {getAdminToken} from '@/lib/auth';
 import {
   clearChatLogs,
   getDemoMode,
@@ -41,10 +41,7 @@ async function checkKvConnection(): Promise<boolean> {
 
 export async function GET(request: NextRequest) {
   try {
-    const token = await getToken({
-      req: request,
-      secret: process.env.NEXTAUTH_SECRET,
-    });
+    const token = await getAdminToken(request);
 
     if (!token) {
       return NextResponse.json({error: 'Unauthorized'}, {status: 401});
@@ -91,10 +88,7 @@ interface SocialLinksBody {
 
 export async function PUT(request: NextRequest) {
   try {
-    const token = await getToken({
-      req: request,
-      secret: process.env.NEXTAUTH_SECRET,
-    });
+    const token = await getAdminToken(request);
 
     if (!token) {
       return NextResponse.json({error: 'Unauthorized'}, {status: 401});
@@ -155,10 +149,7 @@ interface DangerActionBody {
 
 export async function POST(request: NextRequest) {
   try {
-    const token = await getToken({
-      req: request,
-      secret: process.env.NEXTAUTH_SECRET,
-    });
+    const token = await getAdminToken(request);
 
     if (!token) {
       return NextResponse.json({error: 'Unauthorized'}, {status: 401});
