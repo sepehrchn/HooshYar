@@ -2,6 +2,15 @@ import NextAuth, {AuthOptions} from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 
+// On Cloudflare Workers, NextAuth's detectOrigin() only trusts forwarded
+// host headers when process.env.VERCEL or process.env.AUTH_TRUST_HOST is set.
+// Without this, NextAuth falls back to http://localhost:3000 for redirect URLs
+// (signout, signIn, etc.) because NEXTAUTH_URL is often not set on Workers.
+// Setting AUTH_TRUST_HOST=true makes NextAuth use the x-forwarded-host and
+// x-forwarded-proto headers that Cloudflare provides, producing correct
+// production URLs like https://hooshyar.sepehr.homes/admin/login
+process.env.AUTH_TRUST_HOST = 'true';
+
 const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
