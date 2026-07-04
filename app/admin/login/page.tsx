@@ -34,12 +34,10 @@ function LoginForm() {
         console.error('Sign in error:', result.error);
         setError(t('loginError'));
       } else {
-        // signIn with redirect:false returns {ok, error, status, url}.
-        // On success, result.error is null/undefined — redirect to the
-        // callbackUrl (defaults to /admin). Using window.location.href
-        // ensures a full page reload so the session cookie is picked up.
-        const target = result?.url || callbackUrl;
-        window.location.href = target;
+        // NEVER use result.url — it's an absolute URL built by NextAuth's
+        // detectOrigin() which resolves to http://localhost:3000 on
+        // Cloudflare Workers. Always use the relative callbackUrl directly.
+        window.location.href = callbackUrl;
       }
     } catch (err) {
       console.error('Sign in exception:', err);

@@ -143,10 +143,14 @@ export function Sidebar() {
           </button>
         </div>
 
-        {/* Logout Button */}
+        {/* Logout Button — use redirect:false then manually redirect to
+            avoid NextAuth's detectOrigin() building a localhost URL */}
         <button
           type="button"
-          onClick={() => signOut({callbackUrl: '/admin/login'})}
+          onClick={async () => {
+            await signOut({callbackUrl: '/admin/login', redirect: false});
+            window.location.href = '/admin/login';
+          }}
           className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-[#8A91B0] hover:text-[#E63CD8] hover:bg-[rgba(230,60,216,0.1)] transition-all duration-200"
         >
           <LogOut className="w-5 h-5" />
