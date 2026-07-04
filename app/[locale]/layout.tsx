@@ -70,6 +70,15 @@ export async function generateMetadata({
       template: locale === "fa" ? "%s | هوش‌یار" : "%s | Hoosh Yar",
     },
     description,
+    icons: {
+      icon: [
+        { url: "/favicon.ico" },
+        { url: "/favicon.png", type: "image/png" },
+      ],
+      apple: [
+        { url: "/favicon.ico" },
+      ],
+    },
     openGraph: {
       title,
       description,

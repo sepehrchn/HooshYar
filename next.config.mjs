@@ -11,6 +11,17 @@ const nextConfig = {
   turbopack: {
     root,
   },
+  images: {
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
+  webpack: (config) => {
+    // Prevent tree-shaking of chatbot widget on Cloudflare Workers/OpenNext builds
+    config.module.rules.push({
+      test: /chatbot-widget/,
+      sideEffects: true,
+    });
+    return config;
+  },
   async headers() {
     return [
       {

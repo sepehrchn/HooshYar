@@ -24,19 +24,18 @@ const authOptions: AuthOptions = {
         }
 
         const adminUsername = process.env.ADMIN_USERNAME;
-        const adminPasswordHashBase64 = process.env.ADMIN_PASSWORD_HASH_BASE64;
-        const adminPasswordHash = adminPasswordHashBase64 
-          ? Buffer.from(adminPasswordHashBase64, 'base64').toString('utf-8')
-          : undefined;
+        const rawHash = process.env.ADMIN_PASSWORD_HASH_BASE64
+          ? Buffer.from(process.env.ADMIN_PASSWORD_HASH_BASE64, 'base64').toString('utf-8')
+          : process.env.ADMIN_PASSWORD_HASH;
 
         console.log('[AUTH] Environment check:', {
           adminUsername,
-          hasPasswordHashBase64: !!adminPasswordHashBase64,
-          hasPasswordHash: !!adminPasswordHash,
-          passwordHashLength: adminPasswordHash?.length
+          hasPasswordHashBase64: !!process.env.ADMIN_PASSWORD_HASH_BASE64,
+          hasPasswordHash: !!process.env.ADMIN_PASSWORD_HASH,
+          passwordHashLength: rawHash?.length
         });
 
-        if (!adminUsername || !adminPasswordHash) {
+        if (!adminUsername || !rawHash) {
           console.error('[AUTH] ❌ Admin credentials not configured in environment');
           return null;
         }
@@ -57,7 +56,7 @@ const authOptions: AuthOptions = {
         console.log('[AUTH] Verifying password with bcrypt...');
         const isValid = await bcrypt.compare(
           credentials.password,
-          adminPasswordHash
+          rawHash
         );
 
         console.log('[AUTH] Password verification result:', isValid);
