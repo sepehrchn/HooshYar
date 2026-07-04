@@ -151,6 +151,17 @@ export const adminText = {
     demoModeEnabled: 'حالت دمو فعال شد',
     demoModeDisabled: 'حالت دمو غیرفعال شد',
     errorOccurred: 'خطایی رخ داد',
+
+    // Login Page
+    username: 'نام کاربری',
+    password: 'رمز عبور',
+    loginButton: 'ورود',
+    loginTitle: 'هوش‌یار | مدیریت',
+    loginSubmitting: 'در حال ورود...',
+    loginError: 'نام کاربری یا رمز عبور اشتباه است',
+    loginUnexpectedError: 'خطایی رخ داده است. لطفاً دوباره تلاش کنید',
+    loginUsernamePlaceholder: 'نام کاربری را وارد کنید',
+    loginPasswordPlaceholder: 'رمز عبور را وارد کنید',
   },
   en: {
     // Navigation
@@ -304,6 +315,17 @@ export const adminText = {
     demoModeEnabled: 'Demo mode enabled',
     demoModeDisabled: 'Demo mode disabled',
     errorOccurred: 'An error occurred',
+
+    // Login Page
+    username: 'Username',
+    password: 'Password',
+    loginButton: 'Login',
+    loginTitle: 'Hoosh Yar | Admin',
+    loginSubmitting: 'Logging in...',
+    loginError: 'Username or password is incorrect',
+    loginUnexpectedError: 'An error occurred. Please try again',
+    loginUsernamePlaceholder: 'Enter username',
+    loginPasswordPlaceholder: 'Enter password',
   },
 } as const;
 

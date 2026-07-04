@@ -19,7 +19,7 @@ export function Footer({
   const tagline = site.footer.tagline[locale];
   const pagesLabel = site.footer.columnsLabel.pages[locale];
 
-  // Social icons with placeholder links
+  // Social icons — filter out placeholder links (href is "#" or empty)
   const socialLinks = [
     {
       name: "Instagram",
@@ -68,7 +68,7 @@ export function Footer({
         </svg>
       ),
     },
-  ];
+  ].filter(link => link.href && link.href !== '#' && !link.href.endsWith('/fa#') && !link.href.endsWith('/en#'));
 
   return (
     <footer className="relative px-5 pb-8 sm:px-8 lg:px-12">
