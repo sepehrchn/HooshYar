@@ -4,8 +4,10 @@ import {signIn} from 'next-auth/react';
 import {useState, FormEvent, Suspense} from 'react';
 import {useSearchParams} from 'next/navigation';
 import Image from 'next/image';
+import {useAdminLocale} from '@/hooks/useAdminLocale';
 
 function LoginForm() {
+  const {t, isRTL} = useAdminLocale();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -30,23 +32,23 @@ function LoginForm() {
 
       if (result?.error) {
         console.error('Sign in error:', result.error);
-        setError('نام کاربری یا رمز عبور اشتباه است');
+        setError(t('loginError'));
       } else if (result?.ok) {
         window.location.href = callbackUrl;
       } else {
         console.error('Unexpected result:', result);
-        setError('خطایی رخ داده است. لطفاً دوباره تلاش کنید');
+        setError(t('loginUnexpectedError'));
       }
     } catch (err) {
       console.error('Sign in exception:', err);
-      setError('خطایی رخ داده است. لطفاً دوباره تلاش کنید');
+      setError(t('loginUnexpectedError'));
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4" dir={isRTL ? "rtl" : "ltr"}>
       {/* Login Card */}
       <div className="relative w-full max-w-md">
         {/* Animated Border Trace */}
@@ -85,7 +87,7 @@ function LoginForm() {
                 backgroundClip: 'text'
               }}
             >
-              هوش‌یار | Admin
+              {t('loginTitle')}
             </h1>
           </div>
 
@@ -97,7 +99,7 @@ function LoginForm() {
                 htmlFor="username"
                 className="block text-sm font-medium text-[#8A91B0] mb-2"
               >
-                Username
+                {t('username')}
               </label>
               <input
                 id="username"
@@ -111,7 +113,7 @@ function LoginForm() {
                     ? 'border-[#E63CD8] focus:ring-[#E63CD8]/50'
                     : 'border-[rgba(255,255,255,0.12)] focus:ring-[#3FE8F4]/50 focus:border-[#3FE8F4]'
                 }`}
-                placeholder="Enter username"
+                placeholder={t('loginUsernamePlaceholder')}
               />
             </div>
 
@@ -121,7 +123,7 @@ function LoginForm() {
                 htmlFor="password"
                 className="block text-sm font-medium text-[#8A91B0] mb-2"
               >
-                Password
+                {t('password')}
               </label>
               <input
                 id="password"
@@ -135,7 +137,7 @@ function LoginForm() {
                     ? 'border-[#E63CD8] focus:ring-[#E63CD8]/50'
                     : 'border-[rgba(255,255,255,0.12)] focus:ring-[#3FE8F4]/50 focus:border-[#3FE8F4]'
                 }`}
-                placeholder="Enter password"
+                placeholder={t('loginPasswordPlaceholder')}
               />
             </div>
 
@@ -156,7 +158,7 @@ function LoginForm() {
                   'linear-gradient(135deg, #3FE8F4 0%, #E63CD8 100%)'
               }}
             >
-              {isLoading ? 'در حال ورود...' : 'ورود'}
+              {isLoading ? t('loginSubmitting') : t('loginButton')}
             </button>
           </form>
         </div>
