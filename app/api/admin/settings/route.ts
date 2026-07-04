@@ -24,11 +24,15 @@ function maskGroqKey(key: string | undefined): string | null {
 }
 
 async function checkKvConnection(): Promise<boolean> {
-  if (!isKvConfigured()) return false;
+  if (!(await isKvConfigured())) return false;
 
   try {
-    const {kv} = await import('@vercel/kv');
-    await kv.get('demo_mode');
+    const { getCloudflareContext } = await import('@opennextjs/cloudflare');
+    const ctx = getCloudflareContext();
+    const kv = (ctx.env as Record<string, unknown>).KV;
+    if (!kv) return false;
+    // Lightweight check — try reading a key
+    await (kv as { get: (k: string) => Promise<string | null> }).get('demo_mode');
     return true;
   } catch {
     return false;

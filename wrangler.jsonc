@@ -23,5 +23,11 @@
 		// Enable image optimization
 		// see https://opennext.js.org/cloudflare/howtos/image
 		"binding": "IMAGES"
-	}
+	},
+	"kv_namespaces": [
+		{
+			"binding": "KV",
+			"id": "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+		}
+	]
 }
