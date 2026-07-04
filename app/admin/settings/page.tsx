@@ -357,9 +357,9 @@ export default function SettingsPage() {
             </div>
           </div>
 
-          {/* Vercel KV */}
+          {/* Cloudflare KV */}
           <div className="flex items-center justify-between p-4 bg-[rgba(255,255,255,0.02)] rounded-lg">
-            <div className="text-sm font-medium text-[#F2F4FF]">{t('vercelKv')}</div>
+            <div className="text-sm font-medium text-[#F2F4FF]">Cloudflare KV</div>
             <div className="flex items-center gap-2">
               <StatusDot connected={kvConnected} />
               <span className="text-sm text-[#8A91B0]">

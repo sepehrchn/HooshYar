@@ -84,7 +84,7 @@ export async function POST(req: Request) {
     if (sessionId && typeof sessionId === "string" && reply) {
       try {
         const { saveChatSession } = await import("@/lib/kv");
-        saveChatSession(sessionId, locale || "en", sanitized, reply).catch(() => {});
+        await saveChatSession(sessionId, locale || "en", sanitized, reply);
       } catch {
         /* silent fail */
       }

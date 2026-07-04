@@ -1,5 +1,6 @@
 'use client';
 
+import {useCallback, useEffect, useState} from 'react';
 import {useSession} from 'next-auth/react';
 import {redirect} from 'next/navigation';
 import {StatCard} from '@/components/admin/StatCard';
@@ -12,10 +13,96 @@ import {
   ToggleLeft,
 } from 'lucide-react';
 import {useAdminLocale} from '@/hooks/useAdminLocale';
+import type {Lead, ChatSession} from '@/lib/kv';
+
+interface DashboardData {
+  newLeadsToday: number;
+  totalLeads: number;
+  chatSessionsToday: number;
+  lastUpdate: string | null;
+  recentLeads: Lead[];
+  recentChats: ChatSession[];
+}
 
 export default function AdminDashboard() {
   const {data: session, status} = useSession();
   const {t, isRTL} = useAdminLocale();
+  const [data, setData] = useState<DashboardData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchDashboard = useCallback(async () => {
+    try {
+      const [leadsRes, chatsRes] = await Promise.all([
+        fetch('/api/admin/leads'),
+        fetch('/api/admin/chatbot-logs'),
+      ]);
+
+      const leadsData = leadsRes.ok ? await leadsRes.json() : {leads: []};
+      const chatsData = chatsRes.ok ? await chatsRes.json() : {sessions: []};
+
+      const allLeads: Lead[] = leadsData.leads ?? [];
+      const allChats: ChatSession[] = chatsData.sessions ?? [];
+
+      const today = new Date().toDateString();
+      const newLeadsToday = allLeads.filter(
+        l => new Date(l.createdAt).toDateString() === today
+      ).length;
+      const chatSessionsToday = allChats.filter(
+        s => new Date(s.lastActivityAt || s.createdAt).toDateString() === today
+      ).length;
+
+      const recentLeads = [...allLeads]
+        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+        .slice(0, 3);
+
+      const recentChats = [...allChats]
+        .sort((a, b) => new Date(b.lastActivityAt || b.createdAt).getTime() - new Date(a.lastActivityAt || a.createdAt).getTime())
+        .slice(0, 3);
+
+      // Try to get last content update from settings
+      let lastUpdate: string | null = null;
+      try {
+        const settingsRes = await fetch('/api/admin/settings');
+        if (settingsRes.ok) {
+          const settingsData = await settingsRes.json();
+          // The settings API doesn't return lastModified directly,
+          // but the content API does
+        }
+      } catch {}
+
+      try {
+        const contentRes = await fetch('/api/admin/content');
+        if (contentRes.ok) {
+          const contentData = await contentRes.json();
+          lastUpdate = contentData.lastModified ?? null;
+        }
+      } catch {}
+
+      setData({
+        newLeadsToday,
+        totalLeads: allLeads.length,
+        chatSessionsToday,
+        lastUpdate,
+        recentLeads,
+        recentChats,
+      });
+    } catch {
+      setData({
+        newLeadsToday: 0,
+        totalLeads: 0,
+        chatSessionsToday: 0,
+        lastUpdate: null,
+        recentLeads: [],
+        recentChats: [],
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    void fetchDashboard();
+  }, [fetchDashboard]);
 
   if (status === 'loading') {
     return (
@@ -29,6 +116,39 @@ export default function AdminDashboard() {
     redirect('/admin/login');
   }
 
+  if (isLoading || !data) {
+    return (
+      <div className="flex items-center justify-center min-h-[50vh]">
+        <div className="text-[#8A91B0]">{t('loading')}</div>
+      </div>
+    );
+  }
+
+  // Format relative time
+  const formatRelativeTime = (iso: string | null): string => {
+    if (!iso) return '—';
+    const diff = Date.now() - new Date(iso).getTime();
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    if (hours < 1) {
+      const mins = Math.floor(diff / (1000 * 60));
+      return isRTL ? `${mins} ${t('minutesAgo')}` : `${mins} ${t('minutesAgo')}`;
+    }
+    if (hours < 24) {
+      return isRTL ? `${hours} ${t('hoursAgo')}` : `${hours} ${t('hoursAgo')}`;
+    }
+    const days = Math.floor(hours / 24);
+    return isRTL ? `${days} ${t('daysAgo')}` : `${days} ${t('daysAgo')}`;
+  };
+
+  const serviceColors: Record<string, string> = {
+    'AI Services': '#3FE8F4',
+    'AI Automation': '#3FE8F4',
+    'Automation': '#9D5CFF',
+    'Web Development': '#9D5CFF',
+    'Chatbot Development': '#E63CD8',
+    'Custom / Not sure': '#8A91B0',
+  };
+
   return (
     <div className="max-w-7xl mx-auto space-y-8">
       {/* Page Header */}
@@ -41,31 +161,31 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
           title={t('newLeadsToday')}
-          value="3"
+          value={String(data.newLeadsToday)}
           icon={Inbox}
           accent="cyan"
-          subtitle={t('fromYesterday')}
+          subtitle={t('today')}
         />
         <StatCard
           title={t('totalLeads')}
-          value="47"
+          value={String(data.totalLeads)}
           icon={Users}
           accent="violet"
           subtitle={t('allTime')}
         />
         <StatCard
           title={t('chatSessionsToday')}
-          value="12"
+          value={String(data.chatSessionsToday)}
           icon={MessageSquare}
           accent="magenta"
           subtitle={t('today')}
         />
         <StatCard
           title={t('lastUpdate')}
-          value="2h"
+          value={formatRelativeTime(data.lastUpdate)}
           icon={Clock}
           accent="muted"
-          subtitle={t('ago')}
+          subtitle={data.lastUpdate ? t('ago') : '—'}
         />
       </div>
 
@@ -79,53 +199,40 @@ export default function AdminDashboard() {
           </h3>
 
           <div className="space-y-3">
-            {[
-              {
-                name: 'محمد رضایی',
-                service: 'AI Automation',
-                time: isRTL ? '۵ دقیقه پیش' : '5 min ago',
-                color: '#3FE8F4',
-              },
-              {
-                name: 'Sara Johnson',
-                service: 'Web Development',
-                time: isRTL ? '۱ ساعت پیش' : '1 hour ago',
-                color: '#9D5CFF',
-              },
-              {
-                name: 'علی احمدی',
-                service: 'Chatbot Development',
-                time: isRTL ? '۳ ساعت پیش' : '3 hours ago',
-                color: '#E63CD8',
-              },
-            ].map((lead, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-between p-3 bg-[rgba(255,255,255,0.02)] rounded-lg hover:bg-[rgba(255,255,255,0.04)] transition-colors cursor-pointer"
-              >
-                <div className="flex-1">
-                  <div className="text-sm font-medium text-[#F2F4FF] mb-1">
-                    {lead.name}
-                  </div>
+            {data.recentLeads.length > 0 ? (
+              data.recentLeads.map((lead) => {
+                const color = serviceColors[lead.service] || '#3FE8F4';
+                const leadTime = new Date(lead.createdAt);
+                const timeStr = isRTL
+                  ? leadTime.toLocaleDateString('fa-IR')
+                  : leadTime.toLocaleDateString();
+                return (
                   <div
-                    className="text-xs px-2 py-0.5 rounded inline-block"
-                    style={{
-                      backgroundColor: `${lead.color}20`,
-                      color: lead.color,
-                    }}
+                    key={lead.id}
+                    className="flex items-center justify-between p-3 bg-[rgba(255,255,255,0.02)] rounded-lg hover:bg-[rgba(255,255,255,0.04)] transition-colors cursor-pointer"
                   >
-                    {lead.service}
+                    <div className="flex-1">
+                      <div className="text-sm font-medium text-[#F2F4FF] mb-1">
+                        {lead.name}
+                      </div>
+                      <div
+                        className="text-xs px-2 py-0.5 rounded inline-block"
+                        style={{
+                          backgroundColor: `${color}20`,
+                          color,
+                        }}
+                      >
+                        {lead.service}
+                      </div>
+                    </div>
+                    <div className="text-xs text-[#8A91B0]">{timeStr}</div>
                   </div>
-                </div>
-                <div className="text-xs text-[#8A91B0]">{lead.time}</div>
-              </div>
-            ))}
+                );
+              })
+            ) : (
+              <div className="text-center py-8 text-[#8A91B0]">{t('noLeads')}</div>
+            )}
           </div>
-
-          {/* Empty state */}
-          {false && (
-            <div className="text-center py-8 text-[#8A91B0]">{t('noLeads')}</div>
-          )}
 
           <button className="w-full mt-4 py-2 text-sm text-[#3FE8F4] hover:text-[#F2F4FF] transition-colors">
             {t('viewAllLeads')}
@@ -140,44 +247,34 @@ export default function AdminDashboard() {
           </h3>
 
           <div className="space-y-3">
-            {[
-              {
-                flag: '🇮🇷',
-                messages: 8,
-                time: isRTL ? '۱۰ دقیقه پیش' : '10 min ago',
-              },
-              {
-                flag: '🇬🇧',
-                messages: 5,
-                time: isRTL ? '۲۵ دقیقه پیش' : '25 min ago',
-              },
-              {
-                flag: '🇮🇷',
-                messages: 12,
-                time: isRTL ? '۱ ساعت پیش' : '1 hour ago',
-              },
-            ].map((session, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-between p-3 bg-[rgba(255,255,255,0.02)] rounded-lg hover:bg-[rgba(255,255,255,0.04)] transition-colors cursor-pointer"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">{session.flag}</span>
-                  <div>
-                    <div className="text-sm text-[#F2F4FF]">
-                      {session.messages} {t('messages')}
+            {data.recentChats.length > 0 ? (
+              data.recentChats.map((chat) => {
+                const flag = chat.locale === 'fa' ? '🇮🇷' : '🇬🇧';
+                const chatTime = new Date(chat.lastActivityAt || chat.createdAt);
+                const timeStr = isRTL
+                  ? chatTime.toLocaleDateString('fa-IR')
+                  : chatTime.toLocaleDateString();
+                return (
+                  <div
+                    key={chat.id}
+                    className="flex items-center justify-between p-3 bg-[rgba(255,255,255,0.02)] rounded-lg hover:bg-[rgba(255,255,255,0.04)] transition-colors cursor-pointer"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="text-2xl">{flag}</span>
+                      <div>
+                        <div className="text-sm text-[#F2F4FF]">
+                          {chat.messages.length} {t('messages')}
+                        </div>
+                        <div className="text-xs text-[#8A91B0]">{timeStr}</div>
+                      </div>
                     </div>
-                    <div className="text-xs text-[#8A91B0]">{session.time}</div>
                   </div>
-                </div>
-              </div>
-            ))}
+                );
+              })
+            ) : (
+              <div className="text-center py-8 text-[#8A91B0]">{t('noChats')}</div>
+            )}
           </div>
-
-          {/* Empty state */}
-          {false && (
-            <div className="text-center py-8 text-[#8A91B0]">{t('noChats')}</div>
-          )}
 
           <button className="w-full mt-4 py-2 text-sm text-[#E63CD8] hover:text-[#F2F4FF] transition-colors">
             {t('viewAllSessions')}

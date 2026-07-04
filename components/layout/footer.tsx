@@ -19,7 +19,8 @@ export function Footer({
   const tagline = site.footer.tagline[locale];
   const pagesLabel = site.footer.columnsLabel.pages[locale];
 
-  // Social icons — filter out placeholder links (href is "#" or empty)
+  // Social icons — only filter out truly empty links (null/undefined/empty string).
+  // Keep href="#" placeholder links so Instagram/Telegram/WhatsApp icons remain visible.
   const socialLinks = [
     {
       name: "Instagram",
@@ -68,7 +69,7 @@ export function Footer({
         </svg>
       ),
     },
-  ].filter(link => link.href && link.href !== '#' && !link.href.endsWith('/fa#') && !link.href.endsWith('/en#'));
+  ].filter(link => link.href && link.href.trim() !== '');
 
   return (
     <footer className="relative px-5 pb-8 sm:px-8 lg:px-12">
@@ -104,16 +105,7 @@ export function Footer({
             <p className="mt-4 text-[13px] leading-relaxed text-text-muted">
               {tagline}
             </p>
-            {/* Quick contact line */}
-            <p className="mt-4 text-[13px] text-text-muted">
-              {isRTL ? "ایمیل: " : "Email: "}
-              <a 
-                href="mailto:sepehrjokanian99@gmail.com"
-                className="transition-colors duration-300 hover:text-cyan-primary"
-              >
-                sepehrjokanian99@gmail.com
-              </a>
-            </p>
+
           </div>
 
           {/* Column 2 - Navigation Links */}

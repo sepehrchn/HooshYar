@@ -1,6 +1,7 @@
 'use client';
 
 import {useCallback, useEffect, useState} from 'react';
+import {useRouter} from 'next/navigation';
 import type {ChatSession} from '@/lib/kv';
 import type {ChatAnalytics} from '@/app/api/admin/chatbot-logs/route';
 import {SessionList} from '@/components/admin/SessionList';
@@ -21,6 +22,7 @@ const emptyAnalytics: ChatAnalytics = {
 export default function ChatbotLogsPage() {
   const {t, isRTL} = useAdminLocale();
   const {showToast, ToastContainer} = useToast();
+  const router = useRouter();
 
   const [sessions, setSessions] = useState<ChatSession[]>([]);
   const [analytics, setAnalytics] = useState<ChatAnalytics>(emptyAnalytics);
@@ -46,6 +48,14 @@ export default function ChatbotLogsPage() {
   useEffect(() => {
     void fetchSessions();
   }, []);
+
+  // Auto-refresh every 30 seconds so new sessions appear without manual reload
+  useEffect(() => {
+    const interval = setInterval(() => {
+      void fetchSessions();
+    }, 30000);
+    return () => clearInterval(interval);
+  }, [fetchSessions]);
 
   const markAsRead = async (sessionId: string) => {
     try {
