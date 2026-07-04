@@ -1,13 +1,6 @@
 import Groq from "groq-sdk";
-import fs from "fs";
-import path from "path";
-import {saveChatSession} from "@/lib/kv";
-
-function getGroqClient(): Groq | null {
-  const apiKey = process.env.GROQ_API_KEY;
-  if (!apiKey) return null;
-  return new Groq({ apiKey });
-}
+import { knowledge } from "@/lib/knowledge";
+import { saveChatSession } from "@/lib/kv";
 
 interface RateLimitEntry {
   count: number;
@@ -29,7 +22,7 @@ function checkRateLimit(key: string): { allowed: boolean; remaining: number } {
   const maxRequests = 20;
 
   const entry = rateLimitStore.get(key);
-  
+
   if (!entry || entry.resetAt < now) {
     rateLimitStore.set(key, { count: 1, resetAt: now + windowMs });
     return { allowed: true, remaining: maxRequests - 1 };
@@ -59,8 +52,11 @@ export async function POST(req: Request) {
     return Response.json({ error: "too_many_requests" }, { status: 429 });
   }
 
-  const groq = getGroqClient();
-  if (!groq) {
+  // Initialize Groq client inside the request handler — module-level init
+  // fails on Cloudflare Workers where env vars are only available per-request.
+  const apiKey = process.env.GROQ_API_KEY;
+  if (!apiKey) {
+    console.error("[CHAT] GROQ_API_KEY not set or empty");
     return Response.json(
       { reply: locale === "fa"
         ? "سرویس چت در حالت نگهداری است."
@@ -69,6 +65,8 @@ export async function POST(req: Request) {
       { status: 503 }
     );
   }
+
+  const groq = new Groq({ apiKey });
 
   try {
     const body = await req.json();
@@ -80,11 +78,6 @@ export async function POST(req: Request) {
     }
 
     const sanitizedMessage = sanitizeMessage(message);
-
-    const knowledge = fs.readFileSync(
-      path.join(process.cwd(), "content/knowledge/HOOSH-YAR-knowledge.txt"),
-      "utf-8"
-    );
 
     const completion = await groq.chat.completions.create({
       model: "llama-3.1-8b-instant",
