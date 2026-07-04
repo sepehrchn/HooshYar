@@ -9,7 +9,9 @@ import bcrypt from 'bcryptjs';
 // Setting AUTH_TRUST_HOST=true makes NextAuth use the x-forwarded-host and
 // x-forwarded-proto headers that Cloudflare provides, producing correct
 // production URLs like https://hooshyar.sepehr.homes/admin/login
-process.env.AUTH_TRUST_HOST = 'true';
+if (typeof process.env.AUTH_TRUST_HOST === 'undefined') {
+  process.env.AUTH_TRUST_HOST = 'true';
+}
 
 const authOptions: AuthOptions = {
   providers: [

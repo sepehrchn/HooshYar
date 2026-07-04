@@ -33,11 +33,13 @@ function LoginForm() {
       if (result?.error) {
         console.error('Sign in error:', result.error);
         setError(t('loginError'));
-      } else if (result?.ok) {
-        window.location.href = callbackUrl;
       } else {
-        console.error('Unexpected result:', result);
-        setError(t('loginUnexpectedError'));
+        // signIn with redirect:false returns {ok, error, status, url}.
+        // On success, result.error is null/undefined — redirect to the
+        // callbackUrl (defaults to /admin). Using window.location.href
+        // ensures a full page reload so the session cookie is picked up.
+        const target = result?.url || callbackUrl;
+        window.location.href = target;
       }
     } catch (err) {
       console.error('Sign in exception:', err);
