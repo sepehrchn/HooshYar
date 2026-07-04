@@ -1,11 +1,80 @@
-import {kv} from '@vercel/kv';
-import {isKvConfigured} from '@/lib/kv/config';
+import { isKvConfigured } from '@/lib/kv/config';
 
-export {isKvConfigured} from '@/lib/kv/config';
+export { isKvConfigured } from '@/lib/kv/config';
 
 /**
  * KV Storage Utilities for Admin Panel
+ *
+ * Uses Cloudflare Workers KV binding via getRequestContext()
+ * instead of @vercel/kv REST API.
  */
+
+// ─── Cloudflare KV client ────────────────────────────────────────────
+
+type CloudflareKV = {
+  get(key: string, options?: { type?: 'text' | 'json' | 'arrayBuffer' | 'stream' }): Promise<string | null>;
+  put(key: string, value: string, options?: { expirationTtl?: number; metadata?: unknown }): Promise<void>;
+  delete(key: string): Promise<void>;
+  list(options?: { prefix?: string; limit?: number; cursor?: string }): Promise<{
+    keys: Array<{ name: string; metadata?: unknown }>;
+    list_complete: boolean;
+    cursor?: string;
+  }>;
+};
+
+async function getKV(): Promise<CloudflareKV | null> {
+  try {
+    const { getCloudflareContext } = await import('@opennextjs/cloudflare');
+    const ctx = getCloudflareContext();
+    const kv = (ctx.env as Record<string, unknown>).KV as CloudflareKV | undefined;
+    return kv ?? null;
+  } catch {
+    return null;
+  }
+}
+
+// ─── Helpers ─────────────────────────────────────────────────────────
+
+async function kvGetJSON<T>(key: string): Promise<T | null> {
+  const kv = await getKV();
+  if (!kv) return null;
+  try {
+    const raw = await kv.get(key, { type: 'text' });
+    if (raw === null) return null;
+    return JSON.parse(raw) as T;
+  } catch {
+    return null;
+  }
+}
+
+async function kvSetJSON(key: string, value: unknown): Promise<void> {
+  const kv = await getKV();
+  if (!kv) throw new Error('KV not available');
+  await kv.put(key, JSON.stringify(value));
+}
+
+async function kvDelete(key: string): Promise<void> {
+  const kv = await getKV();
+  if (!kv) return;
+  await kv.delete(key);
+}
+
+async function kvListKeys(prefix: string): Promise<string[]> {
+  const kv = await getKV();
+  if (!kv) return [];
+  const allKeys: string[] = [];
+  let cursor: string | undefined;
+  do {
+    const result = await kv.list({ prefix, limit: 1000, cursor });
+    for (const k of result.keys) {
+      allKeys.push(k.name);
+    }
+    cursor = result.list_complete ? undefined : result.cursor;
+  } while (cursor);
+  return allKeys;
+}
+
+// ─── Types ───────────────────────────────────────────────────────────
 
 const defaultStats = (): DashboardStats => ({
   newLeadsToday: 0,
@@ -16,10 +85,9 @@ const defaultStats = (): DashboardStats => ({
 
 // Demo Mode
 export async function getDemoMode(): Promise<boolean> {
-  if (!isKvConfigured()) return false;
-
+  if (!(await isKvConfigured())) return false;
   try {
-    const enabled = await kv.get<boolean>('demo_mode');
+    const enabled = await kvGetJSON<boolean>('demo_mode');
     return enabled || false;
   } catch (error) {
     console.error('Error getting demo mode:', error);
@@ -28,10 +96,9 @@ export async function getDemoMode(): Promise<boolean> {
 }
 
 export async function setDemoMode(enabled: boolean): Promise<void> {
-  if (!isKvConfigured()) return;
-
+  if (!(await isKvConfigured())) return;
   try {
-    await kv.set('demo_mode', enabled);
+    await kvSetJSON('demo_mode', enabled);
   } catch (error) {
     console.error('Error setting demo mode:', error);
     throw error;
@@ -47,10 +114,9 @@ export interface DashboardStats {
 }
 
 export async function getDashboardStats(): Promise<DashboardStats> {
-  if (!isKvConfigured()) return defaultStats();
-
+  if (!(await isKvConfigured())) return defaultStats();
   try {
-    const stats = await kv.get<DashboardStats>('dashboard_stats');
+    const stats = await kvGetJSON<DashboardStats>('dashboard_stats');
     return stats || defaultStats();
   } catch (error) {
     console.error('Error getting dashboard stats:', error);
@@ -61,11 +127,10 @@ export async function getDashboardStats(): Promise<DashboardStats> {
 export async function updateDashboardStats(
   stats: Partial<DashboardStats>
 ): Promise<void> {
-  if (!isKvConfigured()) return;
-
+  if (!(await isKvConfigured())) return;
   try {
     const current = await getDashboardStats();
-    await kv.set('dashboard_stats', {...current, ...stats});
+    await kvSetJSON('dashboard_stats', {...current, ...stats});
   } catch (error) {
     console.error('Error updating dashboard stats:', error);
     throw error;
@@ -85,8 +150,7 @@ export interface Lead {
 }
 
 export async function saveLead(lead: Omit<Lead, 'id' | 'createdAt'>): Promise<string> {
-  if (!isKvConfigured()) return '';
-
+  if (!(await isKvConfigured())) return '';
   try {
     const id = `lead:${Date.now()}:${Math.random().toString(36).substr(2, 9)}`;
     const leadData: Lead = {
@@ -95,16 +159,16 @@ export async function saveLead(lead: Omit<Lead, 'id' | 'createdAt'>): Promise<st
       status: lead.status || 'new',
       createdAt: new Date().toISOString()
     };
-    
-    await kv.set(id, leadData);
-    
+
+    await kvSetJSON(id, leadData);
+
     // Update stats
     const stats = await getDashboardStats();
     await updateDashboardStats({
       totalLeads: stats.totalLeads + 1,
       newLeadsToday: stats.newLeadsToday + 1
     });
-    
+
     return id;
   } catch (error) {
     console.error('Error saving lead:', error);
@@ -113,16 +177,15 @@ export async function saveLead(lead: Omit<Lead, 'id' | 'createdAt'>): Promise<st
 }
 
 export async function getLeads(): Promise<Lead[]> {
-  if (!isKvConfigured()) return [];
-
+  if (!(await isKvConfigured())) return [];
   try {
-    const keys = await kv.keys('lead:*');
+    const keys = await kvListKeys('lead:');
     if (keys.length === 0) return [];
-    
+
     const leads = await Promise.all(
-      keys.map(key => kv.get<Lead>(key))
+      keys.map(key => kvGetJSON<Lead>(key))
     );
-    
+
     return leads
       .filter((lead): lead is Lead => lead !== null)
       .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
@@ -136,12 +199,11 @@ export async function updateLeadStatus(
   leadId: string,
   status: Lead['status']
 ): Promise<void> {
-  if (!isKvConfigured()) return;
-
+  if (!(await isKvConfigured())) return;
   try {
-    const lead = await kv.get<Lead>(leadId);
+    const lead = await kvGetJSON<Lead>(leadId);
     if (lead) {
-      await kv.set(leadId, {...lead, status});
+      await kvSetJSON(leadId, {...lead, status});
     }
   } catch (error) {
     console.error('Error updating lead status:', error);
@@ -171,11 +233,10 @@ export async function saveChatSession(
   userMessage: string,
   assistantMessage: string
 ): Promise<void> {
-  if (!isKvConfigured()) return;
-
+  if (!(await isKvConfigured())) return;
   try {
     const key = `chat:${sessionId}`;
-    const existing = await kv.get<ChatSession>(key);
+    const existing = await kvGetJSON<ChatSession>(key);
     const now = new Date().toISOString();
 
     const message = {
@@ -194,7 +255,7 @@ export async function saveChatSession(
       existing.messages.push(message, assistantMsg);
       existing.lastActivityAt = now;
       existing.read = false;
-      await kv.set(key, existing);
+      await kvSetJSON(key, existing);
     } else {
       const session: ChatSession = {
         id: key,
@@ -206,7 +267,7 @@ export async function saveChatSession(
         read: false,
         flagged: false,
       };
-      await kv.set(key, session);
+      await kvSetJSON(key, session);
 
       const stats = await getDashboardStats();
       await updateDashboardStats({
@@ -222,15 +283,14 @@ export async function updateChatSession(
   sessionId: string,
   updates: Partial<Pick<ChatSession, 'read' | 'flagged'>>
 ): Promise<ChatSession | null> {
-  if (!isKvConfigured()) return null;
-
+  if (!(await isKvConfigured())) return null;
   try {
     const key = `chat:${sessionId}`;
-    const existing = await kv.get<ChatSession>(key);
+    const existing = await kvGetJSON<ChatSession>(key);
     if (!existing) return null;
 
     const updated: ChatSession = {...existing, ...updates};
-    await kv.set(key, updated);
+    await kvSetJSON(key, updated);
     return updated;
   } catch (error) {
     console.error('Error updating chat session:', error);
@@ -239,16 +299,15 @@ export async function updateChatSession(
 }
 
 export async function getChatSessions(): Promise<ChatSession[]> {
-  if (!isKvConfigured()) return [];
-
+  if (!(await isKvConfigured())) return [];
   try {
-    const keys = await kv.keys('chat:*');
+    const keys = await kvListKeys('chat:');
     if (keys.length === 0) return [];
-    
+
     const sessions = await Promise.all(
-      keys.map(key => kv.get<ChatSession>(key))
+      keys.map(key => kvGetJSON<ChatSession>(key))
     );
-    
+
     return sessions
       .filter((session): session is ChatSession => session !== null)
       .map(session => ({
@@ -270,10 +329,9 @@ export async function getChatSessions(): Promise<ChatSession[]> {
 
 // Content
 export async function getContent<T = unknown>(key: string, fallback: T): Promise<T> {
-  if (!isKvConfigured()) return fallback;
-
+  if (!(await isKvConfigured())) return fallback;
   try {
-    const content = await kv.get<T>(`content:${key}`);
+    const content = await kvGetJSON<T>(`content:${key}`);
     return content || fallback;
   } catch (error) {
     console.error(`Error getting content for ${key}:`, error);
@@ -282,10 +340,9 @@ export async function getContent<T = unknown>(key: string, fallback: T): Promise
 }
 
 export async function setContent<T = unknown>(key: string, value: T): Promise<void> {
-  if (!isKvConfigured()) return;
-
+  if (!(await isKvConfigured())) return;
   try {
-    await kv.set(`content:${key}`, value);
+    await kvSetJSON(`content:${key}`, value);
     await updateDashboardStats({
       lastContentUpdate: new Date().toISOString()
     });
@@ -297,12 +354,11 @@ export async function setContent<T = unknown>(key: string, value: T): Promise<vo
 
 // Cleanup utilities
 export async function clearChatLogs(): Promise<void> {
-  if (!isKvConfigured()) return;
-
+  if (!(await isKvConfigured())) return;
   try {
-    const keys = await kv.keys('chat:*');
+    const keys = await kvListKeys('chat:');
     if (keys.length > 0) {
-      await Promise.all(keys.map(key => kv.del(key)));
+      await Promise.all(keys.map(key => kvDelete(key)));
     }
   } catch (error) {
     console.error('Error clearing chat logs:', error);
@@ -311,12 +367,11 @@ export async function clearChatLogs(): Promise<void> {
 }
 
 export async function resetContent(): Promise<void> {
-  if (!isKvConfigured()) return;
-
+  if (!(await isKvConfigured())) return;
   try {
-    const keys = await kv.keys('content:*');
+    const keys = await kvListKeys('content:');
     if (keys.length > 0) {
-      await Promise.all(keys.map(key => kv.del(key)));
+      await Promise.all(keys.map(key => kvDelete(key)));
     }
   } catch (error) {
     console.error('Error resetting content:', error);

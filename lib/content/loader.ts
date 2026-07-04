@@ -1,5 +1,4 @@
 import {cache} from 'react';
-import {kv} from '@vercel/kv';
 import {isKvConfigured} from '@/lib/kv/config';
 import {
   CONTENT_ALL_KEY,
@@ -10,6 +9,40 @@ import {
   getDefaultContent,
 } from '@/lib/content/utils';
 
+// Cloudflare KV client — uses getRequestContext() to access the KV binding
+type CloudflareKV = {
+  get(key: string, options?: { type?: 'text' | 'json' | 'arrayBuffer' | 'stream' }): Promise<string | null>;
+  put(key: string, value: string, options?: { expirationTtl?: number; metadata?: unknown }): Promise<void>;
+};
+
+async function getKV(): Promise<CloudflareKV | null> {
+  try {
+    const { getCloudflareContext } = await import('@opennextjs/cloudflare');
+    const ctx = getCloudflareContext();
+    return ((ctx.env as Record<string, unknown>).KV as CloudflareKV) ?? null;
+  } catch {
+    return null;
+  }
+}
+
+async function kvGetJSON<T>(key: string): Promise<T | null> {
+  const kv = await getKV();
+  if (!kv) return null;
+  try {
+    const raw = await kv.get(key, { type: 'text' });
+    if (raw === null) return null;
+    return JSON.parse(raw) as T;
+  } catch {
+    return null;
+  }
+}
+
+async function kvSetJSON(key: string, value: unknown): Promise<void> {
+  const kv = await getKV();
+  if (!kv) throw new Error('KV not available');
+  await kv.put(key, JSON.stringify(value));
+}
+
 export const getContentBundle = cache(async (): Promise<{
   site: SiteContentData;
   pages: PagesContentData;
@@ -17,7 +50,7 @@ export const getContentBundle = cache(async (): Promise<{
 }> => {
   const defaults = getDefaultContent();
 
-  if (!isKvConfigured()) {
+  if (!(await isKvConfigured())) {
     return {
       site: defaults.site,
       pages: defaults.pages,
@@ -26,7 +59,7 @@ export const getContentBundle = cache(async (): Promise<{
   }
 
   try {
-    const stored = await kv.get<ContentStore>(CONTENT_ALL_KEY);
+    const stored = await kvGetJSON<ContentStore>(CONTENT_ALL_KEY);
     if (stored?.site || stored?.pages) {
       return {
         site: deepMerge(defaults.site, (stored.site ?? {}) as Partial<SiteContentData>),
@@ -46,16 +79,16 @@ export const getContentBundle = cache(async (): Promise<{
 });
 
 export async function getStoredContentStore(): Promise<ContentStore | null> {
-  if (!isKvConfigured()) return null;
+  if (!(await isKvConfigured())) return null;
 
   try {
-    return await kv.get<ContentStore>(CONTENT_ALL_KEY);
+    return await kvGetJSON<ContentStore>(CONTENT_ALL_KEY);
   } catch {
     return null;
   }
 }
 
 export async function saveContentStore(store: ContentStore): Promise<void> {
-  if (!isKvConfigured()) return;
-  await kv.set(CONTENT_ALL_KEY, store);
+  if (!(await isKvConfigured())) return;
+  await kvSetJSON(CONTENT_ALL_KEY, store);
 }
