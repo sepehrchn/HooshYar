@@ -1,6 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
-
 import { AnimatedCounter } from "@/components/motion/animated-counter";
 import { SectionReveal } from "@/components/motion/section-reveal";
 import {
@@ -16,24 +13,21 @@ import type { Locale } from "@/types/locale";
 import type { SiteContentData } from "@/lib/content/utils";
 import { siteContent as defaultSiteContent } from "@/lib/site";
 
-const HERO_VIDEO_MP4 = path.join(process.cwd(), "public/media/hero-video.mp4");
-const HERO_VIDEO_WEBM = path.join(process.cwd(), "public/media/hero-video.webm");
-const HERO_POSTER = path.join(process.cwd(), "public/images/hero-poster.jpg");
+// Static video paths — served from /public/media/ by Next.js.
+// Do NOT use fs.existsSync here; it fails on Cloudflare Workers.
+const HERO_VIDEO_MP4_SRC = "/media/hero-video.mp4";
+const HERO_VIDEO_WEBM_SRC = "/media/hero-video.webm";
+const HERO_POSTER_SRC = "/images/hero-poster.jpg";
 
 function heroMediaReady() {
-  if (siteContent.hero.status === "placeholder-video") {
-    return false;
-  }
-
-  return (
-    fs.existsSync(HERO_VIDEO_MP4) ||
-    fs.existsSync(HERO_VIDEO_WEBM) ||
-    siteContent.hero.status === "ready"
-  );
+  // On Cloudflare Workers we can't check the filesystem, so trust the
+  // content status from site-content.json. When status is "ready" the
+  // video files are expected to exist in /public/media/.
+  return siteContent.hero.status !== "placeholder-video";
 }
 
 function heroPosterSrc() {
-  return fs.existsSync(HERO_POSTER) ? "/images/hero-poster.jpg" : undefined;
+  return "/images/hero-poster.jpg";
 }
 
 const iconPaths: Record<string, string> = {
@@ -133,15 +127,11 @@ function HeroVideoFrame({ locale }: { locale: Locale }) {
             loop
             muted
             playsInline
-            preload="metadata"
+            preload="auto"
             {...(poster ? { poster } : {})}
           >
-            {fs.existsSync(HERO_VIDEO_WEBM) ? (
-              <source src="/media/hero-video.webm" type="video/webm" />
-            ) : null}
-            {fs.existsSync(HERO_VIDEO_MP4) ? (
-              <source src="/media/hero-video.mp4" type="video/mp4" />
-            ) : null}
+            <source src={HERO_VIDEO_WEBM_SRC} type="video/webm" />
+            <source src={HERO_VIDEO_MP4_SRC} type="video/mp4" />
           </video>
         )}
       </div>
