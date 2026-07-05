@@ -113,15 +113,36 @@ export function LeadDetailPanel({
             <div className="text-sm text-[#F2F4FF] font-medium">{lead.name}</div>
           </div>
 
-          <div>
-            <div className="text-xs text-[#8A91B0] mb-1">{t('email')}</div>
-            <a
-              href={`mailto:${lead.email}`}
-              className="text-sm text-[#3FE8F4] hover:underline"
-            >
-              {lead.email}
-            </a>
-          </div>
+          {lead.companyName && (
+            <div>
+              <div className="text-xs text-[#8A91B0] mb-1">{t('company')}</div>
+              <div className="text-sm text-[#F2F4FF]">{lead.companyName}</div>
+            </div>
+          )}
+
+          {lead.email && (
+            <div>
+              <div className="text-xs text-[#8A91B0] mb-1">{t('email')}</div>
+              <a
+                href={`mailto:${lead.email}`}
+                className="text-sm text-[#3FE8F4] hover:underline"
+              >
+                {lead.email}
+              </a>
+            </div>
+          )}
+
+          {lead.phone && (
+            <div>
+              <div className="text-xs text-[#8A91B0] mb-1">{t('phone')}</div>
+              <a
+                href={`tel:${lead.phone}`}
+                className="text-sm text-[#3FE8F4] hover:underline"
+              >
+                {lead.phone}
+              </a>
+            </div>
+          )}
 
           <div>
             <div className="text-xs text-[#8A91B0] mb-1">{t('service')}</div>
@@ -166,13 +187,15 @@ export function LeadDetailPanel({
 
         {/* Actions */}
         <div className="p-6 border-t border-[rgba(255,255,255,0.08)] space-y-3">
-          <a
-            href={`mailto:${lead.email}?subject=${mailtoSubject}&body=${mailtoBody}`}
-            className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-[rgba(63,232,244,0.1)] border border-[rgba(63,232,244,0.3)] text-[#3FE8F4] hover:bg-[rgba(63,232,244,0.15)] transition-colors text-sm font-medium"
-          >
-            <Mail className="w-4 h-4" />
-            {t('reply')}
-          </a>
+          {lead.email && (
+            <a
+              href={`mailto:${lead.email}?subject=${mailtoSubject}&body=${mailtoBody}`}
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-[rgba(63,232,244,0.1)] border border-[rgba(63,232,244,0.3)] text-[#3FE8F4] hover:bg-[rgba(63,232,244,0.15)] transition-colors text-sm font-medium"
+            >
+              <Mail className="w-4 h-4" />
+              {t('reply')}
+            </a>
+          )}
 
           <div className="flex gap-2">
             {lead.status !== 'read' && (

@@ -29,11 +29,13 @@ export function truncateMessage(message: string, max = 60): string {
 }
 
 export function exportLeadsToCsv(leads: Lead[]): void {
-  const headers = ['Date', 'Name', 'Email', 'Service', 'Message', 'Status', 'Locale'];
+  const headers = ['Date', 'Name', 'Company', 'Email', 'Phone', 'Service', 'Message', 'Status', 'Locale'];
   const rows = leads.map(lead => [
     lead.createdAt,
     lead.name,
+    lead.companyName || '',
     lead.email,
+    lead.phone || '',
     lead.service,
     lead.message.replace(/"/g, '""'),
     lead.status,

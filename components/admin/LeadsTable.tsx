@@ -46,7 +46,9 @@ export function LeadsTable({leads, onRowClick, onStatusCycle}: LeadsTableProps) 
           <tr className="bg-[rgba(255,255,255,0.06)] text-[#8A91B0] font-semibold">
             <th className="px-4 py-3 text-start">{t('date')}</th>
             <th className="px-4 py-3 text-start">{t('name')}</th>
+            <th className="px-4 py-3 text-start">{t('company')}</th>
             <th className="px-4 py-3 text-start">{t('email')}</th>
+            <th className="px-4 py-3 text-start">{t('phone')}</th>
             <th className="px-4 py-3 text-start">{t('service')}</th>
             <th className="px-4 py-3 text-start">{t('messagePreview')}</th>
             <th className="px-4 py-3 text-start">{t('status')}</th>
@@ -80,14 +82,34 @@ export function LeadsTable({leads, onRowClick, onStatusCycle}: LeadsTableProps) 
                     {lead.name}
                   </div>
                 </td>
+                <td className="px-4 py-3 text-[#8A91B0]">
+                  {lead.companyName || '—'}
+                </td>
                 <td className="px-4 py-3">
-                  <a
-                    href={`mailto:${lead.email}`}
-                    onClick={e => e.stopPropagation()}
-                    className="text-[#3FE8F4] hover:underline"
-                  >
-                    {lead.email}
-                  </a>
+                  {lead.email ? (
+                    <a
+                      href={`mailto:${lead.email}`}
+                      onClick={e => e.stopPropagation()}
+                      className="text-[#3FE8F4] hover:underline"
+                    >
+                      {lead.email}
+                    </a>
+                  ) : (
+                    <span className="text-[#8A91B0]">—</span>
+                  )}
+                </td>
+                <td className="px-4 py-3 text-[#8A91B0]">
+                  {lead.phone ? (
+                    <a
+                      href={`tel:${lead.phone}`}
+                      onClick={e => e.stopPropagation()}
+                      className="text-[#3FE8F4] hover:underline"
+                    >
+                      {lead.phone}
+                    </a>
+                  ) : (
+                    '—'
+                  )}
                 </td>
                 <td className="px-4 py-3">
                   <span

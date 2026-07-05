@@ -9,14 +9,16 @@ type Status = "idle" | "submitting" | "success" | "error";
 const labels = {
   en: {
     name: "Name",
-    email: "Email",
+    companyName: "Company Name (optional)",
+    email: "Email (optional)",
+    phone: "Phone Number (optional)",
     service: "Service",
     message: "Project details",
     submit: "Send request",
     submitting: "Sending...",
     success:
       "Request received.",
-    error: "Please complete all required fields with a valid email.",
+    error: "Please complete all required fields.",
     services: [
       "AI Services",
       "Automation",
@@ -31,14 +33,16 @@ const labels = {
   },
   fa: {
     name: "نام",
-    email: "ایمیل",
+    companyName: "نام شرکت / سازمان (اختیاری)",
+    email: "ایمیل (اختیاری)",
+    phone: "شماره تماس (اختیاری)",
     service: "خدمت مورد نیاز",
     message: "جزئیات پروژه",
     submit: "ارسال درخواست",
     submitting: "در حال ارسال...",
     success:
       "درخواست دریافت شد",
-    error: "لطفاً همه فیلدهای ضروری را با ایمیل معتبر تکمیل کنید.",
+    error: "لطفاً همه فیلدهای ضروری را تکمیل کنید.",
     services: [
       "خدمات هوش مصنوعی",
       "اتوماسیون",
@@ -65,21 +69,15 @@ export function ContactForm({ locale }: { locale: Locale }) {
 
     const nameEl = form.elements.namedItem("name") as HTMLInputElement | null;
     const emailEl = form.elements.namedItem("email") as HTMLInputElement | null;
-    const serviceEl = form.elements.namedItem("service") as HTMLSelectElement | null;
     const messageEl = form.elements.namedItem("message") as HTMLTextAreaElement | null;
 
     if (nameEl && !nameEl.value.trim()) {
       newErrors.name = copy.validation.required;
     }
-    if (emailEl) {
-      if (!emailEl.value.trim()) {
-        newErrors.email = copy.validation.required;
-      } else if (!/\S+@\S+\.\S+/.test(emailEl.value.trim())) {
+    if (emailEl && emailEl.value.trim()) {
+      if (!/\S+@\S+\.\S+/.test(emailEl.value.trim())) {
         newErrors.email = copy.validation.email;
       }
-    }
-    if (serviceEl && !serviceEl.value.trim()) {
-      newErrors.service = copy.validation.required;
     }
     if (messageEl) {
       if (!messageEl.value.trim()) {
@@ -122,7 +120,9 @@ export function ContactForm({ locale }: { locale: Locale }) {
   return (
     <form id="contact-form" onSubmit={onSubmit} className="grid gap-4" noValidate>
       <Field label={copy.name} name="name" error={errors.name} />
+      <Field label={copy.companyName} name="companyName" error={errors.companyName} />
       <Field label={copy.email} name="email" type="email" error={errors.email} />
+      <Field label={copy.phone} name="phone" type="tel" error={errors.phone} />
       <label className="grid gap-2 text-sm font-medium text-text-primary">
         {copy.service}
         <select

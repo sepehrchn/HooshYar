@@ -41,7 +41,9 @@ export const adminText = {
     // Leads
     date: 'تاریخ',
     name: 'نام',
+    company: 'شرکت',
     email: 'ایمیل',
+    phone: 'تلفن',
     service: 'خدمت',
     message: 'پیام',
     status: 'وضعیت',
@@ -205,7 +207,9 @@ export const adminText = {
     // Leads
     date: 'Date',
     name: 'Name',
+    company: 'Company',
     email: 'Email',
+    phone: 'Phone',
     service: 'Service',
     message: 'Message',
     status: 'Status',

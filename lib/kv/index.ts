@@ -141,7 +141,9 @@ export async function updateDashboardStats(
 export interface Lead {
   id: string;
   name: string;
+  companyName: string;
   email: string;
+  phone: string;
   service: string;
   message: string;
   locale: string;

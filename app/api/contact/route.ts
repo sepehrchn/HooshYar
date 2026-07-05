@@ -20,10 +20,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: validation.error }, { status: 422 });
   }
 
-  const { name, email, service, message, locale } = validation.data;
+  const { name, companyName, email, phone, service, message, locale } = validation.data;
 
   try {
-    await saveLead({ name, email, service, message, locale, status: "new" });
+    await saveLead({ name, companyName, email, phone, service, message, locale, status: "new" });
   } catch (error) {
     console.error("Failed to save lead to KV:", error);
   }
@@ -50,9 +50,9 @@ export async function POST(request: NextRequest) {
     body: JSON.stringify({
       from: fromEmail,
       to: [toEmail],
-      reply_to: email,
+      reply_to: email || undefined,
       subject: `Hoosh Yar inquiry: ${service}`,
-      text: `Locale: ${locale}\nName: ${name}\nEmail: ${email}\nService: ${service}\n\n${message}`,
+      text: `Locale: ${locale}\nName: ${name}\nCompany: ${companyName}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\n\n${message}`,
     }),
   });
 
