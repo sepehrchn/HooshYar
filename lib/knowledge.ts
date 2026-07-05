@@ -168,10 +168,10 @@ GitHub: https://github.com/sepehrjo/Ad_Art_Web
 ## CONTACT INFORMATION
 # REPLACE ALL PLACEHOLDERS BELOW WITH REAL VALUES BEFORE GOING LIVE
 
-Email: [PLACEHOLDER — e.g. info@hooshyar.com]
-Telegram: [PLACEHOLDER — e.g. @hooshyar]
-WhatsApp: [PLACEHOLDER — e.g. +98 912 000 0000]
-Instagram: [PLACEHOLDER — e.g. @hooshyar.ai]
+Email: [PLACEHOLDER — e.g. sepehrjokanian99@gmail.com]
+Telegram: [PLACEHOLDER — e.g. @t.me/hooosh_yar_bot]
+WhatsApp: [PLACEHOLDER — e.g. +98 9381729209]
+Instagram: [PLACEHOLDER — e.g. https://www.instagram.com/hooosh_yar/]
 Bale: [PLACEHOLDER — e.g. @hooshyar]
 Contact form: available on the website Contact section
 
