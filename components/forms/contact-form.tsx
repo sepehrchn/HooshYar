@@ -11,7 +11,7 @@ const labels = {
     name: "Name",
     companyName: "Company Name (optional)",
     email: "Email (optional)",
-    phone: "Phone Number (optional)",
+    phone: "Phone Number",
     service: "Service",
     message: "Project details",
     submit: "Send request",
@@ -35,7 +35,7 @@ const labels = {
     name: "نام",
     companyName: "نام شرکت / سازمان (اختیاری)",
     email: "ایمیل (اختیاری)",
-    phone: "شماره تماس (اختیاری)",
+    phone: "شماره تماس",
     service: "خدمت مورد نیاز",
     message: "جزئیات پروژه",
     submit: "ارسال درخواست",
@@ -73,6 +73,10 @@ export function ContactForm({ locale }: { locale: Locale }) {
 
     if (nameEl && !nameEl.value.trim()) {
       newErrors.name = copy.validation.required;
+    }
+    const phoneEl = form.elements.namedItem("phone") as HTMLInputElement | null;
+    if (phoneEl && !phoneEl.value.trim()) {
+      newErrors.phone = copy.validation.required;
     }
     if (emailEl && emailEl.value.trim()) {
       if (!/\S+@\S+\.\S+/.test(emailEl.value.trim())) {
@@ -122,7 +126,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
       <Field label={copy.name} name="name" error={errors.name} />
       <Field label={copy.companyName} name="companyName" error={errors.companyName} />
       <Field label={copy.email} name="email" type="email" error={errors.email} />
-      <Field label={copy.phone} name="phone" type="tel" error={errors.phone} />
+      <Field label={copy.phone} name="phone" type="tel" required error={errors.phone} />
       <label className="grid gap-2 text-sm font-medium text-text-primary">
         {copy.service}
         <select
@@ -177,11 +181,13 @@ function Field({
   label,
   name,
   type = "text",
+  required = false,
   error,
 }: {
   label: string;
   name: string;
   type?: string;
+  required?: boolean;
   error?: string;
 }) {
   return (
@@ -190,6 +196,7 @@ function Field({
       <input
         name={name}
         type={type}
+        required={required}
         className="rounded-2xl border border-glass-border bg-bg-void/70 px-4 py-3 text-text-primary outline-none transition placeholder:text-text-muted focus:border-cyan-primary focus:shadow-cyan-glow motion-reduce:transition-none"
       />
       {error && (

@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const {name, companyName, email, phone, service, message, locale} = body;
 
-    if (!name || !email || !service || !message) {
+    if (!name || !phone || !service || !message) {
       return NextResponse.json({error: 'Missing required fields'}, {status: 400});
     }
 
