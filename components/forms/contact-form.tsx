@@ -15,7 +15,7 @@ const labels = {
     submit: "Send request",
     submitting: "Sending...",
     success:
-      "Request received. Email delivery is placeholder until provider keys are configured.",
+      "Request received.",
     error: "Please complete all required fields with a valid email.",
     services: [
       "AI Services",
@@ -37,7 +37,7 @@ const labels = {
     submit: "ارسال درخواست",
     submitting: "در حال ارسال...",
     success:
-      "درخواست دریافت شد. ارسال ایمیل تا زمان تنظیم کلیدهای سرویس‌دهنده به‌صورت جایگزین است.",
+      "درخواست دریافت شد",
     error: "لطفاً همه فیلدهای ضروری را با ایمیل معتبر تکمیل کنید.",
     services: [
       "خدمات هوش مصنوعی",
