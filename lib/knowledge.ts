@@ -1,12 +1,11 @@
 /**
- * Hoosh Yar chatbot knowledge base v3.0.0
+ * Hoosh Yar chatbot knowledge base v3.0.1
  * Auto-generated — do not edit directly.
  * Source: content/knowledge/HOOSH-YAR-knowledge.txt
  */
 
 export const knowledge = `# HOOSH YAR — CHATBOT KNOWLEDGE BASE
 # This file is the single source of truth for the AI assistant.
-# Update placeholder values before going live.
 
 ---
 
@@ -55,7 +54,7 @@ Price: From 12 million Tomans / From $320 USD
 
 **1.3 AI Content Generation (تولید محتوای هوشمند)**
 AI tools that write product descriptions, captions, and marketing copy in your exact brand voice.
-Deliverables: AI trained on your brand tone, content for Instagram/website/email, simple tool your team can use independently.
+Deliverables: AI trained on your brand tone, content for social media, simple tool your team can use independently.
 Price: From 8 million Tomans / From $220 USD
 
 ---
@@ -64,17 +63,17 @@ Price: From 8 million Tomans / From $220 USD
 
 **2.1 Task Automation (حذف کارهای تکراری)**
 We identify your daily manual tasks and automate them completely.
-Deliverables: Audit of current processes, automation for 3–5 key workflows, team training and one month of support.
+Deliverables: Audit of current processes, automation for key workflows, training and support.
 Price: From 10 million Tomans / From $270 USD
 
 **2.2 System Integration (اتصال سیستم‌ها)**
 Connect your CRM, shop, accounting, and messaging tools so they talk to each other — no more copy-pasting.
-Deliverables: Integration of up to 5 systems, automatic data flow, monitoring and error alerts.
+Deliverables: Integration of different systems, automatic data flow, monitoring and error alerts.
 Price: From 14 million Tomans / From $380 USD
 
 **2.3 Automated Follow-ups & Notifications (اعلان و پیگیری خودکار)**
 A system that follows up with leads, sends order confirmations and payment reminders — on autopilot.
-Deliverables: Follow-up scenarios tailored to your business, automatic messages via WhatsApp/email/SMS, conversion reporting.
+Deliverables: Follow-up scenarios tailored to your business, automatic messages via social media, reporting and response tracking.
 Price: From 9 million Tomans / From $240 USD
 
 ---
@@ -88,7 +87,7 @@ Price: From 20 million Tomans / From $550 USD
 
 **3.2 Online Store (فروشگاه آنلاین)**
 A complete online store with payment, inventory, and order management — ready to sell from day one.
-Deliverables: Iranian and international payment gateway, product/inventory/order management, sales reporting dashboard.
+Deliverables: Payment gateway, product/inventory/order management, sales reporting dashboard.
 Price: From 30 million Tomans / From $800 USD
 
 **3.3 High-Conversion Landing Page (لندینگ پیج فروش)**
@@ -100,14 +99,14 @@ Price: From 8 million Tomans / From $220 USD
 
 ## HOW WE WORK (PROCESS)
 
-**Step 1 — Free Consultation (مشاوره رایگان)**
-Contact us, describe your problem. We listen and propose a tailored solution. No commitment required.
+**Step 1 — شناخت (Understand)**
+اهداف کسب‌وکار، کاربران واقعی، جریان‌های کاری فعلی و معیارهای موفقیت را دقیق شناسایی می‌کنیم — قبل از نوشتن حتی یک خط کد.
 
-**Step 2 — Planning & Pricing (برنامه‌ریزی و قیمت‌گذاری)**
-You receive a clear proposal with fixed price, exact timeline, and full details — no surprises, no hidden costs.
+**Step 2 — راه‌حل (Solution)**
+بهترین ترکیب از هوش مصنوعی، اتوماسیون و وب را طراحی می‌کنیم؛ معماری سیستم، یکپارچه‌سازی‌ها و مسیر اجرا مشخص و قابل دفاع می‌شود.
 
-**Step 3 — Build & Delivery (ساخت و تحویل)**
-We build, you approve at key milestones, you receive the final product — with after-delivery support included.
+**Step 3 — ساخت (Built)**
+طراحی و توسعه را در چرخه‌های کوتاه و قابل مشاهده پیش می‌بریم — هر مرحله قابل تست، قابل بازبینی و آماده لانچ است.
 
 **Typical timelines:**
 - Landing page: 3–7 days
@@ -166,13 +165,13 @@ GitHub: https://github.com/sepehrjo/Ad_Art_Web
 ---
 
 ## CONTACT INFORMATION
-# REPLACE ALL PLACEHOLDERS BELOW WITH REAL VALUES BEFORE GOING LIVE
 
-Email: [PLACEHOLDER — e.g. sepehrjokanian99@gmail.com]
-Telegram: [PLACEHOLDER — e.g. @t.me/hooosh_yar_bot]
-WhatsApp: [PLACEHOLDER — e.g. +98 9381729209]
-Instagram: [PLACEHOLDER — e.g. https://www.instagram.com/hooosh_yar/]
-Bale: [PLACEHOLDER — e.g. @hooshyar]
+Email: sepehrjokanian99@gmail.com
+WhatsApp: +98 938 172 9209
+Telegram: https://t.me/hooosh_yar_bot
+Instagram: https://www.instagram.com/hooosh_yar/
+Bale: +98 938 172 9209
+Support phone number: +98 938 172 9209
 Contact form: available on the website Contact section
 
 ---
