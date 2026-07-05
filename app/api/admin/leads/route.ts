@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const {name, email, service, message, locale} = body;
+    const {name, companyName, email, phone, service, message, locale} = body;
 
     if (!name || !email || !service || !message) {
       return NextResponse.json({error: 'Missing required fields'}, {status: 400});
@@ -54,8 +54,10 @@ export async function POST(request: NextRequest) {
 
     const id = await saveLead({
       name: String(name),
-      email: String(email),
+      companyName: String(companyName || ''),
+      email: String(email || ''),
       service: String(service),
+      phone: String(phone || ''),
       message: String(message),
       locale: locale === 'fa' ? 'fa' : 'en',
       status: 'new',
