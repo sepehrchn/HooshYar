@@ -170,12 +170,11 @@ export const knowledge = `# پایگاه دانش چت‌بات هوش‌یار
 ## اطلاعات تماس
 
 ایمیل: sepehrjokanian99@gmail.com
-فرم تماس: در بخش «تماس با ما» وب‌سایت در دسترس است
-Website: https://hooshyar.sepehr.homes
-Phone : +989381729209
-Telegram : @hooosh_yar_bot
-Instagram : @hooosh_yar
-WhatsApp : +989381729209
+وب سایت : https://hooshyar.sepehr.homes
+تماس : ۰۹۳۸۱۷۲۹۲۰۹
+تلگرام :  hooosh_yar_bot
+اینستاگرام : hooosh_yar
+واتساپ: ۰۹۳۸۱۷۲۹۲۰۹
 اگر کاربر راه ارتباطی دیگری درخواست کرد و در بالا ذکر نشده، بگو که فعلاً بهترین راه، ایمیل یا فرم تماس وب‌سایت است.
 
 ---
