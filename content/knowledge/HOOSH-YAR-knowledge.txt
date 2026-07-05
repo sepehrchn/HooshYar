@@ -1081,16 +1081,41 @@ Response script (EN):
 > information appears. Any field marked [PLACEHOLDER] or UNVERIFIED
 > must NEVER be cited to users. Redirect to the website contact form.
 
-### 8.1 Contact Channels
+### 8.1 CONTACT CHANNELS
 
-  Channel          | Value                  | Status
-  -----------------|------------------------|------------------
-  Email            | [sepehrjokanian99@gmail.com]   VERIFIED -- USE THIS
-  Telegram         | [t.me/hooosh_yar_bot]          VERIFIED -- USE THIS
-  WhatsApp         | [PLACEHOLDER]          | UNVERIFIED -- DO NOT CITE
-  Instagram        | [hooosh_yar]          | VERIFIED -- USE THIS
-  Bale             | [PLACEHOLDER]          | UNVERIFIED -- DO NOT CITE
-  Website form     | hooshyar.sepehr.homes  | VERIFIED -- USE THIS
+Use ONLY the verified contact channels below when responding to users.
+
+Email
+Value: sepehrjokanian99@gmail.com
+Status: VERIFIED -- USE THIS
+
+Telegram
+Value: https://t.me/hooosh_yar_bot
+Status: VERIFIED -- USE THIS
+
+WhatsApp
+Value: [PLACEHOLDER]
+Status: UNVERIFIED -- DO NOT CITE
+
+Instagram
+Value: https://www.instagram.com/hooosh_yar/
+Status: VERIFIED -- USE THIS
+
+Bale
+Value: [PLACEHOLDER]
+Status: UNVERIFIED -- DO NOT CITE
+
+Website Contact Form
+Value: https://hooshyar.sepehr.homes
+Status: VERIFIED -- USE THIS
+
+RULES
+
+- Only provide contact channels marked as VERIFIED.
+- Never invent or guess missing contact information.
+- If a user requests WhatsApp or Bale, politely explain that these channels are not currently available and suggest Email, Telegram, Instagram, or the Website Contact Form instead.
+- Do not mention placeholder values to users.
+- If future contact information is added, replace the corresponding placeholder and update its status to VERIFIED.
 
 ### 8.2 Redirect Script
 
