@@ -138,10 +138,10 @@ export const knowledge = `# پایگاه دانش چت‌بات هوش‌یار
 فناوری‌ها: Gemini AI، Cloudflare Workers، Telegram API، TypeScript
  
 
-**۲. پلتفرم صادرات B2B آریانا**
-نوع: توسعه وب | یک پلتفرم پریمیوم B2B برای صادرات محصولات کشاورزی با پشتیبانی دوزبانه راست‌چین و چپ‌چین و یک دستیار هوش مصنوعی.
-فناوری‌ها: Next.js، Framer Motion، پشتیبانی RTL/LTR، دستیار هوشمند
-نسخه نمایشی: https://arianasepehr.vercel.app
+**۲. شاه مغز **
+نوع: فروشگاه آنلاین لوکس آجیل و خشکبار با پنل مدیریت کامل، سبد خرید، تسویه حساب چندمرحله‌ای و طراحی اختصاصی فارسی.
+فناوری‌ها: Next.js، Prisma ،TypeScript، Tailwind CSS
+نسخه نمایشی: https://shah-maghz.vercel.app/
 
 
 **۳. آرمکو**
