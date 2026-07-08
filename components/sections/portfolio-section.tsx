@@ -30,23 +30,23 @@ const projects = [
     images: ['/works/telegram-bot/1.jpg', '/works/telegram-bot/2.jpg'],
   },
   {
-    slug: 'ariana-b2b',
-    accent: 'violet' as const,
+    slug: 'shahmaghz',
+    accent: 'magenta' as const,
     category: {
       en: 'Web Development',
       fa: 'توسعه وب',
     },
     title: {
-      en: 'Ariana B2B Export Platform',
-      fa: 'پلتفرم صادرات B2B آریانا',
+      en: 'ShahMaghz',
+      fa: 'شاه مغز',
     },
     description: {
-      en: 'Premium B2B agricultural export platform with bilingual RTL/LTR support and AI concierge',
-      fa: 'پلتفرم صادرات محصولات کشاورزی با پشتیبانی دو زبانه RTL/LTR و دستیار هوشمند',
+      en: 'Premium Iranian nuts and dried fruit e-commerce store with full admin panel, cart, multi-step checkout and custom Persian RTL design',
+      fa: 'فروشگاه آنلاین لوکس آجیل و خشکبار با پنل مدیریت کامل، سبد خرید، تسویه حساب چندمرحله‌ای و طراحی اختصاصی فارسی',
     },
-    tags: ['Next.js', 'Framer Motion', 'RTL/LTR', 'AI Concierge'],
-    demoUrl: 'https://arianasepehr.vercel.app',
-    images: ['/works/ariana-b2b/1.jpg', '/works/ariana-b2b/2.jpg', '/works/ariana-b2b/3.jpg'],
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Prisma', 'PostgreSQL', 'Zustand'],
+    demoUrl: 'https://shah-maghz.vercel.app/',
+    images: ['/works/shahmaghz/1.webp', '/works/shahmaghz/2.webp', '/works/shahmaghz/3.webp', '/works/shahmaghz/4.webp', '/works/shahmaghz/5.webp'],
   },
   {
     slug: 'armco',

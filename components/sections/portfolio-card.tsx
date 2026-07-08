@@ -88,12 +88,12 @@ const projectIcons = {
       />
     </svg>
   ),
-  'ariana-b2b': (
+  'shahmaghz': (
     <svg viewBox="0 0 64 64" className="h-16 w-16" fill="none" aria-hidden="true">
-      <rect x="12" y="16" width="40" height="32" rx="4" stroke="currentColor" strokeWidth="2" />
-      <path d="M12 28h40M32 28v20" stroke="currentColor" strokeWidth="2" />
-      <circle cx="24" cy="22" r="2" fill="currentColor" />
-      <circle cx="40" cy="22" r="2" fill="currentColor" />
+      <path d="M32 12c-6 0-16 8-16 20s10 20 16 20 16-8 16-20S38 12 32 12z" stroke="currentColor" strokeWidth="2" />
+      <path d="M32 12c-3 4-5 12-5 20s2 16 5 20" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M32 12c3 4 5 12 5 20s-2 16-5 20" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M18 32h28" stroke="currentColor" strokeWidth="1.5" />
     </svg>
   ),
   'armco': (
